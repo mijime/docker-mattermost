@@ -1,0 +1,50 @@
+---
+mattermost:
+  build: .
+  links:
+  - db
+  ports:
+  - 8080
+  restart: always
+  environment:
+    SQL_DATASOURCE: "root:ch4ngeIt@tcp(db:3306)/gitlabhq?charset=utf8mb4,utf8"
+    GITLAB_ENABLE: "true"
+    GITLAB_SCOPE:  api
+    GITLAB_ID:     8f3d31eb71e7fdeb49d33e207a1a6c9e2292c1c535a295a99e5ecbc32b0cc864
+    GITLAB_SECRET: c0aac27228ef55c498ab6200498916641b8d2bda5a2df089fbf150be5bc5cfbb
+    GITLAB_AUTHENDPOINT:    https://your.gitlab.com/oauth/authorize
+    GITLAB_TOKENENDPOINT:   https://your.gitlab.com/oauth/token
+    GITLAB_USERAPIENDPOINT: https://your.gitlab.com/api/v3/user
+
+gitlab:
+  image: sameersbn/gitlab
+  mem_limit: 1024m
+  links:
+  - cache
+  - db
+  ports:
+  - 443
+  - 80
+  - 22
+  environment:
+    DB_HOST: db
+    DB_NAME: gitlabhq
+    DB_PASS: ch4ngeIt
+    DB_PORT: 3306
+    DB_TYPE: mysql
+    DB_USER: root
+    REDIS_HOST: cache
+    GITLAB_HOST: your.gitlab.com
+    GITLAB_SECRETS_DB_KEY_BASE: ch4ngeIt1
+    GITLAB_USERNAME_CHANGE: False
+
+db:
+  image: percona
+  mem_limit: 512m
+  environment:
+    MYSQL_ROOT_PASSWORD: ch4ngeIt
+    MYSQL_DATABASE: gitlabhq
+
+cache:
+  image: redis
+  mem_limit: 512m
