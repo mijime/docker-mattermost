@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ -z ${SQL_DATASOURCE} ]] && [[ ! -z ${RDS_HOSTNAME} ]]
+then
+  export SQL_DATASOURCE="${RDS_USERNAME}:${RDS_PASSWORD}@tcp(${RDS_HOSTNAME}:${RDS_PORT})/${RDS_DB_NAME}?charset=utf8mb4,utf8"
+fi
+
 generate_salt() {
   cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 48 | head -n 1
 }
