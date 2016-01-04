@@ -17,6 +17,7 @@ export SQL_ATRESTENCRYPTKEY=${SQL_ATRESTENCRYPTKEY:-$(generate_salt)}
 EOF
 
 source /etc/mattermost/env
+chown mattermost: -R /etc/mattermost/config.json
 
 declare -a confd_backends=(${CONFD_BACKEND:-env})
 confd -onetime -backend "${confd_backends[@]}"
