@@ -18,6 +18,8 @@ RUN adduser --home /var/mattermost --no-create-home --ingroup daemon --shell /bi
 RUN mkdir -p /etc/mattermost /var/mattermost/data /var/mattermost/logs
 RUN chown -R mattermost: /etc/mattermost /var/mattermost/data /var/mattermost/logs
 
+RUN apt-get update && apt-get install -y ca-certificates
+
 EXPOSE 8080
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "run.sh" ]
