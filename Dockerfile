@@ -16,7 +16,6 @@ RUN tar xfz /usr/local/src/mattermost.tar.gz -C /var
 # ADD assets/mattermost.tar.gz /var
 RUN adduser --home /var/mattermost --no-create-home --ingroup daemon --shell /bin/false --system mattermost
 RUN mkdir -p /etc/mattermost /var/mattermost/data /var/mattermost/logs
-RUN chown -R mattermost: /etc/mattermost /var/mattermost/data /var/mattermost/logs
 
 RUN apt-get update && apt-get install -y ca-certificates
 
