@@ -75,7 +75,7 @@
     "InviteSalt":               "{{if exists "/email/invitesalt"}}{{getv "/email/invitesalt"}}{{else}}FIXME{{end}}",
     "PasswordResetSalt":        "{{if exists "/email/passwordresetsalt"}}{{getv "/email/passwordresetsalt"}}{{else}}FIXME{{end}}",
     "SendPushNotifications":    {{if exists "/email/sendpushnotifications"}}{{getv "/email/sendpushnotifications"}}{{else}}false{{end}},
-    "PushNotificationServer":   "{{if exists "/email/pushnotificationserver"}}{{getv "/email/pushnotificationServer"}}{{end}}"
+    "PushNotificationServer":   "{{if exists "/email/pushnotificationserver"}}{{getv "/email/pushnotificationserver"}}{{end}}"
   },
 
   "RateLimitSettings": {
