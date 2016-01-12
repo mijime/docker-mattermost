@@ -62,7 +62,7 @@
   },
 
   "EmailSettings": {
-    "EnableSignUpWithEmail":    {{if exists "/email/enablesignupwithemail"}}{{getv "/email/enablesignupwithemail"}}{{else}}false{{end}},
+    "EnableSignUpWithEmail":    {{if exists "/email/enablesignupwithemail"}}{{getv "/email/enablesignupwithemail"}}{{else}}true{{end}},
     "SendEmailNotifications":   {{if exists "/email/sendemailnotifications"}}{{getv "/email/sendemailnotifications"}}{{else}}false{{end}},
     "RequireEmailVerification": {{if exists "/email/requireemailverification"}}{{getv "/email/requireemailverification"}}{{else}}false{{end}},
     "FeedbackName":             "{{if exists "/email/feedbackname"}}{{getv "/email/feedbackname"}}{{end}}",
