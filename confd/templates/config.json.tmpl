@@ -58,7 +58,7 @@
     "AmazonS3AccessKeyId":        "{{if exists "/file/amazons3accesskeyid"}}{{getv "/file/amazons3accesskeyid"}}{{end}}",
     "AmazonS3SecretAccessKey":    "{{if exists "/file/amazons3secretaccesskey"}}{{getv "/file/amazons3secretaccesskey"}}{{end}}",
     "AmazonS3Bucket":             "{{if exists "/file/amazons3bucket"}}{{getv "/file/amazons3bucket"}}{{end}}",
-    "AmazonS3Region":             "{{if exists "/file/amazons3region"}}{{getv "/file/amazons3region"}}{{end}}"
+    "AmazonS3Region":             "{{if exists "/file/amazons3region"}}{{getv "/file/amazons3region"}}{{end}}",
     "AmazonS3Endpoint":           "{{if exists "/file/amazons3endpoint"}}{{getv "/file/amazons3endpoint"}}{{end}}",
     "AmazonS3BucketEndpoint":     "{{if exists "/file/amazons3bucketendpoint"}}{{getv "/file/amazons3bucketendpoint"}}{{end}}",
     "AmazonS3LocationConstraint": {{if exists "/file/amazons3locationconstraint"}}{{getv "/file/amazons3locationconstraint"}}{{else}}false{{end}},
