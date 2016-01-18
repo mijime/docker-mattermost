@@ -44,21 +44,25 @@
   },
 
   "FileSettings": {
-    "DriverName":              "{{if exists "/file/drivername"}}{{getv "/file/drivername"}}{{else}}local{{end}}",
-    "Directory":               "{{if exists "/file/directory"}}{{getv "/file/directory"}}{{else}}data{{end}}",
-    "EnablePublicLink":        {{if exists "/file/enablepubliclink"}}{{getv "/file/enablepubliclink"}}{{else}}true{{end}},
-    "PublicLinkSalt":          "{{if exists "/file/publiclinksalt"}}{{getv "/file/publiclinksalt"}}{{else}}FIXME{{end}}",
-    "ThumbnailWidth":          {{if exists "/file/thumbnailwidth"}}{{getv "/file/thumbnailwidth"}}{{else}}120{{end}},
-    "ThumbnailHeight":         {{if exists "/file/thumbnailheight"}}{{getv "/file/thumbnailheight"}}{{else}}100{{end}},
-    "PreviewWidth":            {{if exists "/file/previewwidth"}}{{getv "/file/previewwidth"}}{{else}}1024{{end}},
-    "PreviewHeight":           {{if exists "/file/previewheight"}}{{getv "/file/previewheight"}}{{else}}0{{end}},
-    "ProfileWidth":            {{if exists "/file/profilewidth"}}{{getv "/file/profilewidth"}}{{else}}128{{end}},
-    "ProfileHeight":           {{if exists "/file/profileheight"}}{{getv "/file/profileheight"}}{{else}}128{{end}},
-    "InitialFont":             "{{if exists "/file/initialfont"}}{{getv "/file/initialfont"}}{{else}}luximbi.ttf{{end}}",
-    "AmazonS3AccessKeyId":     "{{if exists "/file/amazons3accesskeyid"}}{{getv "/file/amazons3accesskeyid"}}{{end}}",
-    "AmazonS3SecretAccessKey": "{{if exists "/file/amazons3secretaccesskey"}}{{getv "/file/amazons3secretaccesskey"}}{{end}}",
-    "AmazonS3Bucket":          "{{if exists "/file/amazons3bucket"}}{{getv "/file/amazons3bucket"}}{{end}}",
-    "AmazonS3Region":          "{{if exists "/file/amazons3region"}}{{getv "/file/amazons3region"}}{{end}}"
+    "DriverName":       "{{if exists "/file/drivername"}}{{getv "/file/drivername"}}{{else}}local{{end}}",
+    "Directory":        "{{if exists "/file/directory"}}{{getv "/file/directory"}}{{else}}data{{end}}",
+    "EnablePublicLink": {{if exists "/file/enablepubliclink"}}{{getv "/file/enablepubliclink"}}{{else}}true{{end}},
+    "PublicLinkSalt":   "{{if exists "/file/publiclinksalt"}}{{getv "/file/publiclinksalt"}}{{else}}FIXME{{end}}",
+    "ThumbnailWidth":   {{if exists "/file/thumbnailwidth"}}{{getv "/file/thumbnailwidth"}}{{else}}120{{end}},
+    "ThumbnailHeight":  {{if exists "/file/thumbnailheight"}}{{getv "/file/thumbnailheight"}}{{else}}100{{end}},
+    "PreviewWidth":     {{if exists "/file/previewwidth"}}{{getv "/file/previewwidth"}}{{else}}1024{{end}},
+    "PreviewHeight":    {{if exists "/file/previewheight"}}{{getv "/file/previewheight"}}{{else}}0{{end}},
+    "ProfileWidth":     {{if exists "/file/profilewidth"}}{{getv "/file/profilewidth"}}{{else}}128{{end}},
+    "ProfileHeight":    {{if exists "/file/profileheight"}}{{getv "/file/profileheight"}}{{else}}128{{end}},
+    "InitialFont":      "{{if exists "/file/initialfont"}}{{getv "/file/initialfont"}}{{else}}luximbi.ttf{{end}}",
+    "AmazonS3AccessKeyId":        "{{if exists "/file/amazons3accesskeyid"}}{{getv "/file/amazons3accesskeyid"}}{{end}}",
+    "AmazonS3SecretAccessKey":    "{{if exists "/file/amazons3secretaccesskey"}}{{getv "/file/amazons3secretaccesskey"}}{{end}}",
+    "AmazonS3Bucket":             "{{if exists "/file/amazons3bucket"}}{{getv "/file/amazons3bucket"}}{{end}}",
+    "AmazonS3Region":             "{{if exists "/file/amazons3region"}}{{getv "/file/amazons3region"}}{{end}}"
+    "AmazonS3Endpoint":           "{{if exists "/file/amazons3endpoint"}}{{getv "/file/amazons3endpoint"}}{{end}}",
+    "AmazonS3BucketEndpoint":     "{{if exists "/file/amazons3bucketendpoint"}}{{getv "/file/amazons3bucketendpoint"}}{{end}}",
+    "AmazonS3LocationConstraint": {{if exists "/file/amazons3locationconstraint"}}{{getv "/file/amazons3locationconstraint"}}{{else}}false{{end}},
+    "AmazonS3LowercaseBucket":    {{if exists "/file/amazons3lowercasebucket"}}{{getv "/file/amazons3lowercasebucket"}}{{else}}false{{end}}
   },
 
   "EmailSettings": {
