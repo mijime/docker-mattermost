@@ -11,7 +11,11 @@
     "EnablePostIconOverride":     {{if exists "/service/enableposticonoverride"}}{{getv "/service/enableposticonoverride"}}{{else}}true{{end}},
     "EnableTesting":              {{if exists "/service/enabletesting"}}{{getv "/service/enabletesting"}}{{else}}false{{end}},
     "EnableDeveloper":            {{if exists "/service/enabledeveloper"}}{{getv "/service/enabledeveloper"}}{{else}}false{{end}},
-    "EnableSecurityFixAlert":     {{if exists "/service/enablesecurityfixalert"}}{{getv "/service/enablesecurityfixalert"}}{{else}}true{{end}}
+    "EnableSecurityFixAlert":     {{if exists "/service/enablesecurityfixalert"}}{{getv "/service/enablesecurityfixalert"}}{{else}}true{{end}},
+    "SessionLengthWebInDays":     {{if exists "/service/sessionlengthwebindays"}}{{getv "/service/sessionlengthwebindays"}}{{else}}30{{end}},
+    "SessionLengthMobileInDays":  {{if exists "/service/sessionlengthmobileindays"}}{{getv "/service/sessionlengthmobileindays"}}{{else}}30{{end}},
+    "SessionLengthSSOInDays":     {{if exists "/service/sessionlengthssoindays"}}{{getv "/service/sessionlengthssoindays"}}{{else}}30{{end}},
+    "SessionCacheInMinutes":      {{if exists "/service/sessioncacheinminutes"}}{{getv "/service/sessioncacheinminutes"}}{{else}}10{{end}}
   },
 
   "TeamSettings": {
