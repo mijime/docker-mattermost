@@ -9,7 +9,7 @@ ADD https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VER}/con
 # COPY assets/confd-${CONFD_VER}-linux-amd64 /usr/local/bin/confd
 RUN chmod +x /usr/local/bin/confd
 
-ENV MATTERMOST_VER=2.0.0-rc1
+ENV MATTERMOST_VER=2.0.0
 ADD https://github.com/mattermost/platform/releases/download/v${MATTERMOST_VER}/mattermost.tar.gz /usr/local/src/mattermost.tar.gz
 # COPY assets/v${MATTERMOST_VER}-mattermost.tar.gz /usr/local/src/mattermost.tar.gz
 RUN tar xfz /usr/local/src/mattermost.tar.gz -C /var
