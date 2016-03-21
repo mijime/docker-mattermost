@@ -7,15 +7,22 @@
     "EnableOAuthServiceProvider": {{if exists "/service/enableoauthserviceprovider"}}{{getv "/service/enableoauthserviceprovider"}}{{else}}false{{end}},
     "EnableIncomingWebhooks":     {{if exists "/service/enableincomingwebhooks"}}{{getv "/service/enableincomingwebhooks"}}{{else}}true{{end}},
     "EnableOutgoingWebhooks":     {{if exists "/service/enableoutgoingwebhooks"}}{{getv "/service/enableoutgoingwebhooks"}}{{else}}true{{end}},
+    "EnableCommands": {{getv "/service/enablecommands" "false"}},
+    "EnableOnlyAdminIntegrations": {{getv "/service/enableonlyadminintegrations" "true"}},
     "EnablePostUsernameOverride": {{if exists "/service/enablepostusernameoverride"}}{{getv "/service/enablepostusernameoverride"}}{{else}}true{{end}},
     "EnablePostIconOverride":     {{if exists "/service/enableposticonoverride"}}{{getv "/service/enableposticonoverride"}}{{else}}true{{end}},
     "EnableTesting":              {{if exists "/service/enabletesting"}}{{getv "/service/enabletesting"}}{{else}}false{{end}},
     "EnableDeveloper":            {{if exists "/service/enabledeveloper"}}{{getv "/service/enabledeveloper"}}{{else}}false{{end}},
     "EnableSecurityFixAlert":     {{if exists "/service/enablesecurityfixalert"}}{{getv "/service/enablesecurityfixalert"}}{{else}}true{{end}},
+    "EnableInsecureOutgoingConnections": {{getv "/service/enableinsecureoutgoingconnections" "false"}},
+    "AllowCorsFrom": "{{if exists "/service/allowcorsfrom"}}{{getv "/service/allowcorsfrom"}}{{end}}",
     "SessionLengthWebInDays":     {{if exists "/service/sessionlengthwebindays"}}{{getv "/service/sessionlengthwebindays"}}{{else}}30{{end}},
     "SessionLengthMobileInDays":  {{if exists "/service/sessionlengthmobileindays"}}{{getv "/service/sessionlengthmobileindays"}}{{else}}30{{end}},
     "SessionLengthSSOInDays":     {{if exists "/service/sessionlengthssoindays"}}{{getv "/service/sessionlengthssoindays"}}{{else}}30{{end}},
-    "SessionCacheInMinutes":      {{if exists "/service/sessioncacheinminutes"}}{{getv "/service/sessioncacheinminutes"}}{{else}}10{{end}}
+    "SessionCacheInMinutes":      {{if exists "/service/sessioncacheinminutes"}}{{getv "/service/sessioncacheinminutes"}}{{else}}10{{end}},
+    "WebsocketSecurePort": {{getv "/service/websocketsecureport" "443"}},
+    "WebsocketPort": {{getv "/service/websocketport" "80"}},
+    "WebserverMode": "{{getv "/service/webservermode" "regular"}}"
   },
 
   "TeamSettings": {
@@ -71,6 +78,8 @@
 
   "EmailSettings": {
     "EnableSignUpWithEmail":    {{if exists "/email/enablesignupwithemail"}}{{getv "/email/enablesignupwithemail"}}{{else}}true{{end}},
+    "EnableSignInWithEmail": {{getv "/email/enablesigninwithemail" "true"}},
+    "EnableSignInWithUsername": {{getv "/email/enablesigninwithusername" "false"}},
     "SendEmailNotifications":   {{if exists "/email/sendemailnotifications"}}{{getv "/email/sendemailnotifications"}}{{else}}false{{end}},
     "RequireEmailVerification": {{if exists "/email/requireemailverification"}}{{getv "/email/requireemailverification"}}{{else}}false{{end}},
     "FeedbackName":             "{{if exists "/email/feedbackname"}}{{getv "/email/feedbackname"}}{{end}}",
@@ -83,6 +92,7 @@
     "InviteSalt":               "{{if exists "/email/invitesalt"}}{{getv "/email/invitesalt"}}{{else}}FIXME{{end}}",
     "PasswordResetSalt":        "{{if exists "/email/passwordresetsalt"}}{{getv "/email/passwordresetsalt"}}{{else}}FIXME{{end}}",
     "SendPushNotifications":    {{if exists "/email/sendpushnotifications"}}{{getv "/email/sendpushnotifications"}}{{else}}false{{end}},
+    "PushNotificationContents": "{{getv "/email/pushnotificationcontents" "generic"}}",
     "PushNotificationServer":   "{{if exists "/email/pushnotificationserver"}}{{getv "/email/pushnotificationserver"}}{{end}}"
   },
 
