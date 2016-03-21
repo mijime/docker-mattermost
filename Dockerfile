@@ -4,12 +4,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y ca-certificates
 RUN mkdir -p /usr/local/src /usr/local/bin
 
-ENV CONFD_VER=0.11.0
+ENV CONFD_VER=0.12.0-alpha3
 ADD https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VER}/confd-${CONFD_VER}-linux-amd64 /usr/local/bin/confd
 # COPY assets/confd-${CONFD_VER}-linux-amd64 /usr/local/bin/confd
 RUN chmod +x /usr/local/bin/confd
 
-ENV MATTERMOST_VER=2.0.0
+ENV MATTERMOST_VER=2.1.0
 ADD https://github.com/mattermost/platform/releases/download/v${MATTERMOST_VER}/mattermost.tar.gz /usr/local/src/mattermost.tar.gz
 # COPY assets/v${MATTERMOST_VER}-mattermost.tar.gz /usr/local/src/mattermost.tar.gz
 RUN tar xfz /usr/local/src/mattermost.tar.gz -C /var
