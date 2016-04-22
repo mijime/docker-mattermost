@@ -4,7 +4,7 @@ ASSETS = assets/runtime/config.json.tmpl
 
 all: $(ASSETS)
 
-assets/runtime/config.json.tmpl: scripts/config.json.awk assets/runtime/config.json.tmpl.tmp
+assets/runtime/config.json.tmpl: scripts/convert-json.awk assets/runtime/config.json.tmpl.tmp
 	awk -f $^ > $@
 
 assets/runtime/config.json.tmpl.tmp:
