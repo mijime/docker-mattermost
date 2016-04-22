@@ -1,0 +1,14 @@
+---
+web:
+  build: ../..
+  links:
+  - postgres
+  restart: on-failure:10
+  ports:
+  - 8080:80
+
+postgres:
+  image: postgres
+  environment:
+    POSTGRES_USER: mmuser1
+    POSTGRES_PASSWORD: ch4ngeIt1

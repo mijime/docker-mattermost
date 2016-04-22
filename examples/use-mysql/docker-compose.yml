@@ -1,0 +1,16 @@
+---
+web:
+  build: ../..
+  links:
+  - mysql
+  restart: on-failure:10
+  ports:
+  - 8080:80
+
+mysql:
+  image: mysql
+  environment:
+    MYSQL_USER: mmuser0
+    MYSQL_PASSWORD: ch4ngeIt0
+    MYSQL_DATABASE: mattermost
+    MYSQL_RANDOM_ROOT_PASSWORD: 1
