@@ -1,0 +1,117 @@
+{
+    "ServiceSettings": {
+        "ListenAddress": "{{var "SERVICE_LISTEN_ADDRESS" | default ":80"}}",
+        "MaximumLoginAttempts": {{var "SERVICE_MAXIMUM_LOGIN_ATTEMPTS" | default "10"}},
+        "SegmentDeveloperKey": "{{var "SERVICE_SEGMENT_DEVELOPER_KEY" | default ""}}",
+        "GoogleDeveloperKey": "{{var "SERVICE_GOOGLE_DEVELOPER_KEY" | default ""}}",
+        "EnableOAuthServiceProvider": {{var "SERVICE_ENABLE_OAUTH_SERVICE_PROVIDER" | default "false"}},
+        "EnableIncomingWebhooks": {{var "SERVICE_ENABLE_INCOMING_WEBHOOKS" | default "false"}},
+        "EnableOutgoingWebhooks": {{var "SERVICE_ENABLE_OUTGOING_WEBHOOKS" | default "false"}},
+        "EnableCommands": {{var "SERVICE_ENABLE_COMMANDS" | default "false"}},
+        "EnableOnlyAdminIntegrations": {{var "SERVICE_ENABLE_ONLY_ADMIN_INTEGRATIONS" | default "true"}},
+        "EnablePostUsernameOverride": {{var "SERVICE_ENABLE_POST_USERNAME_OVERRIDE" | default "false"}},
+        "EnablePostIconOverride": {{var "SERVICE_ENABLE_POST_ICON_OVERRIDE" | default "false"}},
+        "EnableTesting": {{var "SERVICE_ENABLE_TESTING" | default "false"}},
+        "EnableDeveloper": {{var "SERVICE_ENABLE_DEVELOPER" | default "false"}},
+        "EnableSecurityFixAlert": {{var "SERVICE_ENABLE_SECURITY_FIX_ALERT" | default "true"}},
+        "EnableInsecureOutgoingConnections": {{var "SERVICE_ENABLE_INSECURE_OUTGOING_CONNECTIONS" | default "false"}},
+        "AllowCorsFrom": "{{var "SERVICE_ALLOW_CORS_FROM" | default ""}}",
+        "SessionLengthWebInDays": {{var "SERVICE_SESSION_LENGTH_WEB_IN_DAYS" | default "30"}},
+        "SessionLengthMobileInDays": {{var "SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS" | default "30"}},
+        "SessionLengthSSOInDays": {{var "SERVICE_SESSION_LENGTH_SSOIN_DAYS" | default "30"}},
+        "SessionCacheInMinutes": {{var "SERVICE_SESSION_CACHE_IN_MINUTES" | default "10"}}
+    },
+    "TeamSettings": {
+        "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
+        "MaxUsersPerTeam": {{var "TEAM_MAX_USERS_PER_TEAM" | default "50"}},
+        "EnableTeamCreation": {{var "TEAM_ENABLE_TEAM_CREATION" | default "true"}},
+        "EnableUserCreation": {{var "TEAM_ENABLE_USER_CREATION" | default "true"}},
+        "RestrictCreationToDomains": "{{var "TEAM_RESTRICT_CREATION_TO_DOMAINS" | default ""}}",
+        "RestrictTeamNames": {{var "TEAM_RESTRICT_TEAM_NAMES" | default "true"}},
+        "EnableTeamListing": {{var "TEAM_ENABLE_TEAM_LISTING" | default "false"}}
+    },
+    "SqlSettings": {
+        "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
+        "DataSource": "{{var "SQL_DATA_SOURCE" | default "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8"}}",
+        "DataSourceReplicas": {{var "SQL_DATA_SOURCE_REPLICAS" | default "[]"}},
+        "MaxIdleConns": {{var "SQL_MAX_IDLE_CONNS" | default "10"}},
+        "MaxOpenConns": {{var "SQL_MAX_OPEN_CONNS" | default "10"}},
+        "Trace": {{var "SQL_TRACE" | default "false"}},
+        "AtRestEncryptKey": "{{var "SQL_AT_REST_ENCRYPT_KEY" | default "7rAh6iwQCkV4cA1Gsg3fgGOXJAQ43QVg"}}"
+    },
+    "LogSettings": {
+        "EnableConsole": {{var "LOG_ENABLE_CONSOLE" | default "true"}},
+        "ConsoleLevel": "{{var "LOG_CONSOLE_LEVEL" | default "INFO"}}",
+        "EnableFile": {{var "LOG_ENABLE_FILE" | default "true"}},
+        "FileLevel": "{{var "LOG_FILE_LEVEL" | default "INFO"}}",
+        "FileFormat": "{{var "LOG_FILE_FORMAT" | default ""}}",
+        "FileLocation": "{{var "LOG_FILE_LOCATION" | default ""}}"
+    },
+    "FileSettings": {
+        "DriverName": "{{var "FILE_DRIVER_NAME" | default "local"}}",
+        "Directory": "{{var "FILE_DIRECTORY" | default "./data/"}}",
+        "EnablePublicLink": {{var "FILE_ENABLE_PUBLIC_LINK" | default "false"}},
+        "PublicLinkSalt": "{{var "FILE_PUBLIC_LINK_SALT" | default "A705AklYF8MFDOfcwh3I488G8vtLlVip"}}",
+        "ThumbnailWidth": {{var "FILE_THUMBNAIL_WIDTH" | default "120"}},
+        "ThumbnailHeight": {{var "FILE_THUMBNAIL_HEIGHT" | default "100"}},
+        "PreviewWidth": {{var "FILE_PREVIEW_WIDTH" | default "1024"}},
+        "PreviewHeight": {{var "FILE_PREVIEW_HEIGHT" | default "0"}},
+        "ProfileWidth": {{var "FILE_PROFILE_WIDTH" | default "128"}},
+        "ProfileHeight": {{var "FILE_PROFILE_HEIGHT" | default "128"}},
+        "InitialFont": "{{var "FILE_INITIAL_FONT" | default "luximbi.ttf"}}",
+        "AmazonS3AccessKeyId": "{{var "FILE_AMAZON_S3_ACCESS_KEY_ID" | default ""}}",
+        "AmazonS3SecretAccessKey": "{{var "FILE_AMAZON_S3_SECRET_ACCESS_KEY" | default ""}}",
+        "AmazonS3Bucket": "{{var "FILE_AMAZON_S3_BUCKET" | default ""}}",
+        "AmazonS3Region": "{{var "FILE_AMAZON_S3_REGION" | default ""}}",
+        "AmazonS3Endpoint": "{{var "FILE_AMAZON_S3_ENDPOINT" | default ""}}",
+        "AmazonS3BucketEndpoint": "{{var "FILE_AMAZON_S3_BUCKET_ENDPOINT" | default ""}}",
+        "AmazonS3LocationConstraint": {{var "FILE_AMAZON_S3_LOCATION_CONSTRAINT" | default "false"}},
+        "AmazonS3LowercaseBucket": {{var "FILE_AMAZON_S3_LOWERCASE_BUCKET" | default "false"}}
+    },
+    "EmailSettings": {
+        "EnableSignUpWithEmail": {{var "EMAIL_ENABLE_SIGN_UP_WITH_EMAIL" | default "true"}},
+        "EnableSignInWithEmail": {{var "EMAIL_ENABLE_SIGN_IN_WITH_EMAIL" | default "true"}},
+        "EnableSignInWithUsername": {{var "EMAIL_ENABLE_SIGN_IN_WITH_USERNAME" | default "false"}},
+        "SendEmailNotifications": {{var "EMAIL_SEND_EMAIL_NOTIFICATIONS" | default "false"}},
+        "RequireEmailVerification": {{var "EMAIL_REQUIRE_EMAIL_VERIFICATION" | default "false"}},
+        "FeedbackName": "{{var "EMAIL_FEEDBACK_NAME" | default ""}}",
+        "FeedbackEmail": "{{var "EMAIL_FEEDBACK_EMAIL" | default ""}}",
+        "SMTPUsername": "{{var "EMAIL_SMTP_USERNAME" | default ""}}",
+        "SMTPPassword": "{{var "EMAIL_SMTP_PASSWORD" | default ""}}",
+        "SMTPServer": "{{var "EMAIL_SMTP_SERVER" | default ""}}",
+        "SMTPPort": "{{var "EMAIL_SMTP_PORT" | default ""}}",
+        "ConnectionSecurity": "{{var "EMAIL_CONNECTION_SECURITY" | default ""}}",
+        "InviteSalt": "{{var "EMAIL_INVITE_SALT" | default "bjlSR4QqkXFBr7TP4oDzlfZmcNuH9YoS"}}",
+        "PasswordResetSalt": "{{var "EMAIL_PASSWORD_RESET_SALT" | default "vZ4DcKyVVRlKHHJpexcuXzojkE5PZ5eL"}}",
+        "SendPushNotifications": {{var "EMAIL_SEND_PUSH_NOTIFICATIONS" | default "false"}},
+        "PushNotificationServer": "{{var "EMAIL_PUSH_NOTIFICATION_SERVER" | default ""}}"
+    },
+    "RateLimitSettings": {
+        "EnableRateLimiter": {{var "RATELIMIT_ENABLE_RATE_LIMITER" | default "true"}},
+        "PerSec": {{var "RATELIMIT_PER_SEC" | default "10"}},
+        "MemoryStoreSize": {{var "RATELIMIT_MEMORY_STORE_SIZE" | default "10000"}},
+        "VaryByRemoteAddr": {{var "RATELIMIT_VARY_BY_REMOTE_ADDR" | default "true"}},
+        "VaryByHeader": "{{var "RATELIMIT_VARY_BY_HEADER" | default ""}}"
+    },
+    "PrivacySettings": {
+        "ShowEmailAddress": {{var "PRIVACY_SHOW_EMAIL_ADDRESS" | default "true"}},
+        "ShowFullName": {{var "PRIVACY_SHOW_FULL_NAME" | default "true"}}
+    },
+    "SupportSettings": {
+        "TermsOfServiceLink": "{{var "SUPPORT_TERMS_OF_SERVICE_LINK" | default "/static/help/terms.html"}}",
+        "PrivacyPolicyLink": "{{var "SUPPORT_PRIVACY_POLICY_LINK" | default "/static/help/privacy.html"}}",
+        "AboutLink": "{{var "SUPPORT_ABOUT_LINK" | default "/static/help/about.html"}}",
+        "HelpLink": "{{var "SUPPORT_HELP_LINK" | default "/static/help/help.html"}}",
+        "ReportAProblemLink": "{{var "SUPPORT_REPORT_APROBLEM_LINK" | default "/static/help/report_problem.html"}}",
+        "SupportEmail": "{{var "SUPPORT_SUPPORT_EMAIL" | default "feedback@mattermost.com"}}"
+    },
+    "GitLabSettings": {
+        "Enable": {{var "GITLAB_ENABLE" | default "false"}},
+        "Secret": "{{var "GITLAB_SECRET" | default ""}}",
+        "Id": "{{var "GITLAB_ID" | default ""}}",
+        "Scope": "{{var "GITLAB_SCOPE" | default ""}}",
+        "AuthEndpoint": "{{var "GITLAB_AUTH_ENDPOINT" | default ""}}",
+        "TokenEndpoint": "{{var "GITLAB_TOKEN_ENDPOINT" | default ""}}",
+        "UserApiEndpoint": "{{var "GITLAB_USER_API_ENDPOINT" | default ""}}"
+    }
+}

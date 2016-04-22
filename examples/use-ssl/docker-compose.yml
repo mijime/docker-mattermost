@@ -1,0 +1,25 @@
+---
+web:
+  build: ../..
+  links:
+  - mysql
+  restart: on-failure:10
+  environment:
+    VIRTUAL_HOST: mm.example.org
+    TEAM_RESTRICT_CREATION_TO_DOMAINS: mm.example.org
+
+mysql:
+  image: mysql
+  environment:
+    MYSQL_USER: mmuser2
+    MYSQL_PASSWORD: ch4ngeIt2
+    MYSQL_DATABASE: mattermost
+    MYSQL_RANDOM_ROOT_PASSWORD: 1
+
+nginx:
+  image: jwilder/nginx-proxy
+  ports:
+  - 8443:443
+  volumes:
+  - /var/run/docker.sock:/tmp/docker.sock:ro
+  - ./certs:/etc/nginx/certs

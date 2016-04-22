@@ -1,4 +1,0 @@
-[template]
-src   = "config.json.tmpl"
-dest  = "/etc/mattermost/config.json"
-keys  = [ "/" ]
