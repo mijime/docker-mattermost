@@ -8,9 +8,9 @@ initialize() {
   if [[ -z ${SQL_DATA_SOURCE} ]] && [[ ! -z ${MYSQL_PORT_3306_TCP_ADDR} ]]; then
     local DB_HOST=${DB_HOST:-${MYSQL_PORT_3306_TCP_ADDR}}
     local DB_PORT=${DB_PORT:-${MYSQL_PORT_3306_TCP_PORT}}
-    local DB_USER=${DB_USER:-${MYSQL_ENV_MYSQL_USER}}
-    local DB_PASS=${DB_PASS:-${MYSQL_ENV_MYSQL_PASSWORD}}
-    local DB_NAME=${DB_NAME:-${MYSQL_ENV_MYSQL_DATABASE}}
+    local DB_USER=${DB_USER:-${MYSQL_ENV_MYSQL_USER:-"root"}}
+    local DB_PASS=${DB_PASS:-${MYSQL_ENV_MYSQL_PASSWORD:-${MYSQL_ENV_MYSQL_ROOT_PASSWORD}}}
+    local DB_NAME=${DB_NAME:-${MYSQL_ENV_MYSQL_DATABASE:-"mattermost"}}
     export SQL_DRIVER_NAME=${SQL_DRIVER_NAME:-"mysql"}
     export SQL_DATA_SOURCE="${DB_USER}:${DB_PASS}@tcp(${DB_HOST}:${DB_PORT})/${DB_NAME}?${DB_PARAMS:-"charset=utf8mb4,utf8"}"
 
