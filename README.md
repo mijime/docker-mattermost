@@ -5,7 +5,7 @@ Example
 
 Create a mysql container.
 
-`docker run --name=some-mysql --env="MYSQL_ROOT_PASSWORD=ch4ngeIt0" --detach mysql`
+`docker run --name=some-mysql --env="MYSQL_DATABASE=mattermost" --env="MYSQL_ROOT_PASSWORD=ch4ngeIt0" --detach mysql`
 
 Create a mattermost container, and link the mysql container.
 
