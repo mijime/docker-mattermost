@@ -15,19 +15,17 @@ function fixWord(str) {
   return str;
 }
 
-BEGIN {
-  printf "| %s | %s | %s | %s |\n", "selection", "configuration name", "env", "default";
-  printf "| :--- | :--- | :--- | :--- |\n";
-}
-
 /^ *"([[:alnum:]]+)Settings": {$/ {
   match($0, /^ *"([[:alnum:]]+)Settings": {$/, s);
+  printf "\n### %sSettings\n\n", s[1];
+  printf "| %s | %s | %s |\n", "configuration name", "env", "default";
+  printf "| :--- | :--- | :--- |\n";
   next;
 }
 
 /^ *"([[:alnum:]]+)": +([0-9]+|true|false|[[]]+)?(".*")?(,)?$/ {
   match($0, /^ *"([[:alnum:]]+)": +([0-9]+|true|false|[[]]+|".*")?,?$/, v);
   envkey = toupper(s[1] "_" camel2snake(fixWord(v[1])));
-  printf "| %sSettings | %s | %s | %s |\n", s[1], v[1], envkey, v[2];
+  printf "| %s | %s | %s |\n", v[1], envkey, v[2];
   next;
 }
