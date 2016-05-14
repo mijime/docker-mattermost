@@ -19,7 +19,7 @@ RUN apk add --no-cache --virtual build-deps \
     && make package BUILD_NUMBER=docker \
     && tar xfz dist/mattermost-team-linux-amd64.tar.gz -C /opt \
     && cd - \
-    && rm -rf ${GOPATH} /usr/lib/node_modules /root/.npm /tmp/npm-* \
+    && rm -rf ${GOPATH} /usr/lib/go/pkg /usr/lib/node_modules /root/.npm /tmp/npm-* \
     && apk del --purge build-deps
 
 ADD assets/runtime /opt/mattermost/runtime
