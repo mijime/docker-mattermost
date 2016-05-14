@@ -1,29 +1,25 @@
 FROM alpine:3.3
 
 ENV ENTRYKIT_VER=0.4.0 \
-    MATTERMOST_VER=2.2.0 \
+    MATTERMOST_VER=3.0.0 \
     GOPATH=/opt/go
 
 RUN apk add --no-cache --virtual build-deps \
       go git mercurial nodejs make g++ \
-      ruby ruby-dev libffi-dev \
     && curl -sSL https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VER}/entrykit_${ENTRYKIT_VER}_Linux_x86_64.tgz \
       | tar -xzC /usr/local/bin \
     && /usr/local/bin/entrykit --symlink \
     && go get github.com/tools/godep \
-    && gem install compass --no-document \
     && npm update npm --global \
     && git clone --depth 1 --branch v${MATTERMOST_VER} \
       https://github.com/mattermost/platform \
       ${GOPATH}/src/github.com/mattermost/platform \
     && cd ${GOPATH}/src/github.com/mattermost/platform \
     && sed -i.org 's/sudo //g' Makefile \
-    && make build-server build-client BUILD_NUMBER=docker \
     && make package BUILD_NUMBER=docker \
-    && tar xfz dist/mattermost.tar.gz -C /opt \
+    && tar xfz dist/mattermost-team-linux-amd64.tar.gz -C /opt \
     && cd - \
     && rm -rf ${GOPATH} /usr/lib/node_modules /root/.npm /tmp/npm-* \
-      /usr/lib/ruby /root/.gem \
     && apk del --purge build-deps
 
 ADD assets/runtime /opt/mattermost/runtime

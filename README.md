@@ -67,11 +67,15 @@ See.
 | EnableDeveloper | SERVICE_ENABLE_DEVELOPER | false |
 | EnableSecurityFixAlert | SERVICE_ENABLE_SECURITY_FIX_ALERT | true |
 | EnableInsecureOutgoingConnections | SERVICE_ENABLE_INSECURE_OUTGOING_CONNECTIONS | false |
+| EnableMultifactorAuthentication | SERVICE_ENABLE_MULTIFACTOR_AUTHENTICATION | false |
 | AllowCorsFrom | SERVICE_ALLOW_CORS_FROM | "" |
 | SessionLengthWebInDays | SERVICE_SESSION_LENGTH_WEB_IN_DAYS | 30 |
 | SessionLengthMobileInDays | SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS | 30 |
 | SessionLengthSSOInDays | SERVICE_SESSION_LENGTH_SSOIN_DAYS | 30 |
 | SessionCacheInMinutes | SERVICE_SESSION_CACHE_IN_MINUTES | 10 |
+| WebsocketSecurePort | SERVICE_WEBSOCKET_SECURE_PORT | 443 |
+| WebsocketPort | SERVICE_WEBSOCKET_PORT | 80 |
+| WebserverMode | SERVICE_WEBSERVER_MODE | "regular" |
 
 ### TeamSettings
 
@@ -81,9 +85,12 @@ See.
 | MaxUsersPerTeam | TEAM_MAX_USERS_PER_TEAM | 50 |
 | EnableTeamCreation | TEAM_ENABLE_TEAM_CREATION | true |
 | EnableUserCreation | TEAM_ENABLE_USER_CREATION | true |
+| EnableOpenServer | TEAM_ENABLE_OPEN_SERVER | false |
 | RestrictCreationToDomains | TEAM_RESTRICT_CREATION_TO_DOMAINS | "" |
 | RestrictTeamNames | TEAM_RESTRICT_TEAM_NAMES | true |
-| EnableTeamListing | TEAM_ENABLE_TEAM_LISTING | false |
+| EnableCustomBrand | TEAM_ENABLE_CUSTOM_BRAND | false |
+| CustomBrandText | TEAM_CUSTOM_BRAND_TEXT | "" |
+| RestrictDirectMessage | TEAM_RESTRICT_DIRECT_MESSAGE | "any" |
 
 ### SqlSettings
 
@@ -138,7 +145,7 @@ See.
 | :--- | :--- | :--- |
 | EnableSignUpWithEmail | EMAIL_ENABLE_SIGN_UP_WITH_EMAIL | true |
 | EnableSignInWithEmail | EMAIL_ENABLE_SIGN_IN_WITH_EMAIL | true |
-| EnableSignInWithUsername | EMAIL_ENABLE_SIGN_IN_WITH_USERNAME | false |
+| EnableSignInWithUsername | EMAIL_ENABLE_SIGN_IN_WITH_USERNAME | true |
 | SendEmailNotifications | EMAIL_SEND_EMAIL_NOTIFICATIONS | false |
 | RequireEmailVerification | EMAIL_REQUIRE_EMAIL_VERIFICATION | false |
 | FeedbackName | EMAIL_FEEDBACK_NAME | "" |
@@ -152,6 +159,7 @@ See.
 | PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "vZ4DcKyVVRlKHHJpexcuXzojkE5PZ5eL" |
 | SendPushNotifications | EMAIL_SEND_PUSH_NOTIFICATIONS | false |
 | PushNotificationServer | EMAIL_PUSH_NOTIFICATION_SERVER | "" |
+| PushNotificationContents | EMAIL_PUSH_NOTIFICATION_CONTENTS | "generic" |
 
 ### RateLimitSettings
 
@@ -174,11 +182,11 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| TermsOfServiceLink | SUPPORT_TERMS_OF_SERVICE_LINK | "/static/help/terms.html" |
-| PrivacyPolicyLink | SUPPORT_PRIVACY_POLICY_LINK | "/static/help/privacy.html" |
-| AboutLink | SUPPORT_ABOUT_LINK | "/static/help/about.html" |
-| HelpLink | SUPPORT_HELP_LINK | "/static/help/help.html" |
-| ReportAProblemLink | SUPPORT_REPORT_APROBLEM_LINK | "/static/help/report_problem.html" |
+| TermsOfServiceLink | SUPPORT_TERMS_OF_SERVICE_LINK | "https://about.mattermost.com/default-terms/" |
+| PrivacyPolicyLink | SUPPORT_PRIVACY_POLICY_LINK | "https://about.mattermost.com/default-privacy-policy/" |
+| AboutLink | SUPPORT_ABOUT_LINK | "https://about.mattermost.com/default-about/" |
+| HelpLink | SUPPORT_HELP_LINK | "https://about.mattermost.com/default-help/" |
+| ReportAProblemLink | SUPPORT_REPORT_APROBLEM_LINK | "https://about.mattermost.com/default-report-problem/" |
 | SupportEmail | SUPPORT_SUPPORT_EMAIL | "feedback@mattermost.com" |
 
 ### GitLabSettings
@@ -192,3 +200,45 @@ See.
 | AuthEndpoint | GITLAB_AUTH_ENDPOINT | "" |
 | TokenEndpoint | GITLAB_TOKEN_ENDPOINT | "" |
 | UserApiEndpoint | GITLAB_USER_API_ENDPOINT | "" |
+
+### GoogleSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Enable | GOOGLE_ENABLE | false |
+| Secret | GOOGLE_SECRET | "" |
+| Id | GOOGLE_ID | "" |
+| Scope | GOOGLE_SCOPE | "" |
+| AuthEndpoint | GOOGLE_AUTH_ENDPOINT | "" |
+| TokenEndpoint | GOOGLE_TOKEN_ENDPOINT | "" |
+| UserApiEndpoint | GOOGLE_USER_API_ENDPOINT | "" |
+
+### LdapSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Enable | LDAP_ENABLE | false |
+| LdapServer | LDAP_LDAP_SERVER | "" |
+| LdapPort | LDAP_LDAP_PORT | 389 |
+| ConnectionSecurity | LDAP_CONNECTION_SECURITY | "" |
+| BaseDN | LDAP_BASE_DN | "" |
+| BindUsername | LDAP_BIND_USERNAME | "" |
+| BindPassword | LDAP_BIND_PASSWORD | "" |
+| UserFilter | LDAP_USER_FILTER | "" |
+| FirstNameAttribute | LDAP_FIRST_NAME_ATTRIBUTE | "" |
+| LastNameAttribute | LDAP_LAST_NAME_ATTRIBUTE | "" |
+| EmailAttribute | LDAP_EMAIL_ATTRIBUTE | "" |
+| UsernameAttribute | LDAP_USERNAME_ATTRIBUTE | "" |
+| NicknameAttribute | LDAP_NICKNAME_ATTRIBUTE | "" |
+| IdAttribute | LDAP_ID_ATTRIBUTE | "" |
+| SkipCertificateVerification | LDAP_SKIP_CERTIFICATE_VERIFICATION | false |
+| QueryTimeout | LDAP_QUERY_TIMEOUT | 60 |
+| LoginFieldName | LDAP_LOGIN_FIELD_NAME | "" |
+
+### ComplianceSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Enable | COMPLIANCE_ENABLE | false |
+| Directory | COMPLIANCE_DIRECTORY | "./data/" |
+| EnableDaily | COMPLIANCE_ENABLE_DAILY | false |
