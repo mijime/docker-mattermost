@@ -15,20 +15,27 @@
         "EnableDeveloper": {{var "SERVICE_ENABLE_DEVELOPER" | default "false"}},
         "EnableSecurityFixAlert": {{var "SERVICE_ENABLE_SECURITY_FIX_ALERT" | default "true"}},
         "EnableInsecureOutgoingConnections": {{var "SERVICE_ENABLE_INSECURE_OUTGOING_CONNECTIONS" | default "false"}},
+        "EnableMultifactorAuthentication": {{var "SERVICE_ENABLE_MULTIFACTOR_AUTHENTICATION" | default "false"}},
         "AllowCorsFrom": "{{var "SERVICE_ALLOW_CORS_FROM" | default ""}}",
         "SessionLengthWebInDays": {{var "SERVICE_SESSION_LENGTH_WEB_IN_DAYS" | default "30"}},
         "SessionLengthMobileInDays": {{var "SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS" | default "30"}},
         "SessionLengthSSOInDays": {{var "SERVICE_SESSION_LENGTH_SSOIN_DAYS" | default "30"}},
-        "SessionCacheInMinutes": {{var "SERVICE_SESSION_CACHE_IN_MINUTES" | default "10"}}
+        "SessionCacheInMinutes": {{var "SERVICE_SESSION_CACHE_IN_MINUTES" | default "10"}},
+        "WebsocketSecurePort": {{var "SERVICE_WEBSOCKET_SECURE_PORT" | default "443"}},
+        "WebsocketPort": {{var "SERVICE_WEBSOCKET_PORT" | default "80"}},
+        "WebserverMode": "{{var "SERVICE_WEBSERVER_MODE" | default "regular"}}"
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
         "MaxUsersPerTeam": {{var "TEAM_MAX_USERS_PER_TEAM" | default "50"}},
         "EnableTeamCreation": {{var "TEAM_ENABLE_TEAM_CREATION" | default "true"}},
         "EnableUserCreation": {{var "TEAM_ENABLE_USER_CREATION" | default "true"}},
+        "EnableOpenServer": {{var "TEAM_ENABLE_OPEN_SERVER" | default "false"}},
         "RestrictCreationToDomains": "{{var "TEAM_RESTRICT_CREATION_TO_DOMAINS" | default ""}}",
         "RestrictTeamNames": {{var "TEAM_RESTRICT_TEAM_NAMES" | default "true"}},
-        "EnableTeamListing": {{var "TEAM_ENABLE_TEAM_LISTING" | default "false"}}
+        "EnableCustomBrand": {{var "TEAM_ENABLE_CUSTOM_BRAND" | default "false"}},
+        "CustomBrandText": "{{var "TEAM_CUSTOM_BRAND_TEXT" | default ""}}",
+        "RestrictDirectMessage": "{{var "TEAM_RESTRICT_DIRECT_MESSAGE" | default "any"}}"
     },
     "SqlSettings": {
         "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
@@ -71,7 +78,7 @@
     "EmailSettings": {
         "EnableSignUpWithEmail": {{var "EMAIL_ENABLE_SIGN_UP_WITH_EMAIL" | default "true"}},
         "EnableSignInWithEmail": {{var "EMAIL_ENABLE_SIGN_IN_WITH_EMAIL" | default "true"}},
-        "EnableSignInWithUsername": {{var "EMAIL_ENABLE_SIGN_IN_WITH_USERNAME" | default "false"}},
+        "EnableSignInWithUsername": {{var "EMAIL_ENABLE_SIGN_IN_WITH_USERNAME" | default "true"}},
         "SendEmailNotifications": {{var "EMAIL_SEND_EMAIL_NOTIFICATIONS" | default "false"}},
         "RequireEmailVerification": {{var "EMAIL_REQUIRE_EMAIL_VERIFICATION" | default "false"}},
         "FeedbackName": "{{var "EMAIL_FEEDBACK_NAME" | default ""}}",
@@ -84,7 +91,8 @@
         "InviteSalt": "{{var "EMAIL_INVITE_SALT" | default "bjlSR4QqkXFBr7TP4oDzlfZmcNuH9YoS"}}",
         "PasswordResetSalt": "{{var "EMAIL_PASSWORD_RESET_SALT" | default "vZ4DcKyVVRlKHHJpexcuXzojkE5PZ5eL"}}",
         "SendPushNotifications": {{var "EMAIL_SEND_PUSH_NOTIFICATIONS" | default "false"}},
-        "PushNotificationServer": "{{var "EMAIL_PUSH_NOTIFICATION_SERVER" | default ""}}"
+        "PushNotificationServer": "{{var "EMAIL_PUSH_NOTIFICATION_SERVER" | default ""}}",
+        "PushNotificationContents": "{{var "EMAIL_PUSH_NOTIFICATION_CONTENTS" | default "generic"}}"
     },
     "RateLimitSettings": {
         "EnableRateLimiter": {{var "RATELIMIT_ENABLE_RATE_LIMITER" | default "true"}},
@@ -98,11 +106,11 @@
         "ShowFullName": {{var "PRIVACY_SHOW_FULL_NAME" | default "true"}}
     },
     "SupportSettings": {
-        "TermsOfServiceLink": "{{var "SUPPORT_TERMS_OF_SERVICE_LINK" | default "/static/help/terms.html"}}",
-        "PrivacyPolicyLink": "{{var "SUPPORT_PRIVACY_POLICY_LINK" | default "/static/help/privacy.html"}}",
-        "AboutLink": "{{var "SUPPORT_ABOUT_LINK" | default "/static/help/about.html"}}",
-        "HelpLink": "{{var "SUPPORT_HELP_LINK" | default "/static/help/help.html"}}",
-        "ReportAProblemLink": "{{var "SUPPORT_REPORT_APROBLEM_LINK" | default "/static/help/report_problem.html"}}",
+        "TermsOfServiceLink": "{{var "SUPPORT_TERMS_OF_SERVICE_LINK" | default "https://about.mattermost.com/default-terms/"}}",
+        "PrivacyPolicyLink": "{{var "SUPPORT_PRIVACY_POLICY_LINK" | default "https://about.mattermost.com/default-privacy-policy/"}}",
+        "AboutLink": "{{var "SUPPORT_ABOUT_LINK" | default "https://about.mattermost.com/default-about/"}}",
+        "HelpLink": "{{var "SUPPORT_HELP_LINK" | default "https://about.mattermost.com/default-help/"}}",
+        "ReportAProblemLink": "{{var "SUPPORT_REPORT_APROBLEM_LINK" | default "https://about.mattermost.com/default-report-problem/"}}",
         "SupportEmail": "{{var "SUPPORT_SUPPORT_EMAIL" | default "feedback@mattermost.com"}}"
     },
     "GitLabSettings": {
@@ -113,5 +121,38 @@
         "AuthEndpoint": "{{var "GITLAB_AUTH_ENDPOINT" | default ""}}",
         "TokenEndpoint": "{{var "GITLAB_TOKEN_ENDPOINT" | default ""}}",
         "UserApiEndpoint": "{{var "GITLAB_USER_API_ENDPOINT" | default ""}}"
+    },
+    "GoogleSettings": {
+        "Enable": {{var "GOOGLE_ENABLE" | default "false"}},
+        "Secret": "{{var "GOOGLE_SECRET" | default ""}}",
+        "Id": "{{var "GOOGLE_ID" | default ""}}",
+        "Scope": "{{var "GOOGLE_SCOPE" | default ""}}",
+        "AuthEndpoint": "{{var "GOOGLE_AUTH_ENDPOINT" | default ""}}",
+        "TokenEndpoint": "{{var "GOOGLE_TOKEN_ENDPOINT" | default ""}}",
+        "UserApiEndpoint": "{{var "GOOGLE_USER_API_ENDPOINT" | default ""}}"
+    },
+    "LdapSettings": {
+        "Enable": {{var "LDAP_ENABLE" | default "false"}},
+        "LdapServer": "{{var "LDAP_LDAP_SERVER" | default ""}}",
+        "LdapPort": {{var "LDAP_LDAP_PORT" | default "389"}},
+        "ConnectionSecurity": "{{var "LDAP_CONNECTION_SECURITY" | default ""}}",
+        "BaseDN": "{{var "LDAP_BASE_DN" | default ""}}",
+        "BindUsername": "{{var "LDAP_BIND_USERNAME" | default ""}}",
+        "BindPassword": "{{var "LDAP_BIND_PASSWORD" | default ""}}",
+        "UserFilter": "{{var "LDAP_USER_FILTER" | default ""}}",
+        "FirstNameAttribute": "{{var "LDAP_FIRST_NAME_ATTRIBUTE" | default ""}}",
+        "LastNameAttribute": "{{var "LDAP_LAST_NAME_ATTRIBUTE" | default ""}}",
+        "EmailAttribute": "{{var "LDAP_EMAIL_ATTRIBUTE" | default ""}}",
+        "UsernameAttribute": "{{var "LDAP_USERNAME_ATTRIBUTE" | default ""}}",
+        "NicknameAttribute": "{{var "LDAP_NICKNAME_ATTRIBUTE" | default ""}}",
+        "IdAttribute": "{{var "LDAP_ID_ATTRIBUTE" | default ""}}",
+        "SkipCertificateVerification": {{var "LDAP_SKIP_CERTIFICATE_VERIFICATION" | default "false"}},
+        "QueryTimeout": {{var "LDAP_QUERY_TIMEOUT" | default "60"}},
+        "LoginFieldName": "{{var "LDAP_LOGIN_FIELD_NAME" | default ""}}"
+    },
+    "ComplianceSettings": {
+        "Enable": {{var "COMPLIANCE_ENABLE" | default "false"}},
+        "Directory": "{{var "COMPLIANCE_DIRECTORY" | default "./data/"}}",
+        "EnableDaily": {{var "COMPLIANCE_ENABLE_DAILY" | default "false"}}
     }
 }
