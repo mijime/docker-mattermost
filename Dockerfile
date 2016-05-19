@@ -1,7 +1,7 @@
 FROM alpine:3.3
 
 ENV ENTRYKIT_VER=0.4.0 \
-    MATTERMOST_VER=3.0.0 \
+    MATTERMOST_VER=3.0.2 \
     GOPATH=/opt/go
 
 RUN apk add --no-cache --virtual build-deps \
@@ -16,10 +16,16 @@ RUN apk add --no-cache --virtual build-deps \
       ${GOPATH}/src/github.com/mattermost/platform \
     && cd ${GOPATH}/src/github.com/mattermost/platform \
     && sed -i.org 's/sudo //g' Makefile \
-    && make package BUILD_NUMBER=docker \
+    && make package BUILD_NUMBER=${MATTERMOST_VER} \
     && tar xfz dist/mattermost-team-linux-amd64.tar.gz -C /opt \
     && cd - \
-    && rm -rf ${GOPATH} /usr/lib/go/pkg /usr/lib/node_modules /root/.npm /tmp/npm-* \
+    && rm -rf \
+      ${GOPATH} \
+      /usr/lib/go/pkg \
+      /usr/lib/node_modules \
+      /root/.npm \
+      /root/.node-gyp \
+      /tmp/npm-* \
     && apk del --purge build-deps
 
 ADD assets/runtime /opt/mattermost/runtime
