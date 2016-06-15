@@ -1,7 +1,7 @@
 FROM alpine:3.3
 
 ENV ENTRYKIT_VER=0.4.0 \
-    MATTERMOST_VER=3.0.3 \
+    MATTERMOST_VER=3.1.0 \
     GOPATH=/opt/go
 
 RUN apk add --no-cache --virtual build-deps \
