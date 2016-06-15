@@ -55,6 +55,7 @@
         "FileLocation": "{{var "LOG_FILE_LOCATION" | default ""}}"
     },
     "FileSettings": {
+        "MaxFileSize": {{var "FILE_MAX_FILE_SIZE" | default "52428800"}},
         "DriverName": "{{var "FILE_DRIVER_NAME" | default "local"}}",
         "Directory": "{{var "FILE_DIRECTORY" | default "./data/"}}",
         "EnablePublicLink": {{var "FILE_ENABLE_PUBLIC_LINK" | default "false"}},
@@ -110,7 +111,7 @@
         "PrivacyPolicyLink": "{{var "SUPPORT_PRIVACY_POLICY_LINK" | default "https://about.mattermost.com/default-privacy-policy/"}}",
         "AboutLink": "{{var "SUPPORT_ABOUT_LINK" | default "https://about.mattermost.com/default-about/"}}",
         "HelpLink": "{{var "SUPPORT_HELP_LINK" | default "https://about.mattermost.com/default-help/"}}",
-        "ReportAProblemLink": "{{var "SUPPORT_REPORT_APROBLEM_LINK" | default "https://about.mattermost.com/default-report-problem/"}}",
+        "ReportAProblemLink": "{{var "SUPPORT_REPORT_APROBLEM_LINK" | default "https://about.mattermost.com/default-report-a-problem/"}}",
         "SupportEmail": "{{var "SUPPORT_SUPPORT_EMAIL" | default "feedback@mattermost.com"}}"
     },
     "GitLabSettings": {
@@ -146,6 +147,7 @@
         "UsernameAttribute": "{{var "LDAP_USERNAME_ATTRIBUTE" | default ""}}",
         "NicknameAttribute": "{{var "LDAP_NICKNAME_ATTRIBUTE" | default ""}}",
         "IdAttribute": "{{var "LDAP_ID_ATTRIBUTE" | default ""}}",
+        "SyncIntervalMinutes": {{var "LDAP_SYNC_INTERVAL_MINUTES" | default "60"}},
         "SkipCertificateVerification": {{var "LDAP_SKIP_CERTIFICATE_VERIFICATION" | default "false"}},
         "QueryTimeout": {{var "LDAP_QUERY_TIMEOUT" | default "60"}},
         "LoginFieldName": "{{var "LDAP_LOGIN_FIELD_NAME" | default ""}}"
@@ -154,5 +156,10 @@
         "Enable": {{var "COMPLIANCE_ENABLE" | default "false"}},
         "Directory": "{{var "COMPLIANCE_DIRECTORY" | default "./data/"}}",
         "EnableDaily": {{var "COMPLIANCE_ENABLE_DAILY" | default "false"}}
+    },
+    "LocalizationSettings": {
+        "DefaultServerLocale": "{{var "LOCALIZATION_DEFAULT_SERVER_LOCALE" | default "en"}}",
+        "DefaultClientLocale": "{{var "LOCALIZATION_DEFAULT_CLIENT_LOCALE" | default "en"}}",
+        "AvailableLocales": "{{var "LOCALIZATION_AVAILABLE_LOCALES" | default "en,es,fr,ja,pt-BR"}}"
     }
 }

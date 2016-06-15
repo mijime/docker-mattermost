@@ -50,6 +50,9 @@ See.
 
 ### ServiceSettings
 
+
+### ServiceSettings
+
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | ListenAddress | SERVICE_LISTEN_ADDRESS | ":80" |
@@ -119,6 +122,7 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
+| MaxFileSize | FILE_MAX_FILE_SIZE | 52428800 |
 | DriverName | FILE_DRIVER_NAME | "local" |
 | Directory | FILE_DIRECTORY | "./data/" |
 | EnablePublicLink | FILE_ENABLE_PUBLIC_LINK | false |
@@ -186,7 +190,7 @@ See.
 | PrivacyPolicyLink | SUPPORT_PRIVACY_POLICY_LINK | "https://about.mattermost.com/default-privacy-policy/" |
 | AboutLink | SUPPORT_ABOUT_LINK | "https://about.mattermost.com/default-about/" |
 | HelpLink | SUPPORT_HELP_LINK | "https://about.mattermost.com/default-help/" |
-| ReportAProblemLink | SUPPORT_REPORT_APROBLEM_LINK | "https://about.mattermost.com/default-report-problem/" |
+| ReportAProblemLink | SUPPORT_REPORT_APROBLEM_LINK | "https://about.mattermost.com/default-report-a-problem/" |
 | SupportEmail | SUPPORT_SUPPORT_EMAIL | "feedback@mattermost.com" |
 
 ### GitLabSettings
@@ -231,6 +235,7 @@ See.
 | UsernameAttribute | LDAP_USERNAME_ATTRIBUTE | "" |
 | NicknameAttribute | LDAP_NICKNAME_ATTRIBUTE | "" |
 | IdAttribute | LDAP_ID_ATTRIBUTE | "" |
+| SyncIntervalMinutes | LDAP_SYNC_INTERVAL_MINUTES | 60 |
 | SkipCertificateVerification | LDAP_SKIP_CERTIFICATE_VERIFICATION | false |
 | QueryTimeout | LDAP_QUERY_TIMEOUT | 60 |
 | LoginFieldName | LDAP_LOGIN_FIELD_NAME | "" |
@@ -242,3 +247,11 @@ See.
 | Enable | COMPLIANCE_ENABLE | false |
 | Directory | COMPLIANCE_DIRECTORY | "./data/" |
 | EnableDaily | COMPLIANCE_ENABLE_DAILY | false |
+
+### LocalizationSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| DefaultServerLocale | LOCALIZATION_DEFAULT_SERVER_LOCALE | "en" |
+| DefaultClientLocale | LOCALIZATION_DEFAULT_CLIENT_LOCALE | "en" |
+| AvailableLocales | LOCALIZATION_AVAILABLE_LOCALES | "en,es,fr,ja,pt-BR" |
