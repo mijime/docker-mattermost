@@ -48,5 +48,8 @@ See.
 [`Template file`](assets/runtime/config.json.tmpl)
 [`Enviroment Name Rule`](scripts/convert-json.awk)
 
-### ServiceSettings
+### ContainerSettings
 
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Wait for other application | MATTERMOST_START_DELAY | |

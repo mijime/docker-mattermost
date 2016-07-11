@@ -6,6 +6,8 @@ web:
   restart: on-failure:10
   ports:
   - 8080:80
+  environment:
+    MATTERMOST_START_DELAY: 10
 
 mysql:
   image: mysql

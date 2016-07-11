@@ -43,6 +43,10 @@ EOF
     source /etc/mattermost/env-cache
   fi
 
+  if [[ ! -z ${MATTERMOST_START_DELAY} ]]; then
+    sleep "${MATTERMOST_START_DELAY}"
+  fi
+
   cp /opt/mattermost/runtime/config.json.tmpl /etc/mattermost/config.json.tmpl \
     && chown mattermost: -R /etc/mattermost /var/mattermost/data /var/log/mattermost \
     && chmod o-rw -R /etc/mattermost /var/mattermost/data /var/log/mattermost
