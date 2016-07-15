@@ -63,9 +63,9 @@ See.
 | SegmentDeveloperKey | SERVICE_SEGMENT_DEVELOPER_KEY | "" |
 | GoogleDeveloperKey | SERVICE_GOOGLE_DEVELOPER_KEY | "" |
 | EnableOAuthServiceProvider | SERVICE_ENABLE_OAUTH_SERVICE_PROVIDER | false |
-| EnableIncomingWebhooks | SERVICE_ENABLE_INCOMING_WEBHOOKS | false |
-| EnableOutgoingWebhooks | SERVICE_ENABLE_OUTGOING_WEBHOOKS | false |
-| EnableCommands | SERVICE_ENABLE_COMMANDS | false |
+| EnableIncomingWebhooks | SERVICE_ENABLE_INCOMING_WEBHOOKS | true |
+| EnableOutgoingWebhooks | SERVICE_ENABLE_OUTGOING_WEBHOOKS | true |
+| EnableCommands | SERVICE_ENABLE_COMMANDS | true |
 | EnableOnlyAdminIntegrations | SERVICE_ENABLE_ONLY_ADMIN_INTEGRATIONS | true |
 | EnablePostUsernameOverride | SERVICE_ENABLE_POST_USERNAME_OVERRIDE | false |
 | EnablePostIconOverride | SERVICE_ENABLE_POST_ICON_OVERRIDE | false |
@@ -81,7 +81,9 @@ See.
 | SessionCacheInMinutes | SERVICE_SESSION_CACHE_IN_MINUTES | 10 |
 | WebsocketSecurePort | SERVICE_WEBSOCKET_SECURE_PORT | 443 |
 | WebsocketPort | SERVICE_WEBSOCKET_PORT | 80 |
-| WebserverMode | SERVICE_WEBSERVER_MODE | "regular" |
+| WebserverMode | SERVICE_WEBSERVER_MODE | "gzip" |
+| EnableCustomEmoji | SERVICE_ENABLE_CUSTOM_EMOJI | false |
+| RestrictCustomEmojiCreation | SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION | "all" |
 
 ### TeamSettings
 
@@ -97,6 +99,9 @@ See.
 | EnableCustomBrand | TEAM_ENABLE_CUSTOM_BRAND | false |
 | CustomBrandText | TEAM_CUSTOM_BRAND_TEXT | "" |
 | RestrictDirectMessage | TEAM_RESTRICT_DIRECT_MESSAGE | "any" |
+| RestrictTeamInvite | TEAM_RESTRICT_TEAM_INVITE | "all" |
+| RestrictPublicChannelManagement | TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT | "all" |
+| RestrictPrivateChannelManagement | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT | "all" |
 
 ### SqlSettings
 
@@ -120,6 +125,17 @@ See.
 | FileLevel | LOG_FILE_LEVEL | "INFO" |
 | FileFormat | LOG_FILE_FORMAT | "" |
 | FileLocation | LOG_FILE_LOCATION | "" |
+| EnableWebhookDebugging | LOG_ENABLE_WEBHOOK_DEBUGGING | true |
+
+### PasswordSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| MinimumLength | PASSWORD_MINIMUM_LENGTH | 5 |
+| Lowercase | PASSWORD_LOWERCASE | false |
+| Number | PASSWORD_NUMBER | false |
+| Uppercase | PASSWORD_UPPERCASE | false |
+| Symbol | PASSWORD_SYMBOL | false |
 
 ### FileSettings
 
@@ -157,6 +173,7 @@ See.
 | RequireEmailVerification | EMAIL_REQUIRE_EMAIL_VERIFICATION | false |
 | FeedbackName | EMAIL_FEEDBACK_NAME | "" |
 | FeedbackEmail | EMAIL_FEEDBACK_EMAIL | "" |
+| FeedbackOrganization | EMAIL_FEEDBACK_ORGANIZATION | "" |
 | SMTPUsername | EMAIL_SMTP_USERNAME | "" |
 | SMTPPassword | EMAIL_SMTP_PASSWORD | "" |
 | SMTPServer | EMAIL_SMTP_SERVER | "" |
@@ -241,6 +258,7 @@ See.
 | SyncIntervalMinutes | LDAP_SYNC_INTERVAL_MINUTES | 60 |
 | SkipCertificateVerification | LDAP_SKIP_CERTIFICATE_VERIFICATION | false |
 | QueryTimeout | LDAP_QUERY_TIMEOUT | 60 |
+| MaxPageSize | LDAP_MAX_PAGE_SIZE | 0 |
 | LoginFieldName | LDAP_LOGIN_FIELD_NAME | "" |
 
 ### ComplianceSettings
@@ -257,4 +275,25 @@ See.
 | :--- | :--- | :--- |
 | DefaultServerLocale | LOCALIZATION_DEFAULT_SERVER_LOCALE | "en" |
 | DefaultClientLocale | LOCALIZATION_DEFAULT_CLIENT_LOCALE | "en" |
-| AvailableLocales | LOCALIZATION_AVAILABLE_LOCALES | "en,es,fr,ja,pt-BR" |
+| AvailableLocales | LOCALIZATION_AVAILABLE_LOCALES | "" |
+
+### SamlSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Enable | SAML_ENABLE | false |
+| Verify | SAML_VERIFY | false |
+| Encrypt | SAML_ENCRYPT | false |
+| IdpUrl | SAML_IDP_URL | "" |
+| IdpDescriptorUrl | SAML_IDP_DESCRIPTOR_URL | "" |
+| AssertionConsumerServiceURL | SAML_ASSERTION_CONSUMER_SERVICE_URL | "" |
+| IdpCertificateFile | SAML_IDP_CERTIFICATE_FILE | "" |
+| PublicCertificateFile | SAML_PUBLIC_CERTIFICATE_FILE | "" |
+| PrivateKeyFile | SAML_PRIVATE_KEY_FILE | "" |
+| FirstNameAttribute | SAML_FIRST_NAME_ATTRIBUTE | "" |
+| LastNameAttribute | SAML_LAST_NAME_ATTRIBUTE | "" |
+| EmailAttribute | SAML_EMAIL_ATTRIBUTE | "" |
+| UsernameAttribute | SAML_USERNAME_ATTRIBUTE | "" |
+| NicknameAttribute | SAML_NICKNAME_ATTRIBUTE | "" |
+| LocaleAttribute | SAML_LOCALE_ATTRIBUTE | "" |
+| LoginButtonText | SAML_LOGIN_BUTTON_TEXT | "With SAML" |

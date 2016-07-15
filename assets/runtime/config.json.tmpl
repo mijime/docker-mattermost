@@ -5,9 +5,9 @@
         "SegmentDeveloperKey": "{{var "SERVICE_SEGMENT_DEVELOPER_KEY" | default ""}}",
         "GoogleDeveloperKey": "{{var "SERVICE_GOOGLE_DEVELOPER_KEY" | default ""}}",
         "EnableOAuthServiceProvider": {{var "SERVICE_ENABLE_OAUTH_SERVICE_PROVIDER" | default "false"}},
-        "EnableIncomingWebhooks": {{var "SERVICE_ENABLE_INCOMING_WEBHOOKS" | default "false"}},
-        "EnableOutgoingWebhooks": {{var "SERVICE_ENABLE_OUTGOING_WEBHOOKS" | default "false"}},
-        "EnableCommands": {{var "SERVICE_ENABLE_COMMANDS" | default "false"}},
+        "EnableIncomingWebhooks": {{var "SERVICE_ENABLE_INCOMING_WEBHOOKS" | default "true"}},
+        "EnableOutgoingWebhooks": {{var "SERVICE_ENABLE_OUTGOING_WEBHOOKS" | default "true"}},
+        "EnableCommands": {{var "SERVICE_ENABLE_COMMANDS" | default "true"}},
         "EnableOnlyAdminIntegrations": {{var "SERVICE_ENABLE_ONLY_ADMIN_INTEGRATIONS" | default "true"}},
         "EnablePostUsernameOverride": {{var "SERVICE_ENABLE_POST_USERNAME_OVERRIDE" | default "false"}},
         "EnablePostIconOverride": {{var "SERVICE_ENABLE_POST_ICON_OVERRIDE" | default "false"}},
@@ -23,7 +23,9 @@
         "SessionCacheInMinutes": {{var "SERVICE_SESSION_CACHE_IN_MINUTES" | default "10"}},
         "WebsocketSecurePort": {{var "SERVICE_WEBSOCKET_SECURE_PORT" | default "443"}},
         "WebsocketPort": {{var "SERVICE_WEBSOCKET_PORT" | default "80"}},
-        "WebserverMode": "{{var "SERVICE_WEBSERVER_MODE" | default "regular"}}"
+        "WebserverMode": "{{var "SERVICE_WEBSERVER_MODE" | default "gzip"}}",
+        "EnableCustomEmoji": {{var "SERVICE_ENABLE_CUSTOM_EMOJI" | default "false"}},
+        "RestrictCustomEmojiCreation": "{{var "SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION" | default "all"}}"
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
@@ -35,7 +37,10 @@
         "RestrictTeamNames": {{var "TEAM_RESTRICT_TEAM_NAMES" | default "true"}},
         "EnableCustomBrand": {{var "TEAM_ENABLE_CUSTOM_BRAND" | default "false"}},
         "CustomBrandText": "{{var "TEAM_CUSTOM_BRAND_TEXT" | default ""}}",
-        "RestrictDirectMessage": "{{var "TEAM_RESTRICT_DIRECT_MESSAGE" | default "any"}}"
+        "RestrictDirectMessage": "{{var "TEAM_RESTRICT_DIRECT_MESSAGE" | default "any"}}",
+        "RestrictTeamInvite": "{{var "TEAM_RESTRICT_TEAM_INVITE" | default "all"}}",
+        "RestrictPublicChannelManagement": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT" | default "all"}}",
+        "RestrictPrivateChannelManagement": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT" | default "all"}}"
     },
     "SqlSettings": {
         "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
@@ -52,7 +57,15 @@
         "EnableFile": {{var "LOG_ENABLE_FILE" | default "true"}},
         "FileLevel": "{{var "LOG_FILE_LEVEL" | default "INFO"}}",
         "FileFormat": "{{var "LOG_FILE_FORMAT" | default ""}}",
-        "FileLocation": "{{var "LOG_FILE_LOCATION" | default ""}}"
+        "FileLocation": "{{var "LOG_FILE_LOCATION" | default ""}}",
+        "EnableWebhookDebugging": {{var "LOG_ENABLE_WEBHOOK_DEBUGGING" | default "true"}}
+    },
+    "PasswordSettings": {
+        "MinimumLength": {{var "PASSWORD_MINIMUM_LENGTH" | default "5"}},
+        "Lowercase": {{var "PASSWORD_LOWERCASE" | default "false"}},
+        "Number": {{var "PASSWORD_NUMBER" | default "false"}},
+        "Uppercase": {{var "PASSWORD_UPPERCASE" | default "false"}},
+        "Symbol": {{var "PASSWORD_SYMBOL" | default "false"}}
     },
     "FileSettings": {
         "MaxFileSize": {{var "FILE_MAX_FILE_SIZE" | default "52428800"}},
@@ -84,6 +97,7 @@
         "RequireEmailVerification": {{var "EMAIL_REQUIRE_EMAIL_VERIFICATION" | default "false"}},
         "FeedbackName": "{{var "EMAIL_FEEDBACK_NAME" | default ""}}",
         "FeedbackEmail": "{{var "EMAIL_FEEDBACK_EMAIL" | default ""}}",
+        "FeedbackOrganization": "{{var "EMAIL_FEEDBACK_ORGANIZATION" | default ""}}",
         "SMTPUsername": "{{var "EMAIL_SMTP_USERNAME" | default ""}}",
         "SMTPPassword": "{{var "EMAIL_SMTP_PASSWORD" | default ""}}",
         "SMTPServer": "{{var "EMAIL_SMTP_SERVER" | default ""}}",
@@ -150,6 +164,7 @@
         "SyncIntervalMinutes": {{var "LDAP_SYNC_INTERVAL_MINUTES" | default "60"}},
         "SkipCertificateVerification": {{var "LDAP_SKIP_CERTIFICATE_VERIFICATION" | default "false"}},
         "QueryTimeout": {{var "LDAP_QUERY_TIMEOUT" | default "60"}},
+        "MaxPageSize": {{var "LDAP_MAX_PAGE_SIZE" | default "0"}},
         "LoginFieldName": "{{var "LDAP_LOGIN_FIELD_NAME" | default ""}}"
     },
     "ComplianceSettings": {
@@ -160,6 +175,24 @@
     "LocalizationSettings": {
         "DefaultServerLocale": "{{var "LOCALIZATION_DEFAULT_SERVER_LOCALE" | default "en"}}",
         "DefaultClientLocale": "{{var "LOCALIZATION_DEFAULT_CLIENT_LOCALE" | default "en"}}",
-        "AvailableLocales": "{{var "LOCALIZATION_AVAILABLE_LOCALES" | default "en,es,fr,ja,pt-BR"}}"
+        "AvailableLocales": "{{var "LOCALIZATION_AVAILABLE_LOCALES" | default ""}}"
+    },
+    "SamlSettings": {
+        "Enable": {{var "SAML_ENABLE" | default "false"}},
+        "Verify": {{var "SAML_VERIFY" | default "false"}},
+        "Encrypt": {{var "SAML_ENCRYPT" | default "false"}},
+        "IdpUrl": "{{var "SAML_IDP_URL" | default ""}}",
+        "IdpDescriptorUrl": "{{var "SAML_IDP_DESCRIPTOR_URL" | default ""}}",
+        "AssertionConsumerServiceURL": "{{var "SAML_ASSERTION_CONSUMER_SERVICE_URL" | default ""}}",
+        "IdpCertificateFile": "{{var "SAML_IDP_CERTIFICATE_FILE" | default ""}}",
+        "PublicCertificateFile": "{{var "SAML_PUBLIC_CERTIFICATE_FILE" | default ""}}",
+        "PrivateKeyFile": "{{var "SAML_PRIVATE_KEY_FILE" | default ""}}",
+        "FirstNameAttribute": "{{var "SAML_FIRST_NAME_ATTRIBUTE" | default ""}}",
+        "LastNameAttribute": "{{var "SAML_LAST_NAME_ATTRIBUTE" | default ""}}",
+        "EmailAttribute": "{{var "SAML_EMAIL_ATTRIBUTE" | default ""}}",
+        "UsernameAttribute": "{{var "SAML_USERNAME_ATTRIBUTE" | default ""}}",
+        "NicknameAttribute": "{{var "SAML_NICKNAME_ATTRIBUTE" | default ""}}",
+        "LocaleAttribute": "{{var "SAML_LOCALE_ATTRIBUTE" | default ""}}",
+        "LoginButtonText": "{{var "SAML_LOGIN_BUTTON_TEXT" | default "With SAML"}}"
     }
 }
