@@ -1,5 +1,6 @@
 {
     "ServiceSettings": {
+        "SiteURL": "{{var "SERVICE_SITE_URL" | default ""}}",
         "ListenAddress": "{{var "SERVICE_LISTEN_ADDRESS" | default ":80"}}",
         "MaximumLoginAttempts": {{var "SERVICE_MAXIMUM_LOGIN_ATTEMPTS" | default "10"}},
         "SegmentDeveloperKey": "{{var "SERVICE_SEGMENT_DEVELOPER_KEY" | default ""}}",
@@ -37,10 +38,12 @@
         "RestrictTeamNames": {{var "TEAM_RESTRICT_TEAM_NAMES" | default "true"}},
         "EnableCustomBrand": {{var "TEAM_ENABLE_CUSTOM_BRAND" | default "false"}},
         "CustomBrandText": "{{var "TEAM_CUSTOM_BRAND_TEXT" | default ""}}",
+        "CustomDescriptionText": "{{var "TEAM_CUSTOM_DESCRIPTION_TEXT" | default ""}}",
         "RestrictDirectMessage": "{{var "TEAM_RESTRICT_DIRECT_MESSAGE" | default "any"}}",
         "RestrictTeamInvite": "{{var "TEAM_RESTRICT_TEAM_INVITE" | default "all"}}",
         "RestrictPublicChannelManagement": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT" | default "all"}}",
-        "RestrictPrivateChannelManagement": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT" | default "all"}}"
+        "RestrictPrivateChannelManagement": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT" | default "all"}}",
+        "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}}
     },
     "SqlSettings": {
         "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
@@ -141,10 +144,19 @@
         "Enable": {{var "GOOGLE_ENABLE" | default "false"}},
         "Secret": "{{var "GOOGLE_SECRET" | default ""}}",
         "Id": "{{var "GOOGLE_ID" | default ""}}",
-        "Scope": "{{var "GOOGLE_SCOPE" | default ""}}",
-        "AuthEndpoint": "{{var "GOOGLE_AUTH_ENDPOINT" | default ""}}",
-        "TokenEndpoint": "{{var "GOOGLE_TOKEN_ENDPOINT" | default ""}}",
-        "UserApiEndpoint": "{{var "GOOGLE_USER_API_ENDPOINT" | default ""}}"
+        "Scope": "{{var "GOOGLE_SCOPE" | default "profile email"}}",
+        "AuthEndpoint": "{{var "GOOGLE_AUTH_ENDPOINT" | default "https://accounts.google.com/o/oauth2/v2/auth"}}",
+        "TokenEndpoint": "{{var "GOOGLE_TOKEN_ENDPOINT" | default "https://www.googleapis.com/oauth2/v4/token"}}",
+        "UserApiEndpoint": "{{var "GOOGLE_USER_API_ENDPOINT" | default "https://www.googleapis.com/plus/v1/people/me"}}"
+    },
+    "Office365Settings": {
+        "Enable": {{var "OFFICE365_ENABLE" | default "false"}},
+        "Secret": "{{var "OFFICE365_SECRET" | default ""}}",
+        "Id": "{{var "OFFICE365_ID" | default ""}}",
+        "Scope": "{{var "OFFICE365_SCOPE" | default "User.Read"}}",
+        "AuthEndpoint": "{{var "OFFICE365_AUTH_ENDPOINT" | default "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"}}",
+        "TokenEndpoint": "{{var "OFFICE365_TOKEN_ENDPOINT" | default "https://login.microsoftonline.com/common/oauth2/v2.0/token"}}",
+        "UserApiEndpoint": "{{var "OFFICE365_USER_API_ENDPOINT" | default "https://graph.microsoft.com/v1.0/me"}}"
     },
     "LdapSettings": {
         "Enable": {{var "LDAP_ENABLE" | default "false"}},
@@ -194,5 +206,15 @@
         "NicknameAttribute": "{{var "SAML_NICKNAME_ATTRIBUTE" | default ""}}",
         "LocaleAttribute": "{{var "SAML_LOCALE_ATTRIBUTE" | default ""}}",
         "LoginButtonText": "{{var "SAML_LOGIN_BUTTON_TEXT" | default "With SAML"}}"
+    },
+    "NativeAppSettings": {
+        "AppDownloadLink": "{{var "NATIVEAPP_APP_DOWNLOAD_LINK" | default "https://about.mattermost.com/downloads/"}}",
+        "AndroidAppDownloadLink": "{{var "NATIVEAPP_ANDROID_APP_DOWNLOAD_LINK" | default "https://about.mattermost.com/mattermost-android-app/"}}",
+        "IosAppDownloadLink": "{{var "NATIVEAPP_IOS_APP_DOWNLOAD_LINK" | default "https://about.mattermost.com/mattermost-ios-app/"}}"
+    },
+    "ClusterSettings": {
+        "Enable": {{var "CLUSTER_ENABLE" | default "false"}},
+        "InterNodeListenAddress": "{{var "CLUSTER_INTER_NODE_LISTEN_ADDRESS" | default ":8075"}}",
+        "InterNodeUrls": {{var "CLUSTER_INTER_NODE_URLS" | default "[]"}}
     }
 }

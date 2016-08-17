@@ -1,7 +1,7 @@
 FROM alpine:3.4
 
 ENV ENTRYKIT_VER=0.4.0 \
-    MATTERMOST_VER=3.2.0 \
+    MATTERMOST_VER=3.3.0 \
     GOPATH=/opt/go
 
 RUN apk add --no-cache ca-certificates \
@@ -10,6 +10,9 @@ RUN apk add --no-cache ca-certificates \
     && curl -sSL https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VER}/entrykit_${ENTRYKIT_VER}_Linux_x86_64.tgz \
       | tar -xzC /usr/local/bin \
     && /usr/local/bin/entrykit --symlink \
+    && mkdir -p /opt \
+    && curl -sSL https://releases.mattermost.com/${MATTERMOST_VER}/mattermost-team-${MATTERMOST_VER}-linux-amd64.tar.gz \
+      | tar -xzC /opt \
     && go get github.com/tools/godep \
     && npm update npm --global \
     && git clone --depth 1 --branch v${MATTERMOST_VER} \
@@ -17,8 +20,8 @@ RUN apk add --no-cache ca-certificates \
       ${GOPATH}/src/github.com/mattermost/platform \
     && cd ${GOPATH}/src/github.com/mattermost/platform \
     && sed -i.org 's/sudo //g' Makefile \
-    && make package BUILD_NUMBER=${MATTERMOST_VER} \
-    && tar xfz dist/mattermost-team-linux-amd64.tar.gz -C /opt \
+    && make build-linux BUILD_NUMBER=${MATTERMOST_VER} \
+    && cp ${GOPATH}/bin/platform /opt/mattermost/bin/platform \
     && cd - \
     && rm -rf \
       ${GOPATH} \
@@ -27,21 +30,21 @@ RUN apk add --no-cache ca-certificates \
       /root/.npm \
       /root/.node-gyp \
       /tmp/npm-* \
-    && apk del --purge .build-dependencies
-
-ADD assets/runtime /opt/mattermost/runtime
-
-RUN addgroup mattermost -S \
+    && apk del --purge .build-dependencies \
+    && addgroup mattermost -S \
     && adduser mattermost -S -G mattermost \
+    && chown root:mattermost -R /opt/mattermost \
     && mkdir -p /etc/mattermost /var/log/mattermost /var/mattermost/data \
     && rm -r /opt/mattermost/logs /opt/mattermost/config \
     && ln -sf /etc/mattermost /opt/mattermost/config \
     && ln -sf /var/log/mattermost /opt/mattermost/logs \
     && ln -sf /var/mattermost/data /opt/mattermost/data \
-    && chmod +x /opt/mattermost/runtime/entrypoint.sh \
     && chown root:mattermost -R /etc/mattermost \
     && chown mattermost: -R /var/mattermost/data /var/log/mattermost \
     && chmod o-rw -R /etc/mattermost /var/mattermost/data /var/log/mattermost
+
+ADD assets/runtime /opt/mattermost/runtime
+RUN chmod +x /opt/mattermost/runtime/entrypoint.sh
 
 EXPOSE 80
 VOLUME /etc/mattermost /var/log/mattermost /var/mattermost/data

@@ -58,6 +58,7 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
+| SiteURL | SERVICE_SITE_URL | "" |
 | ListenAddress | SERVICE_LISTEN_ADDRESS | ":80" |
 | MaximumLoginAttempts | SERVICE_MAXIMUM_LOGIN_ATTEMPTS | 10 |
 | SegmentDeveloperKey | SERVICE_SEGMENT_DEVELOPER_KEY | "" |
@@ -98,10 +99,12 @@ See.
 | RestrictTeamNames | TEAM_RESTRICT_TEAM_NAMES | true |
 | EnableCustomBrand | TEAM_ENABLE_CUSTOM_BRAND | false |
 | CustomBrandText | TEAM_CUSTOM_BRAND_TEXT | "" |
+| CustomDescriptionText | TEAM_CUSTOM_DESCRIPTION_TEXT | "" |
 | RestrictDirectMessage | TEAM_RESTRICT_DIRECT_MESSAGE | "any" |
 | RestrictTeamInvite | TEAM_RESTRICT_TEAM_INVITE | "all" |
 | RestrictPublicChannelManagement | TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT | "all" |
 | RestrictPrivateChannelManagement | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT | "all" |
+| UserStatusAwayTimeout | TEAM_USER_STATUS_AWAY_TIMEOUT | 300 |
 
 ### SqlSettings
 
@@ -232,10 +235,22 @@ See.
 | Enable | GOOGLE_ENABLE | false |
 | Secret | GOOGLE_SECRET | "" |
 | Id | GOOGLE_ID | "" |
-| Scope | GOOGLE_SCOPE | "" |
-| AuthEndpoint | GOOGLE_AUTH_ENDPOINT | "" |
-| TokenEndpoint | GOOGLE_TOKEN_ENDPOINT | "" |
-| UserApiEndpoint | GOOGLE_USER_API_ENDPOINT | "" |
+| Scope | GOOGLE_SCOPE | "profile email" |
+| AuthEndpoint | GOOGLE_AUTH_ENDPOINT | "https://accounts.google.com/o/oauth2/v2/auth" |
+| TokenEndpoint | GOOGLE_TOKEN_ENDPOINT | "https://www.googleapis.com/oauth2/v4/token" |
+| UserApiEndpoint | GOOGLE_USER_API_ENDPOINT | "https://www.googleapis.com/plus/v1/people/me" |
+
+### Office365Settings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Enable | OFFICE365_ENABLE | false |
+| Secret | OFFICE365_SECRET | "" |
+| Id | OFFICE365_ID | "" |
+| Scope | OFFICE365_SCOPE | "User.Read" |
+| AuthEndpoint | OFFICE365_AUTH_ENDPOINT | "https://login.microsoftonline.com/common/oauth2/v2.0/authorize" |
+| TokenEndpoint | OFFICE365_TOKEN_ENDPOINT | "https://login.microsoftonline.com/common/oauth2/v2.0/token" |
+| UserApiEndpoint | OFFICE365_USER_API_ENDPOINT | "https://graph.microsoft.com/v1.0/me" |
 
 ### LdapSettings
 
@@ -297,3 +312,19 @@ See.
 | NicknameAttribute | SAML_NICKNAME_ATTRIBUTE | "" |
 | LocaleAttribute | SAML_LOCALE_ATTRIBUTE | "" |
 | LoginButtonText | SAML_LOGIN_BUTTON_TEXT | "With SAML" |
+
+### NativeAppSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| AppDownloadLink | NATIVEAPP_APP_DOWNLOAD_LINK | "https://about.mattermost.com/downloads/" |
+| AndroidAppDownloadLink | NATIVEAPP_ANDROID_APP_DOWNLOAD_LINK | "https://about.mattermost.com/mattermost-android-app/" |
+| IosAppDownloadLink | NATIVEAPP_IOS_APP_DOWNLOAD_LINK | "https://about.mattermost.com/mattermost-ios-app/" |
+
+### ClusterSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Enable | CLUSTER_ENABLE | false |
+| InterNodeListenAddress | CLUSTER_INTER_NODE_LISTEN_ADDRESS | ":8075" |
+| InterNodeUrls | CLUSTER_INTER_NODE_URLS | [] |
