@@ -1,12 +1,12 @@
 FROM alpine:3.4
 
 ENV ENTRYKIT_VER=0.4.0 \
-    MATTERMOST_VER=3.3.0 \
+    MATTERMOST_VER=3.4.0 \
     GOPATH=/opt/go
 
 RUN apk add --no-cache ca-certificates \
     && apk add --no-cache --virtual=.build-dependencies \
-      go git mercurial nodejs make g++ curl libpng-dev libpng nasm autoconf automake \
+      go git mercurial nodejs curl make \
     && curl -sSL https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VER}/entrykit_${ENTRYKIT_VER}_Linux_x86_64.tgz \
       | tar -xzC /usr/local/bin \
     && /usr/local/bin/entrykit --symlink \
@@ -14,7 +14,6 @@ RUN apk add --no-cache ca-certificates \
     && curl -sSL https://releases.mattermost.com/${MATTERMOST_VER}/mattermost-team-${MATTERMOST_VER}-linux-amd64.tar.gz \
       | tar -xzC /opt \
     && go get github.com/tools/godep \
-    && npm update npm --global \
     && git clone --depth 1 --branch v${MATTERMOST_VER} \
       https://github.com/mattermost/platform \
       ${GOPATH}/src/github.com/mattermost/platform \
@@ -26,9 +25,6 @@ RUN apk add --no-cache ca-certificates \
     && rm -rf \
       ${GOPATH} \
       /usr/lib/go/pkg \
-      /usr/lib/node_modules \
-      /root/.npm \
-      /root/.node-gyp \
       /tmp/npm-* \
     && apk del --purge .build-dependencies \
     && addgroup mattermost -S \
