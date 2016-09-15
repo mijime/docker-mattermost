@@ -116,7 +116,7 @@ See.
 | MaxIdleConns | SQL_MAX_IDLE_CONNS | 10 |
 | MaxOpenConns | SQL_MAX_OPEN_CONNS | 10 |
 | Trace | SQL_TRACE | false |
-| AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "7rAh6iwQCkV4cA1Gsg3fgGOXJAQ43QVg" |
+| AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "" |
 
 ### LogSettings
 
@@ -129,6 +129,7 @@ See.
 | FileFormat | LOG_FILE_FORMAT | "" |
 | FileLocation | LOG_FILE_LOCATION | "" |
 | EnableWebhookDebugging | LOG_ENABLE_WEBHOOK_DEBUGGING | true |
+| EnableDiagnostics | LOG_ENABLE_DIAGNOSTICS | true |
 
 ### PasswordSettings
 
@@ -148,7 +149,7 @@ See.
 | DriverName | FILE_DRIVER_NAME | "local" |
 | Directory | FILE_DIRECTORY | "./data/" |
 | EnablePublicLink | FILE_ENABLE_PUBLIC_LINK | false |
-| PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "A705AklYF8MFDOfcwh3I488G8vtLlVip" |
+| PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "" |
 | ThumbnailWidth | FILE_THUMBNAIL_WIDTH | 120 |
 | ThumbnailHeight | FILE_THUMBNAIL_HEIGHT | 100 |
 | PreviewWidth | FILE_PREVIEW_WIDTH | 1024 |
@@ -182,11 +183,14 @@ See.
 | SMTPServer | EMAIL_SMTP_SERVER | "" |
 | SMTPPort | EMAIL_SMTP_PORT | "" |
 | ConnectionSecurity | EMAIL_CONNECTION_SECURITY | "" |
-| InviteSalt | EMAIL_INVITE_SALT | "bjlSR4QqkXFBr7TP4oDzlfZmcNuH9YoS" |
-| PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "vZ4DcKyVVRlKHHJpexcuXzojkE5PZ5eL" |
+| InviteSalt | EMAIL_INVITE_SALT | "" |
+| PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "" |
 | SendPushNotifications | EMAIL_SEND_PUSH_NOTIFICATIONS | false |
 | PushNotificationServer | EMAIL_PUSH_NOTIFICATION_SERVER | "" |
 | PushNotificationContents | EMAIL_PUSH_NOTIFICATION_CONTENTS | "generic" |
+| EnableEmailBatching | EMAIL_ENABLE_EMAIL_BATCHING | false |
+| EmailBatchingBufferSize | EMAIL_EMAIL_BATCHING_BUFFER_SIZE | 256 |
+| EmailBatchingInterval | EMAIL_EMAIL_BATCHING_INTERVAL | 30 |
 
 ### RateLimitSettings
 
