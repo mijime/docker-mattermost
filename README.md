@@ -1,5 +1,7 @@
 # docker-mattermost
 
+docker image for [mattermost](https://github.com/mattermost/platform)
+
 Example
 ===
 
@@ -60,6 +62,14 @@ See.
 | :--- | :--- | :--- |
 | SiteURL | SERVICE_SITE_URL | "" |
 | ListenAddress | SERVICE_LISTEN_ADDRESS | ":80" |
+| ConnectionSecurity | SERVICE_CONNECTION_SECURITY | "" |
+| TLSCertFile | SERVICE_TLSCERT_FILE | "" |
+| TLSKeyFile | SERVICE_TLSKEY_FILE | "" |
+| UseLetsEncrypt | SERVICE_USE_LETS_ENCRYPT | false |
+| LetsEncryptCertificateCacheFile | SERVICE_LETS_ENCRYPT_CERTIFICATE_CACHE_FILE | "./config/letsencrypt.cache" |
+| Forward80To443 | SERVICE_FORWARD80_TO443 | false |
+| ReadTimeout | SERVICE_READ_TIMEOUT | 300 |
+| WriteTimeout | SERVICE_WRITE_TIMEOUT | 300 |
 | MaximumLoginAttempts | SERVICE_MAXIMUM_LOGIN_ATTEMPTS | 10 |
 | SegmentDeveloperKey | SERVICE_SEGMENT_DEVELOPER_KEY | "" |
 | GoogleDeveloperKey | SERVICE_GOOGLE_DEVELOPER_KEY | "" |
@@ -96,7 +106,6 @@ See.
 | EnableUserCreation | TEAM_ENABLE_USER_CREATION | true |
 | EnableOpenServer | TEAM_ENABLE_OPEN_SERVER | false |
 | RestrictCreationToDomains | TEAM_RESTRICT_CREATION_TO_DOMAINS | "" |
-| RestrictTeamNames | TEAM_RESTRICT_TEAM_NAMES | true |
 | EnableCustomBrand | TEAM_ENABLE_CUSTOM_BRAND | false |
 | CustomBrandText | TEAM_CUSTOM_BRAND_TEXT | "" |
 | CustomDescriptionText | TEAM_CUSTOM_DESCRIPTION_TEXT | "" |
@@ -105,6 +114,7 @@ See.
 | RestrictPublicChannelManagement | TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT | "all" |
 | RestrictPrivateChannelManagement | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT | "all" |
 | UserStatusAwayTimeout | TEAM_USER_STATUS_AWAY_TIMEOUT | 300 |
+| MaxChannelsPerTeam | TEAM_MAX_CHANNELS_PER_TEAM | 2000 |
 
 ### SqlSettings
 
@@ -113,8 +123,8 @@ See.
 | DriverName | SQL_DRIVER_NAME | "mysql" |
 | DataSource | SQL_DATA_SOURCE | "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8" |
 | DataSourceReplicas | SQL_DATA_SOURCE_REPLICAS | [] |
-| MaxIdleConns | SQL_MAX_IDLE_CONNS | 10 |
-| MaxOpenConns | SQL_MAX_OPEN_CONNS | 10 |
+| MaxIdleConns | SQL_MAX_IDLE_CONNS | 20 |
+| MaxOpenConns | SQL_MAX_OPEN_CONNS | 300 |
 | Trace | SQL_TRACE | false |
 | AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "" |
 
@@ -160,11 +170,9 @@ See.
 | AmazonS3AccessKeyId | FILE_AMAZON_S3_ACCESS_KEY_ID | "" |
 | AmazonS3SecretAccessKey | FILE_AMAZON_S3_SECRET_ACCESS_KEY | "" |
 | AmazonS3Bucket | FILE_AMAZON_S3_BUCKET | "" |
-| AmazonS3Region | FILE_AMAZON_S3_REGION | "" |
-| AmazonS3Endpoint | FILE_AMAZON_S3_ENDPOINT | "" |
-| AmazonS3BucketEndpoint | FILE_AMAZON_S3_BUCKET_ENDPOINT | "" |
-| AmazonS3LocationConstraint | FILE_AMAZON_S3_LOCATION_CONSTRAINT | false |
-| AmazonS3LowercaseBucket | FILE_AMAZON_S3_LOWERCASE_BUCKET | false |
+| AmazonS3Region | FILE_AMAZON_S3_REGION | "us-east-1" |
+| AmazonS3Endpoint | FILE_AMAZON_S3_ENDPOINT | "s3.amazonaws.com" |
+| AmazonS3SSL | FILE_AMAZON_S3_SSL | true |
 
 ### EmailSettings
 
@@ -196,8 +204,9 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| EnableRateLimiter | RATELIMIT_ENABLE_RATE_LIMITER | true |
+| Enable | RATELIMIT_ENABLE | false |
 | PerSec | RATELIMIT_PER_SEC | 10 |
+| MaxBurst | RATELIMIT_MAX_BURST | 100 |
 | MemoryStoreSize | RATELIMIT_MEMORY_STORE_SIZE | 10000 |
 | VaryByRemoteAddr | RATELIMIT_VARY_BY_REMOTE_ADDR | true |
 | VaryByHeader | RATELIMIT_VARY_BY_HEADER | "" |
@@ -332,3 +341,16 @@ See.
 | Enable | CLUSTER_ENABLE | false |
 | InterNodeListenAddress | CLUSTER_INTER_NODE_LISTEN_ADDRESS | ":8075" |
 | InterNodeUrls | CLUSTER_INTER_NODE_URLS | [] |
+
+### WebrtcSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Enable | WEBRTC_ENABLE | false |
+| GatewayWebsocketUrl | WEBRTC_GATEWAY_WEBSOCKET_URL | "" |
+| GatewayAdminUrl | WEBRTC_GATEWAY_ADMIN_URL | "" |
+| GatewayAdminSecret | WEBRTC_GATEWAY_ADMIN_SECRET | "" |
+| StunURI | WEBRTC_STUN_URI | "" |
+| TurnURI | WEBRTC_TURN_URI | "" |
+| TurnUsername | WEBRTC_TURN_USERNAME | "" |
+| TurnSharedKey | WEBRTC_TURN_SHARED_KEY | "" |
