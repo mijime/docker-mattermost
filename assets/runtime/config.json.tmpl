@@ -2,6 +2,14 @@
     "ServiceSettings": {
         "SiteURL": "{{var "SERVICE_SITE_URL" | default ""}}",
         "ListenAddress": "{{var "SERVICE_LISTEN_ADDRESS" | default ":80"}}",
+        "ConnectionSecurity": "{{var "SERVICE_CONNECTION_SECURITY" | default ""}}",
+        "TLSCertFile": "{{var "SERVICE_TLSCERT_FILE" | default ""}}",
+        "TLSKeyFile": "{{var "SERVICE_TLSKEY_FILE" | default ""}}",
+        "UseLetsEncrypt": {{var "SERVICE_USE_LETS_ENCRYPT" | default "false"}},
+        "LetsEncryptCertificateCacheFile": "{{var "SERVICE_LETS_ENCRYPT_CERTIFICATE_CACHE_FILE" | default "./config/letsencrypt.cache"}}",
+        "Forward80To443": {{var "SERVICE_FORWARD80_TO443" | default "false"}},
+        "ReadTimeout": {{var "SERVICE_READ_TIMEOUT" | default "300"}},
+        "WriteTimeout": {{var "SERVICE_WRITE_TIMEOUT" | default "300"}},
         "MaximumLoginAttempts": {{var "SERVICE_MAXIMUM_LOGIN_ATTEMPTS" | default "10"}},
         "SegmentDeveloperKey": "{{var "SERVICE_SEGMENT_DEVELOPER_KEY" | default ""}}",
         "GoogleDeveloperKey": "{{var "SERVICE_GOOGLE_DEVELOPER_KEY" | default ""}}",
@@ -35,7 +43,6 @@
         "EnableUserCreation": {{var "TEAM_ENABLE_USER_CREATION" | default "true"}},
         "EnableOpenServer": {{var "TEAM_ENABLE_OPEN_SERVER" | default "false"}},
         "RestrictCreationToDomains": "{{var "TEAM_RESTRICT_CREATION_TO_DOMAINS" | default ""}}",
-        "RestrictTeamNames": {{var "TEAM_RESTRICT_TEAM_NAMES" | default "true"}},
         "EnableCustomBrand": {{var "TEAM_ENABLE_CUSTOM_BRAND" | default "false"}},
         "CustomBrandText": "{{var "TEAM_CUSTOM_BRAND_TEXT" | default ""}}",
         "CustomDescriptionText": "{{var "TEAM_CUSTOM_DESCRIPTION_TEXT" | default ""}}",
@@ -43,14 +50,15 @@
         "RestrictTeamInvite": "{{var "TEAM_RESTRICT_TEAM_INVITE" | default "all"}}",
         "RestrictPublicChannelManagement": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT" | default "all"}}",
         "RestrictPrivateChannelManagement": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT" | default "all"}}",
-        "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}}
+        "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}},
+        "MaxChannelsPerTeam": {{var "TEAM_MAX_CHANNELS_PER_TEAM" | default "2000"}}
     },
     "SqlSettings": {
         "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
         "DataSource": "{{var "SQL_DATA_SOURCE" | default "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8"}}",
         "DataSourceReplicas": {{var "SQL_DATA_SOURCE_REPLICAS" | default "[]"}},
-        "MaxIdleConns": {{var "SQL_MAX_IDLE_CONNS" | default "10"}},
-        "MaxOpenConns": {{var "SQL_MAX_OPEN_CONNS" | default "10"}},
+        "MaxIdleConns": {{var "SQL_MAX_IDLE_CONNS" | default "20"}},
+        "MaxOpenConns": {{var "SQL_MAX_OPEN_CONNS" | default "300"}},
         "Trace": {{var "SQL_TRACE" | default "false"}},
         "AtRestEncryptKey": "{{var "SQL_AT_REST_ENCRYPT_KEY" | default ""}}"
     },
@@ -87,11 +95,9 @@
         "AmazonS3AccessKeyId": "{{var "FILE_AMAZON_S3_ACCESS_KEY_ID" | default ""}}",
         "AmazonS3SecretAccessKey": "{{var "FILE_AMAZON_S3_SECRET_ACCESS_KEY" | default ""}}",
         "AmazonS3Bucket": "{{var "FILE_AMAZON_S3_BUCKET" | default ""}}",
-        "AmazonS3Region": "{{var "FILE_AMAZON_S3_REGION" | default ""}}",
-        "AmazonS3Endpoint": "{{var "FILE_AMAZON_S3_ENDPOINT" | default ""}}",
-        "AmazonS3BucketEndpoint": "{{var "FILE_AMAZON_S3_BUCKET_ENDPOINT" | default ""}}",
-        "AmazonS3LocationConstraint": {{var "FILE_AMAZON_S3_LOCATION_CONSTRAINT" | default "false"}},
-        "AmazonS3LowercaseBucket": {{var "FILE_AMAZON_S3_LOWERCASE_BUCKET" | default "false"}}
+        "AmazonS3Region": "{{var "FILE_AMAZON_S3_REGION" | default "us-east-1"}}",
+        "AmazonS3Endpoint": "{{var "FILE_AMAZON_S3_ENDPOINT" | default "s3.amazonaws.com"}}",
+        "AmazonS3SSL": {{var "FILE_AMAZON_S3_SSL" | default "true"}}
     },
     "EmailSettings": {
         "EnableSignUpWithEmail": {{var "EMAIL_ENABLE_SIGN_UP_WITH_EMAIL" | default "true"}},
@@ -117,8 +123,9 @@
         "EmailBatchingInterval": {{var "EMAIL_EMAIL_BATCHING_INTERVAL" | default "30"}}
     },
     "RateLimitSettings": {
-        "EnableRateLimiter": {{var "RATELIMIT_ENABLE_RATE_LIMITER" | default "true"}},
+        "Enable": {{var "RATELIMIT_ENABLE" | default "false"}},
         "PerSec": {{var "RATELIMIT_PER_SEC" | default "10"}},
+        "MaxBurst": {{var "RATELIMIT_MAX_BURST" | default "100"}},
         "MemoryStoreSize": {{var "RATELIMIT_MEMORY_STORE_SIZE" | default "10000"}},
         "VaryByRemoteAddr": {{var "RATELIMIT_VARY_BY_REMOTE_ADDR" | default "true"}},
         "VaryByHeader": "{{var "RATELIMIT_VARY_BY_HEADER" | default ""}}"
@@ -220,5 +227,15 @@
         "Enable": {{var "CLUSTER_ENABLE" | default "false"}},
         "InterNodeListenAddress": "{{var "CLUSTER_INTER_NODE_LISTEN_ADDRESS" | default ":8075"}}",
         "InterNodeUrls": {{var "CLUSTER_INTER_NODE_URLS" | default "[]"}}
+    },
+    "WebrtcSettings": {
+        "Enable": {{var "WEBRTC_ENABLE" | default "false"}},
+        "GatewayWebsocketUrl": "{{var "WEBRTC_GATEWAY_WEBSOCKET_URL" | default ""}}",
+        "GatewayAdminUrl": "{{var "WEBRTC_GATEWAY_ADMIN_URL" | default ""}}",
+        "GatewayAdminSecret": "{{var "WEBRTC_GATEWAY_ADMIN_SECRET" | default ""}}",
+        "StunURI": "{{var "WEBRTC_STUN_URI" | default ""}}",
+        "TurnURI": "{{var "WEBRTC_TURN_URI" | default ""}}",
+        "TurnUsername": "{{var "WEBRTC_TURN_USERNAME" | default ""}}",
+        "TurnSharedKey": "{{var "WEBRTC_TURN_SHARED_KEY" | default ""}}"
     }
 }

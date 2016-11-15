@@ -1,4 +1,4 @@
-MATTERMOST_VER = 3.4.0
+MATTERMOST_VER = 3.5.0
 
 ASSETS = assets/runtime/config.json.tmpl README.md
 
