@@ -1,5 +1,7 @@
 # docker-mattermost
 
+docker image for [mattermost](https://github.com/mattermost/platform)
+
 Example
 ===
 
