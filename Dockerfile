@@ -1,7 +1,7 @@
 FROM alpine:3.4
 
 ENV ENTRYKIT_VER=0.4.0 \
-    MATTERMOST_VER=3.5.1 \
+    MATTERMOST_VER=3.6.0 \
     GOPATH=/opt/go
 
 RUN apk add --no-cache ca-certificates \
@@ -42,7 +42,7 @@ RUN apk add --no-cache ca-certificates \
 ADD assets/runtime /opt/mattermost/runtime
 RUN chmod +x /opt/mattermost/runtime/entrypoint.sh
 
-EXPOSE 80
+EXPOSE 80 8067
 VOLUME /etc/mattermost /var/log/mattermost /var/mattermost/data
 WORKDIR /opt/mattermost
 

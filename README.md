@@ -85,6 +85,7 @@ See.
 | EnableSecurityFixAlert | SERVICE_ENABLE_SECURITY_FIX_ALERT | true |
 | EnableInsecureOutgoingConnections | SERVICE_ENABLE_INSECURE_OUTGOING_CONNECTIONS | false |
 | EnableMultifactorAuthentication | SERVICE_ENABLE_MULTIFACTOR_AUTHENTICATION | false |
+| EnforceMultifactorAuthentication | SERVICE_ENFORCE_MULTIFACTOR_AUTHENTICATION | false |
 | AllowCorsFrom | SERVICE_ALLOW_CORS_FROM | "" |
 | SessionLengthWebInDays | SERVICE_SESSION_LENGTH_WEB_IN_DAYS | 30 |
 | SessionLengthMobileInDays | SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS | 30 |
@@ -111,10 +112,15 @@ See.
 | CustomDescriptionText | TEAM_CUSTOM_DESCRIPTION_TEXT | "" |
 | RestrictDirectMessage | TEAM_RESTRICT_DIRECT_MESSAGE | "any" |
 | RestrictTeamInvite | TEAM_RESTRICT_TEAM_INVITE | "all" |
+| RestrictPublicChannelCreation | TEAM_RESTRICT_PUBLIC_CHANNEL_CREATION | "all" |
+| RestrictPrivateChannelCreation | TEAM_RESTRICT_PRIVATE_CHANNEL_CREATION | "all" |
 | RestrictPublicChannelManagement | TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT | "all" |
 | RestrictPrivateChannelManagement | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT | "all" |
+| RestrictPublicChannelDeletion | TEAM_RESTRICT_PUBLIC_CHANNEL_DELETION | "all" |
+| RestrictPrivateChannelDeletion | TEAM_RESTRICT_PRIVATE_CHANNEL_DELETION | "all" |
 | UserStatusAwayTimeout | TEAM_USER_STATUS_AWAY_TIMEOUT | 300 |
 | MaxChannelsPerTeam | TEAM_MAX_CHANNELS_PER_TEAM | 2000 |
+| MaxNotificationsPerChannel | TEAM_MAX_NOTIFICATIONS_PER_CHANNEL | 1000 |
 
 ### SqlSettings
 
@@ -283,6 +289,7 @@ See.
 | UsernameAttribute | LDAP_USERNAME_ATTRIBUTE | "" |
 | NicknameAttribute | LDAP_NICKNAME_ATTRIBUTE | "" |
 | IdAttribute | LDAP_ID_ATTRIBUTE | "" |
+| PositionAttribute | LDAP_POSITION_ATTRIBUTE | "" |
 | SyncIntervalMinutes | LDAP_SYNC_INTERVAL_MINUTES | 60 |
 | SkipCertificateVerification | LDAP_SKIP_CERTIFICATE_VERIFICATION | false |
 | QueryTimeout | LDAP_QUERY_TIMEOUT | 60 |
@@ -324,6 +331,7 @@ See.
 | UsernameAttribute | SAML_USERNAME_ATTRIBUTE | "" |
 | NicknameAttribute | SAML_NICKNAME_ATTRIBUTE | "" |
 | LocaleAttribute | SAML_LOCALE_ATTRIBUTE | "" |
+| PositionAttribute | SAML_POSITION_ATTRIBUTE | "" |
 | LoginButtonText | SAML_LOGIN_BUTTON_TEXT | "With SAML" |
 
 ### NativeAppSettings
@@ -341,6 +349,20 @@ See.
 | Enable | CLUSTER_ENABLE | false |
 | InterNodeListenAddress | CLUSTER_INTER_NODE_LISTEN_ADDRESS | ":8075" |
 | InterNodeUrls | CLUSTER_INTER_NODE_URLS | [] |
+
+### MetricsSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| Enable | METRICS_ENABLE | false |
+| BlockProfileRate | METRICS_BLOCK_PROFILE_RATE | 0 |
+| ListenAddress | METRICS_LISTEN_ADDRESS | ":8067" |
+
+### AnalyticsSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| MaxUsersForStatistics | ANALYTICS_MAX_USERS_FOR_STATISTICS | 2500 |
 
 ### WebrtcSettings
 

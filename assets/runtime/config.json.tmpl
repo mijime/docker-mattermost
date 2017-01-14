@@ -25,6 +25,7 @@
         "EnableSecurityFixAlert": {{var "SERVICE_ENABLE_SECURITY_FIX_ALERT" | default "true"}},
         "EnableInsecureOutgoingConnections": {{var "SERVICE_ENABLE_INSECURE_OUTGOING_CONNECTIONS" | default "false"}},
         "EnableMultifactorAuthentication": {{var "SERVICE_ENABLE_MULTIFACTOR_AUTHENTICATION" | default "false"}},
+        "EnforceMultifactorAuthentication": {{var "SERVICE_ENFORCE_MULTIFACTOR_AUTHENTICATION" | default "false"}},
         "AllowCorsFrom": "{{var "SERVICE_ALLOW_CORS_FROM" | default ""}}",
         "SessionLengthWebInDays": {{var "SERVICE_SESSION_LENGTH_WEB_IN_DAYS" | default "30"}},
         "SessionLengthMobileInDays": {{var "SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS" | default "30"}},
@@ -48,10 +49,15 @@
         "CustomDescriptionText": "{{var "TEAM_CUSTOM_DESCRIPTION_TEXT" | default ""}}",
         "RestrictDirectMessage": "{{var "TEAM_RESTRICT_DIRECT_MESSAGE" | default "any"}}",
         "RestrictTeamInvite": "{{var "TEAM_RESTRICT_TEAM_INVITE" | default "all"}}",
+        "RestrictPublicChannelCreation": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_CREATION" | default "all"}}",
+        "RestrictPrivateChannelCreation": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_CREATION" | default "all"}}",
         "RestrictPublicChannelManagement": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT" | default "all"}}",
         "RestrictPrivateChannelManagement": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT" | default "all"}}",
+        "RestrictPublicChannelDeletion": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_DELETION" | default "all"}}",
+        "RestrictPrivateChannelDeletion": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_DELETION" | default "all"}}",
         "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}},
-        "MaxChannelsPerTeam": {{var "TEAM_MAX_CHANNELS_PER_TEAM" | default "2000"}}
+        "MaxChannelsPerTeam": {{var "TEAM_MAX_CHANNELS_PER_TEAM" | default "2000"}},
+        "MaxNotificationsPerChannel": {{var "TEAM_MAX_NOTIFICATIONS_PER_CHANNEL" | default "1000"}}
     },
     "SqlSettings": {
         "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
@@ -184,6 +190,7 @@
         "UsernameAttribute": "{{var "LDAP_USERNAME_ATTRIBUTE" | default ""}}",
         "NicknameAttribute": "{{var "LDAP_NICKNAME_ATTRIBUTE" | default ""}}",
         "IdAttribute": "{{var "LDAP_ID_ATTRIBUTE" | default ""}}",
+        "PositionAttribute": "{{var "LDAP_POSITION_ATTRIBUTE" | default ""}}",
         "SyncIntervalMinutes": {{var "LDAP_SYNC_INTERVAL_MINUTES" | default "60"}},
         "SkipCertificateVerification": {{var "LDAP_SKIP_CERTIFICATE_VERIFICATION" | default "false"}},
         "QueryTimeout": {{var "LDAP_QUERY_TIMEOUT" | default "60"}},
@@ -216,6 +223,7 @@
         "UsernameAttribute": "{{var "SAML_USERNAME_ATTRIBUTE" | default ""}}",
         "NicknameAttribute": "{{var "SAML_NICKNAME_ATTRIBUTE" | default ""}}",
         "LocaleAttribute": "{{var "SAML_LOCALE_ATTRIBUTE" | default ""}}",
+        "PositionAttribute": "{{var "SAML_POSITION_ATTRIBUTE" | default ""}}",
         "LoginButtonText": "{{var "SAML_LOGIN_BUTTON_TEXT" | default "With SAML"}}"
     },
     "NativeAppSettings": {
@@ -227,6 +235,14 @@
         "Enable": {{var "CLUSTER_ENABLE" | default "false"}},
         "InterNodeListenAddress": "{{var "CLUSTER_INTER_NODE_LISTEN_ADDRESS" | default ":8075"}}",
         "InterNodeUrls": {{var "CLUSTER_INTER_NODE_URLS" | default "[]"}}
+    },
+    "MetricsSettings": {
+        "Enable": {{var "METRICS_ENABLE" | default "false"}},
+        "BlockProfileRate": {{var "METRICS_BLOCK_PROFILE_RATE" | default "0"}},
+        "ListenAddress": "{{var "METRICS_LISTEN_ADDRESS" | default ":8067"}}"
+    },
+    "AnalyticsSettings": {
+        "MaxUsersForStatistics": {{var "ANALYTICS_MAX_USERS_FOR_STATISTICS" | default "2500"}}
     },
     "WebrtcSettings": {
         "Enable": {{var "WEBRTC_ENABLE" | default "false"}},
