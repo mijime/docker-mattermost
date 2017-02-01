@@ -96,6 +96,8 @@ See.
 | WebserverMode | SERVICE_WEBSERVER_MODE | "gzip" |
 | EnableCustomEmoji | SERVICE_ENABLE_CUSTOM_EMOJI | false |
 | RestrictCustomEmojiCreation | SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION | "all" |
+| TimeBetweenUserTypingUpdatesMilliseconds | SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS | 5000 |
+| EnableUserTypingMessages | SERVICE_ENABLE_USER_TYPING_MESSAGES | true |
 
 ### TeamSettings
 

@@ -35,7 +35,9 @@
         "WebsocketPort": {{var "SERVICE_WEBSOCKET_PORT" | default "80"}},
         "WebserverMode": "{{var "SERVICE_WEBSERVER_MODE" | default "gzip"}}",
         "EnableCustomEmoji": {{var "SERVICE_ENABLE_CUSTOM_EMOJI" | default "false"}},
-        "RestrictCustomEmojiCreation": "{{var "SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION" | default "all"}}"
+        "RestrictCustomEmojiCreation": "{{var "SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION" | default "all"}}",
+        "TimeBetweenUserTypingUpdatesMilliseconds": {{var "SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS" | default "5000"}},
+        "EnableUserTypingMessages": {{var "SERVICE_ENABLE_USER_TYPING_MESSAGES" | default "true"}}
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",

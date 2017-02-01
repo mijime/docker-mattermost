@@ -1,12 +1,12 @@
-FROM alpine:3.4
+FROM alpine:3.5
 
 ENV ENTRYKIT_VER=0.4.0 \
-    MATTERMOST_VER=3.6.1 \
+    MATTERMOST_VER=3.6.2 \
     GOPATH=/opt/go
 
 RUN apk add --no-cache ca-certificates \
     && apk add --no-cache --virtual=.build-dependencies \
-      go git mercurial nodejs curl make \
+      go git mercurial curl make gcc musl-dev \
     && curl -sSL https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VER}/entrykit_${ENTRYKIT_VER}_Linux_x86_64.tgz \
       | tar -xzC /usr/local/bin \
     && /usr/local/bin/entrykit --symlink \
@@ -25,7 +25,6 @@ RUN apk add --no-cache ca-certificates \
     && rm -rf \
       ${GOPATH} \
       /usr/lib/go/pkg \
-      /tmp/npm-* \
     && apk del --purge .build-dependencies \
     && addgroup mattermost -S \
     && adduser mattermost -S -G mattermost \
