@@ -71,7 +71,6 @@ See.
 | ReadTimeout | SERVICE_READ_TIMEOUT | 300 |
 | WriteTimeout | SERVICE_WRITE_TIMEOUT | 300 |
 | MaximumLoginAttempts | SERVICE_MAXIMUM_LOGIN_ATTEMPTS | 10 |
-| SegmentDeveloperKey | SERVICE_SEGMENT_DEVELOPER_KEY | "" |
 | GoogleDeveloperKey | SERVICE_GOOGLE_DEVELOPER_KEY | "" |
 | EnableOAuthServiceProvider | SERVICE_ENABLE_OAUTH_SERVICE_PROVIDER | false |
 | EnableIncomingWebhooks | SERVICE_ENABLE_INCOMING_WEBHOOKS | true |
@@ -80,6 +79,7 @@ See.
 | EnableOnlyAdminIntegrations | SERVICE_ENABLE_ONLY_ADMIN_INTEGRATIONS | true |
 | EnablePostUsernameOverride | SERVICE_ENABLE_POST_USERNAME_OVERRIDE | false |
 | EnablePostIconOverride | SERVICE_ENABLE_POST_ICON_OVERRIDE | false |
+| EnableLinkPreviews | SERVICE_ENABLE_LINK_PREVIEWS | false |
 | EnableTesting | SERVICE_ENABLE_TESTING | false |
 | EnableDeveloper | SERVICE_ENABLE_DEVELOPER | false |
 | EnableSecurityFixAlert | SERVICE_ENABLE_SECURITY_FIX_ALERT | true |
@@ -96,8 +96,12 @@ See.
 | WebserverMode | SERVICE_WEBSERVER_MODE | "gzip" |
 | EnableCustomEmoji | SERVICE_ENABLE_CUSTOM_EMOJI | false |
 | RestrictCustomEmojiCreation | SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION | "all" |
+| RestrictPostDelete | SERVICE_RESTRICT_POST_DELETE | "all" |
+| AllowEditPost | SERVICE_ALLOW_EDIT_POST | "always" |
+| PostEditTimeLimit | SERVICE_POST_EDIT_TIME_LIMIT | 300 |
 | TimeBetweenUserTypingUpdatesMilliseconds | SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS | 5000 |
 | EnableUserTypingMessages | SERVICE_ENABLE_USER_TYPING_MESSAGES | true |
+| ClusterLogTimeoutMilliseconds | SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS | 2000 |
 
 ### TeamSettings
 
@@ -189,15 +193,15 @@ See.
 | EnableSignUpWithEmail | EMAIL_ENABLE_SIGN_UP_WITH_EMAIL | true |
 | EnableSignInWithEmail | EMAIL_ENABLE_SIGN_IN_WITH_EMAIL | true |
 | EnableSignInWithUsername | EMAIL_ENABLE_SIGN_IN_WITH_USERNAME | true |
-| SendEmailNotifications | EMAIL_SEND_EMAIL_NOTIFICATIONS | false |
+| SendEmailNotifications | EMAIL_SEND_EMAIL_NOTIFICATIONS | true |
 | RequireEmailVerification | EMAIL_REQUIRE_EMAIL_VERIFICATION | false |
 | FeedbackName | EMAIL_FEEDBACK_NAME | "" |
-| FeedbackEmail | EMAIL_FEEDBACK_EMAIL | "" |
+| FeedbackEmail | EMAIL_FEEDBACK_EMAIL | "test@example.com" |
 | FeedbackOrganization | EMAIL_FEEDBACK_ORGANIZATION | "" |
 | SMTPUsername | EMAIL_SMTP_USERNAME | "" |
 | SMTPPassword | EMAIL_SMTP_PASSWORD | "" |
-| SMTPServer | EMAIL_SMTP_SERVER | "" |
-| SMTPPort | EMAIL_SMTP_PORT | "" |
+| SMTPServer | EMAIL_SMTP_SERVER | "dockerhost" |
+| SMTPPort | EMAIL_SMTP_PORT | "2500" |
 | ConnectionSecurity | EMAIL_CONNECTION_SECURITY | "" |
 | InviteSalt | EMAIL_INVITE_SALT | "" |
 | PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "" |
