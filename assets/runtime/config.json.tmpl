@@ -37,7 +37,8 @@
         "EnableCustomEmoji": {{var "SERVICE_ENABLE_CUSTOM_EMOJI" | default "false"}},
         "RestrictCustomEmojiCreation": "{{var "SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION" | default "all"}}",
         "TimeBetweenUserTypingUpdatesMilliseconds": {{var "SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS" | default "5000"}},
-        "EnableUserTypingMessages": {{var "SERVICE_ENABLE_USER_TYPING_MESSAGES" | default "true"}}
+        "EnableUserTypingMessages": {{var "SERVICE_ENABLE_USER_TYPING_MESSAGES" | default "true"}},
+        "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}}
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
