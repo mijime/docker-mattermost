@@ -1,6 +1,6 @@
 {
     "ServiceSettings": {
-        "SiteURL": "{{var "SERVICE_SITE_URL" | default ""}}",
+        "SiteURL": "{{var "SERVICE_SITE_URL" | default "http://localhost:8065"}}",
         "ListenAddress": "{{var "SERVICE_LISTEN_ADDRESS" | default ":80"}}",
         "ConnectionSecurity": "{{var "SERVICE_CONNECTION_SECURITY" | default ""}}",
         "TLSCertFile": "{{var "SERVICE_TLSCERT_FILE" | default ""}}",
@@ -55,12 +55,13 @@
         "CustomDescriptionText": "{{var "TEAM_CUSTOM_DESCRIPTION_TEXT" | default ""}}",
         "RestrictDirectMessage": "{{var "TEAM_RESTRICT_DIRECT_MESSAGE" | default "any"}}",
         "RestrictTeamInvite": "{{var "TEAM_RESTRICT_TEAM_INVITE" | default "all"}}",
-        "RestrictPublicChannelCreation": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_CREATION" | default "all"}}",
-        "RestrictPrivateChannelCreation": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_CREATION" | default "all"}}",
         "RestrictPublicChannelManagement": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT" | default "all"}}",
         "RestrictPrivateChannelManagement": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT" | default "all"}}",
+        "RestrictPublicChannelCreation": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_CREATION" | default "all"}}",
+        "RestrictPrivateChannelCreation": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_CREATION" | default "all"}}",
         "RestrictPublicChannelDeletion": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_DELETION" | default "all"}}",
         "RestrictPrivateChannelDeletion": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_DELETION" | default "all"}}",
+        "RestrictPrivateChannelManageMembers": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGE_MEMBERS" | default "all"}}",
         "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}},
         "MaxChannelsPerTeam": {{var "TEAM_MAX_CHANNELS_PER_TEAM" | default "2000"}},
         "MaxNotificationsPerChannel": {{var "TEAM_MAX_NOTIFICATIONS_PER_CHANNEL" | default "1000"}}
@@ -132,7 +133,8 @@
         "PushNotificationContents": "{{var "EMAIL_PUSH_NOTIFICATION_CONTENTS" | default "generic"}}",
         "EnableEmailBatching": {{var "EMAIL_ENABLE_EMAIL_BATCHING" | default "false"}},
         "EmailBatchingBufferSize": {{var "EMAIL_EMAIL_BATCHING_BUFFER_SIZE" | default "256"}},
-        "EmailBatchingInterval": {{var "EMAIL_EMAIL_BATCHING_INTERVAL" | default "30"}}
+        "EmailBatchingInterval": {{var "EMAIL_EMAIL_BATCHING_INTERVAL" | default "30"}},
+        "SkipServerCertificateVerification": {{var "EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION" | default "false"}}
     },
     "RateLimitSettings": {
         "Enable": {{var "RATELIMIT_ENABLE" | default "false"}},

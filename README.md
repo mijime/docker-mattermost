@@ -60,7 +60,7 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| SiteURL | SERVICE_SITE_URL | "" |
+| SiteURL | SERVICE_SITE_URL | "http://localhost:8065" |
 | ListenAddress | SERVICE_LISTEN_ADDRESS | ":80" |
 | ConnectionSecurity | SERVICE_CONNECTION_SECURITY | "" |
 | TLSCertFile | SERVICE_TLSCERT_FILE | "" |
@@ -118,12 +118,13 @@ See.
 | CustomDescriptionText | TEAM_CUSTOM_DESCRIPTION_TEXT | "" |
 | RestrictDirectMessage | TEAM_RESTRICT_DIRECT_MESSAGE | "any" |
 | RestrictTeamInvite | TEAM_RESTRICT_TEAM_INVITE | "all" |
-| RestrictPublicChannelCreation | TEAM_RESTRICT_PUBLIC_CHANNEL_CREATION | "all" |
-| RestrictPrivateChannelCreation | TEAM_RESTRICT_PRIVATE_CHANNEL_CREATION | "all" |
 | RestrictPublicChannelManagement | TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT | "all" |
 | RestrictPrivateChannelManagement | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT | "all" |
+| RestrictPublicChannelCreation | TEAM_RESTRICT_PUBLIC_CHANNEL_CREATION | "all" |
+| RestrictPrivateChannelCreation | TEAM_RESTRICT_PRIVATE_CHANNEL_CREATION | "all" |
 | RestrictPublicChannelDeletion | TEAM_RESTRICT_PUBLIC_CHANNEL_DELETION | "all" |
 | RestrictPrivateChannelDeletion | TEAM_RESTRICT_PRIVATE_CHANNEL_DELETION | "all" |
+| RestrictPrivateChannelManageMembers | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGE_MEMBERS | "all" |
 | UserStatusAwayTimeout | TEAM_USER_STATUS_AWAY_TIMEOUT | 300 |
 | MaxChannelsPerTeam | TEAM_MAX_CHANNELS_PER_TEAM | 2000 |
 | MaxNotificationsPerChannel | TEAM_MAX_NOTIFICATIONS_PER_CHANNEL | 1000 |
@@ -211,6 +212,7 @@ See.
 | EnableEmailBatching | EMAIL_ENABLE_EMAIL_BATCHING | false |
 | EmailBatchingBufferSize | EMAIL_EMAIL_BATCHING_BUFFER_SIZE | 256 |
 | EmailBatchingInterval | EMAIL_EMAIL_BATCHING_INTERVAL | 30 |
+| SkipServerCertificateVerification | EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION | false |
 
 ### RateLimitSettings
 
