@@ -61,6 +61,7 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | SiteURL | SERVICE_SITE_URL | "http://localhost:8065" |
+| LicenseFileLocation | SERVICE_LICENSE_FILE_LOCATION | "" |
 | ListenAddress | SERVICE_LISTEN_ADDRESS | ":80" |
 | ConnectionSecurity | SERVICE_CONNECTION_SECURITY | "" |
 | TLSCertFile | SERVICE_TLSCERT_FILE | "" |
@@ -139,7 +140,7 @@ See.
 | MaxIdleConns | SQL_MAX_IDLE_CONNS | 20 |
 | MaxOpenConns | SQL_MAX_OPEN_CONNS | 300 |
 | Trace | SQL_TRACE | false |
-| AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "" |
+| AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "c1zj4n189ri53jz8buf7a8qo5aqwuzk4" |
 
 ### LogSettings
 
@@ -172,7 +173,7 @@ See.
 | DriverName | FILE_DRIVER_NAME | "local" |
 | Directory | FILE_DIRECTORY | "./data/" |
 | EnablePublicLink | FILE_ENABLE_PUBLIC_LINK | false |
-| PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "" |
+| PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "t3ihzne6y8q9rme97zuii5e647wmrufb" |
 | ThumbnailWidth | FILE_THUMBNAIL_WIDTH | 120 |
 | ThumbnailHeight | FILE_THUMBNAIL_HEIGHT | 100 |
 | PreviewWidth | FILE_PREVIEW_WIDTH | 1024 |
@@ -204,8 +205,8 @@ See.
 | SMTPServer | EMAIL_SMTP_SERVER | "dockerhost" |
 | SMTPPort | EMAIL_SMTP_PORT | "2500" |
 | ConnectionSecurity | EMAIL_CONNECTION_SECURITY | "" |
-| InviteSalt | EMAIL_INVITE_SALT | "" |
-| PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "" |
+| InviteSalt | EMAIL_INVITE_SALT | "fihisqi8aexeou8qdzbu1xae4yhh445k" |
+| PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "bjeoqjqof6kuso4964tg9pzfzqcjrrkx" |
 | SendPushNotifications | EMAIL_SEND_PUSH_NOTIFICATIONS | false |
 | PushNotificationServer | EMAIL_PUSH_NOTIFICATION_SERVER | "" |
 | PushNotificationContents | EMAIL_PUSH_NOTIFICATION_CONTENTS | "generic" |
