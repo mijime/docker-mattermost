@@ -4,8 +4,8 @@ set -e
 
 MATTERMOST_VER="$1"
 
-if [[ -z "${MATTERMOST_VER}" || "${MATTERMOST_VER}" == "" ]]; then
-    echo "You need to specify a version to build the Mattermost images!"
+if [[ -z "${MATTERMOST_VER}" || "${MATTERMOST_VER}" == "" || ! "${MATTERMOST_VER}" =~ [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3} ]]; then
+    echo "You need to specify a correctly formatted version string to build the Mattermost images!"
     exit 1
 fi
 
