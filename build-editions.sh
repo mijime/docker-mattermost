@@ -9,9 +9,9 @@ if [[ -z "${MATTERMOST_VER}" || "${MATTERMOST_VER}" == "" ]]; then
     exit 1
 fi
 
-VERSION=( ${MATTERMOST_VER//./ } )
-MAJOR="${VERSION[0]}"
-MINOR="${VERSION[1]}"
+VERSIONARRAY=( ${MATTERMOST_VER//./ } )
+MAJOR="${VERSIONARRAY[0]}"
+MINOR="${VERSIONARRAY[1]}"
 HUBREPO="mijime/mattermost"
 
 for edition in team enterprise; do
