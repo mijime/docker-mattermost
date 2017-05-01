@@ -12,5 +12,8 @@ assets/runtime/config.json.tmpl.tmp:
 		| sed -e 's/":8065"/":80"/g' -e 's/"DEBUG"/"INFO"/g' \
 		> $@
 
+build:
+	@bash build-editions.sh $(MATTERMOST_VER)
+
 README.md: assets/runtime/config.json.tmpl.tmp scripts/README.md
 	{ cat scripts/README.md; awk -f scripts/listup-markdown.awk $<; } > $@

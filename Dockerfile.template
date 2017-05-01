@@ -1,7 +1,7 @@
 FROM alpine:3.5
 
 ENV ENTRYKIT_VER=0.4.0 \
-    MATTERMOST_VER=3.8.2 \
+    MATTERMOST_VER=%%VERSION%% \
     GOPATH=/opt/go
 
 RUN apk add --no-cache ca-certificates \
@@ -11,7 +11,7 @@ RUN apk add --no-cache ca-certificates \
       | tar -xzC /usr/local/bin \
     && /usr/local/bin/entrykit --symlink \
     && mkdir -p /opt \
-    && curl -sSL https://releases.mattermost.com/${MATTERMOST_VER}/mattermost-enterprise-${MATTERMOST_VER}-linux-amd64.tar.gz \
+    && curl -sSL https://releases.mattermost.com/${MATTERMOST_VER}/mattermost-%%EDITION%%-${MATTERMOST_VER}-linux-amd64.tar.gz \
       | tar -xzC /opt \
     && go get github.com/tools/godep \
     && git clone --depth 1 --branch v${MATTERMOST_VER} \
