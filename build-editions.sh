@@ -31,7 +31,7 @@ for edition in team enterprise; do
 
     # Team Edition will have the 'latest' tag
     if [[ "${edition}" == "team" ]]; then
-        docker build -f Dockerfile.team -t "${HUBREPO}":latest
+        docker build -f Dockerfile.team -t "${HUBREPO}":latest .
         docker push "${HUBREPO}":latest
     fi
 
