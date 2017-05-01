@@ -1,3 +1,2 @@
-Dockerfile.team
-Dockerfile.enterprise
+Dockerfile.*
 *.tmp
