@@ -25,8 +25,8 @@ for edition in team enterprise; do
     -t "${HUBREPO}":"${MAJOR}"."${MINOR}"-${edition} \
     -t "${HUBREPO}":"${MAJOR}"-${edition} .
 
-    for pushstring in "${HUBREPO}:${MATTERMOST_VER}-${edition}" "${HUBREPO}:${MAJOR}.${MINOR}-${edition}" "${HUBREPO}:${MAJOR}-${edition}"; do
-        docker push "${pushstring}"
+    for pushstring in "${MATTERMOST_VER}-${edition}" "${MAJOR}.${MINOR}-${edition}" "${MAJOR}-${edition}"; do
+        docker push "${HUBREPO}:${pushstring}"
     done
 
     # Team Edition will have the 'latest' tag
