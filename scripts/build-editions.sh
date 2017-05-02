@@ -15,11 +15,10 @@ MINOR="${VERSIONARRAY[1]}"
 HUBREPO="mijime/mattermost"
 
 for edition in team enterprise; do
-
-    sed "s/%%EDITION%%/${edition}/g;s/%%VERSION%%/${MATTERMOST_VER}/g;" Dockerfile.template > Dockerfile.${edition}
-
     docker build \
-    -f Dockerfile.${edition} \
+    --build-arg MATTERMOST_VER=${MATTERMOST_VER} \
+    --build-arg MATTERMOST_EDITION=${edition} \
+    -f Dockerfile \
     -t "${HUBREPO}":latest \
     -t "${HUBREPO}":"${MATTERMOST_VER}"-${edition} \
     -t "${HUBREPO}":"${MAJOR}"."${MINOR}"-${edition} \
@@ -31,7 +30,7 @@ for edition in team enterprise; do
 
     # Team Edition will have the 'latest' tag
     if [[ "${edition}" == "team" ]]; then
-        docker build -f Dockerfile.team -t "${HUBREPO}":latest .
+        docker build -f Dockerfile -t "${HUBREPO}":latest .
         docker push "${HUBREPO}":latest
     fi
 
