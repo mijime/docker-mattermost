@@ -1,4 +1,4 @@
-MATTERMOST_VER = 3.7.4
+MATTERMOST_VER = 3.7.5
 MATTERMOST_EDITION = team
 
 ASSETS = assets/runtime/config.json.tmpl README.md Dockerfile
