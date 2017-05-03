@@ -19,10 +19,10 @@ for edition in team enterprise; do
     docker build \
     --build-arg MATTERMOST_VER=${MATTERMOST_VER} \
     --build-arg MATTERMOST_EDITION=${edition} \
-    -f Dockerfile \
-    -t "${HUBREPO}":"${MATTERMOST_VER}"-${edition} \
-    -t "${HUBREPO}":"${MAJOR}"."${MINOR}"-${edition} \
-    -t "${HUBREPO}":"${MAJOR}"-${edition} .
+    --file Dockerfile \
+    --tag "${HUBREPO}":"${MATTERMOST_VER}"-${edition} \
+    --tag "${HUBREPO}":"${MAJOR}"."${MINOR}"-${edition} \
+    --tag "${HUBREPO}":"${MAJOR}"-${edition} .
 
     for pushstring in "${MATTERMOST_VER}-${edition}" "${MAJOR}.${MINOR}-${edition}" "${MAJOR}-${edition}"; do
         docker push "${HUBREPO}:${pushstring}"
@@ -34,8 +34,8 @@ for edition in team enterprise; do
         docker build \
         --build-arg MATTERMOST_VER=${MATTERMOST_VER} \
         --build-arg MATTERMOST_EDITION=${edition} \
-        -f Dockerfile \
-        -t "${HUBREPO}":latest .
+        --file Dockerfile \
+        --tag "${HUBREPO}":latest .
 
         docker push "${HUBREPO}":latest
 
