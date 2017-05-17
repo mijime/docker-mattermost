@@ -41,7 +41,9 @@
         "AllowEditPost": "{{var "SERVICE_ALLOW_EDIT_POST" | default "always"}}",
         "PostEditTimeLimit": {{var "SERVICE_POST_EDIT_TIME_LIMIT" | default "300"}},
         "TimeBetweenUserTypingUpdatesMilliseconds": {{var "SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS" | default "5000"}},
+        "EnablePostSearch": {{var "SERVICE_ENABLE_POST_SEARCH" | default "true"}},
         "EnableUserTypingMessages": {{var "SERVICE_ENABLE_USER_TYPING_MESSAGES" | default "true"}},
+        "EnableUserStatuses": {{var "SERVICE_ENABLE_USER_STATUSES" | default "true"}},
         "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}}
     },
     "TeamSettings": {
@@ -69,12 +71,13 @@
     },
     "SqlSettings": {
         "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
-        "DataSource": "{{var "SQL_DATA_SOURCE" | default "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8"}}",
+        "DataSource": "{{var "SQL_DATA_SOURCE" | default "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s"}}",
         "DataSourceReplicas": {{var "SQL_DATA_SOURCE_REPLICAS" | default "[]"}},
+        "DataSourceSearchReplicas": {{var "SQL_DATA_SOURCE_SEARCH_REPLICAS" | default "[]"}},
         "MaxIdleConns": {{var "SQL_MAX_IDLE_CONNS" | default "20"}},
         "MaxOpenConns": {{var "SQL_MAX_OPEN_CONNS" | default "300"}},
         "Trace": {{var "SQL_TRACE" | default "false"}},
-        "AtRestEncryptKey": "{{var "SQL_AT_REST_ENCRYPT_KEY" | default "c1zj4n189ri53jz8buf7a8qo5aqwuzk4"}}"
+        "AtRestEncryptKey": "{{var "SQL_AT_REST_ENCRYPT_KEY" | default ""}}"
     },
     "LogSettings": {
         "EnableConsole": {{var "LOG_ENABLE_CONSOLE" | default "true"}},
@@ -94,11 +97,12 @@
         "Symbol": {{var "PASSWORD_SYMBOL" | default "false"}}
     },
     "FileSettings": {
+        "EnableFileAttachments": {{var "FILE_ENABLE_FILE_ATTACHMENTS" | default "true"}},
         "MaxFileSize": {{var "FILE_MAX_FILE_SIZE" | default "52428800"}},
         "DriverName": "{{var "FILE_DRIVER_NAME" | default "local"}}",
         "Directory": "{{var "FILE_DIRECTORY" | default "./data/"}}",
         "EnablePublicLink": {{var "FILE_ENABLE_PUBLIC_LINK" | default "false"}},
-        "PublicLinkSalt": "{{var "FILE_PUBLIC_LINK_SALT" | default "t3ihzne6y8q9rme97zuii5e647wmrufb"}}",
+        "PublicLinkSalt": "{{var "FILE_PUBLIC_LINK_SALT" | default ""}}",
         "ThumbnailWidth": {{var "FILE_THUMBNAIL_WIDTH" | default "120"}},
         "ThumbnailHeight": {{var "FILE_THUMBNAIL_HEIGHT" | default "100"}},
         "PreviewWidth": {{var "FILE_PREVIEW_WIDTH" | default "1024"}},
@@ -127,8 +131,7 @@
         "SMTPServer": "{{var "EMAIL_SMTP_SERVER" | default "dockerhost"}}",
         "SMTPPort": "{{var "EMAIL_SMTP_PORT" | default "2500"}}",
         "ConnectionSecurity": "{{var "EMAIL_CONNECTION_SECURITY" | default ""}}",
-        "InviteSalt": "{{var "EMAIL_INVITE_SALT" | default "fihisqi8aexeou8qdzbu1xae4yhh445k"}}",
-        "PasswordResetSalt": "{{var "EMAIL_PASSWORD_RESET_SALT" | default "bjeoqjqof6kuso4964tg9pzfzqcjrrkx"}}",
+        "InviteSalt": "{{var "EMAIL_INVITE_SALT" | default ""}}",
         "SendPushNotifications": {{var "EMAIL_SEND_PUSH_NOTIFICATIONS" | default "false"}},
         "PushNotificationServer": "{{var "EMAIL_PUSH_NOTIFICATION_SERVER" | default ""}}",
         "PushNotificationContents": "{{var "EMAIL_PUSH_NOTIFICATION_CONTENTS" | default "generic"}}",
@@ -218,8 +221,8 @@
     },
     "SamlSettings": {
         "Enable": {{var "SAML_ENABLE" | default "false"}},
-        "Verify": {{var "SAML_VERIFY" | default "false"}},
-        "Encrypt": {{var "SAML_ENCRYPT" | default "false"}},
+        "Verify": {{var "SAML_VERIFY" | default "true"}},
+        "Encrypt": {{var "SAML_ENCRYPT" | default "true"}},
         "IdpUrl": "{{var "SAML_IDP_URL" | default ""}}",
         "IdpDescriptorUrl": "{{var "SAML_IDP_DESCRIPTOR_URL" | default ""}}",
         "AssertionConsumerServiceURL": "{{var "SAML_ASSERTION_CONSUMER_SERVICE_URL" | default ""}}",

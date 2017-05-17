@@ -101,7 +101,9 @@ See.
 | AllowEditPost | SERVICE_ALLOW_EDIT_POST | "always" |
 | PostEditTimeLimit | SERVICE_POST_EDIT_TIME_LIMIT | 300 |
 | TimeBetweenUserTypingUpdatesMilliseconds | SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS | 5000 |
+| EnablePostSearch | SERVICE_ENABLE_POST_SEARCH | true |
 | EnableUserTypingMessages | SERVICE_ENABLE_USER_TYPING_MESSAGES | true |
+| EnableUserStatuses | SERVICE_ENABLE_USER_STATUSES | true |
 | ClusterLogTimeoutMilliseconds | SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS | 2000 |
 
 ### TeamSettings
@@ -135,12 +137,13 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | DriverName | SQL_DRIVER_NAME | "mysql" |
-| DataSource | SQL_DATA_SOURCE | "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8" |
+| DataSource | SQL_DATA_SOURCE | "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s" |
 | DataSourceReplicas | SQL_DATA_SOURCE_REPLICAS | [] |
+| DataSourceSearchReplicas | SQL_DATA_SOURCE_SEARCH_REPLICAS | [] |
 | MaxIdleConns | SQL_MAX_IDLE_CONNS | 20 |
 | MaxOpenConns | SQL_MAX_OPEN_CONNS | 300 |
 | Trace | SQL_TRACE | false |
-| AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "c1zj4n189ri53jz8buf7a8qo5aqwuzk4" |
+| AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "" |
 
 ### LogSettings
 
@@ -169,11 +172,12 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
+| EnableFileAttachments | FILE_ENABLE_FILE_ATTACHMENTS | true |
 | MaxFileSize | FILE_MAX_FILE_SIZE | 52428800 |
 | DriverName | FILE_DRIVER_NAME | "local" |
 | Directory | FILE_DIRECTORY | "./data/" |
 | EnablePublicLink | FILE_ENABLE_PUBLIC_LINK | false |
-| PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "t3ihzne6y8q9rme97zuii5e647wmrufb" |
+| PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "" |
 | ThumbnailWidth | FILE_THUMBNAIL_WIDTH | 120 |
 | ThumbnailHeight | FILE_THUMBNAIL_HEIGHT | 100 |
 | PreviewWidth | FILE_PREVIEW_WIDTH | 1024 |
@@ -205,8 +209,7 @@ See.
 | SMTPServer | EMAIL_SMTP_SERVER | "dockerhost" |
 | SMTPPort | EMAIL_SMTP_PORT | "2500" |
 | ConnectionSecurity | EMAIL_CONNECTION_SECURITY | "" |
-| InviteSalt | EMAIL_INVITE_SALT | "fihisqi8aexeou8qdzbu1xae4yhh445k" |
-| PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "bjeoqjqof6kuso4964tg9pzfzqcjrrkx" |
+| InviteSalt | EMAIL_INVITE_SALT | "" |
 | SendPushNotifications | EMAIL_SEND_PUSH_NOTIFICATIONS | false |
 | PushNotificationServer | EMAIL_PUSH_NOTIFICATION_SERVER | "" |
 | PushNotificationContents | EMAIL_PUSH_NOTIFICATION_CONTENTS | "generic" |
@@ -326,8 +329,8 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | SAML_ENABLE | false |
-| Verify | SAML_VERIFY | false |
-| Encrypt | SAML_ENCRYPT | false |
+| Verify | SAML_VERIFY | true |
+| Encrypt | SAML_ENCRYPT | true |
 | IdpUrl | SAML_IDP_URL | "" |
 | IdpDescriptorUrl | SAML_IDP_DESCRIPTOR_URL | "" |
 | AssertionConsumerServiceURL | SAML_ASSERTION_CONSUMER_SERVICE_URL | "" |
