@@ -24,3 +24,9 @@ build: scripts/build-editions.sh Dockerfile
 
 README.md: assets/runtime/config.json.tmpl.tmp scripts/README.md
 	{ cat scripts/README.md; awk -f scripts/listup-markdown.awk $<; } > $@
+
+update-tags: scripts/update-tags.sh
+	@bash scripts/update-tags.sh --version $(MATTERMOST_VER)
+
+update-latest-tags: scripts/update-tags.sh
+	@bash scripts/update-tags.sh --version $(MATTERMOST_VER) --latest
