@@ -72,7 +72,6 @@ See.
 | ReadTimeout | SERVICE_READ_TIMEOUT | 300 |
 | WriteTimeout | SERVICE_WRITE_TIMEOUT | 300 |
 | MaximumLoginAttempts | SERVICE_MAXIMUM_LOGIN_ATTEMPTS | 10 |
-| GoroutineHealthThreshold | SERVICE_GOROUTINE_HEALTH_THRESHOLD | -1 |
 | GoogleDeveloperKey | SERVICE_GOOGLE_DEVELOPER_KEY | "" |
 | EnableOAuthServiceProvider | SERVICE_ENABLE_OAUTH_SERVICE_PROVIDER | false |
 | EnableIncomingWebhooks | SERVICE_ENABLE_INCOMING_WEBHOOKS | true |
@@ -102,21 +101,8 @@ See.
 | AllowEditPost | SERVICE_ALLOW_EDIT_POST | "always" |
 | PostEditTimeLimit | SERVICE_POST_EDIT_TIME_LIMIT | 300 |
 | TimeBetweenUserTypingUpdatesMilliseconds | SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS | 5000 |
-| EnablePostSearch | SERVICE_ENABLE_POST_SEARCH | true |
 | EnableUserTypingMessages | SERVICE_ENABLE_USER_TYPING_MESSAGES | true |
-| EnableUserStatuses | SERVICE_ENABLE_USER_STATUSES | true |
 | ClusterLogTimeoutMilliseconds | SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS | 2000 |
-
-### ElasticSearchSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| ConnectionUrl | ELASTICSEARCH_CONNECTION_URL | "http://dockerhost:9200" |
-| Username | ELASTICSEARCH_USERNAME | "elastic" |
-| Password | ELASTICSEARCH_PASSWORD | "changeme" |
-| EnableIndexing | ELASTICSEARCH_ENABLE_INDEXING | false |
-| EnableSearching | ELASTICSEARCH_ENABLE_SEARCHING | false |
-| Sniff | ELASTICSEARCH_SNIFF | true |
 
 ### TeamSettings
 
@@ -149,14 +135,12 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | DriverName | SQL_DRIVER_NAME | "mysql" |
-| DataSource | SQL_DATA_SOURCE | "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s" |
+| DataSource | SQL_DATA_SOURCE | "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8" |
 | DataSourceReplicas | SQL_DATA_SOURCE_REPLICAS | [] |
-| DataSourceSearchReplicas | SQL_DATA_SOURCE_SEARCH_REPLICAS | [] |
 | MaxIdleConns | SQL_MAX_IDLE_CONNS | 20 |
 | MaxOpenConns | SQL_MAX_OPEN_CONNS | 300 |
 | Trace | SQL_TRACE | false |
-| AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "" |
-| QueryTimeout | SQL_QUERY_TIMEOUT | 30 |
+| AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "c1zj4n189ri53jz8buf7a8qo5aqwuzk4" |
 
 ### LogSettings
 
@@ -185,12 +169,11 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| EnableFileAttachments | FILE_ENABLE_FILE_ATTACHMENTS | true |
 | MaxFileSize | FILE_MAX_FILE_SIZE | 52428800 |
 | DriverName | FILE_DRIVER_NAME | "local" |
 | Directory | FILE_DIRECTORY | "./data/" |
 | EnablePublicLink | FILE_ENABLE_PUBLIC_LINK | false |
-| PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "" |
+| PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "t3ihzne6y8q9rme97zuii5e647wmrufb" |
 | ThumbnailWidth | FILE_THUMBNAIL_WIDTH | 120 |
 | ThumbnailHeight | FILE_THUMBNAIL_HEIGHT | 100 |
 | PreviewWidth | FILE_PREVIEW_WIDTH | 1024 |
@@ -204,7 +187,6 @@ See.
 | AmazonS3Region | FILE_AMAZON_S3_REGION | "us-east-1" |
 | AmazonS3Endpoint | FILE_AMAZON_S3_ENDPOINT | "s3.amazonaws.com" |
 | AmazonS3SSL | FILE_AMAZON_S3_SSL | true |
-| AmazonS3SignV2 | FILE_AMAZON_S3_SIGN_V2 | false |
 
 ### EmailSettings
 
@@ -223,7 +205,8 @@ See.
 | SMTPServer | EMAIL_SMTP_SERVER | "dockerhost" |
 | SMTPPort | EMAIL_SMTP_PORT | "2500" |
 | ConnectionSecurity | EMAIL_CONNECTION_SECURITY | "" |
-| InviteSalt | EMAIL_INVITE_SALT | "" |
+| InviteSalt | EMAIL_INVITE_SALT | "fihisqi8aexeou8qdzbu1xae4yhh445k" |
+| PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "bjeoqjqof6kuso4964tg9pzfzqcjrrkx" |
 | SendPushNotifications | EMAIL_SEND_PUSH_NOTIFICATIONS | false |
 | PushNotificationServer | EMAIL_PUSH_NOTIFICATION_SERVER | "" |
 | PushNotificationContents | EMAIL_PUSH_NOTIFICATION_CONTENTS | "generic" |
@@ -260,16 +243,6 @@ See.
 | HelpLink | SUPPORT_HELP_LINK | "https://about.mattermost.com/default-help/" |
 | ReportAProblemLink | SUPPORT_REPORT_APROBLEM_LINK | "https://about.mattermost.com/default-report-a-problem/" |
 | SupportEmail | SUPPORT_SUPPORT_EMAIL | "feedback@mattermost.com" |
-
-### AnnouncementSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| EnableBanner | ANNOUNCEMENT_ENABLE_BANNER | false |
-| BannerText | ANNOUNCEMENT_BANNER_TEXT | "" |
-| BannerColor | ANNOUNCEMENT_BANNER_COLOR | "#f2a93b" |
-| BannerTextColor | ANNOUNCEMENT_BANNER_TEXT_COLOR | "#333333" |
-| AllowBannerDismissal | ANNOUNCEMENT_ALLOW_BANNER_DISMISSAL | true |
 
 ### GitLabSettings
 
@@ -353,8 +326,8 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | SAML_ENABLE | false |
-| Verify | SAML_VERIFY | true |
-| Encrypt | SAML_ENCRYPT | true |
+| Verify | SAML_VERIFY | false |
+| Encrypt | SAML_ENCRYPT | false |
 | IdpUrl | SAML_IDP_URL | "" |
 | IdpDescriptorUrl | SAML_IDP_DESCRIPTOR_URL | "" |
 | AssertionConsumerServiceURL | SAML_ASSERTION_CONSUMER_SERVICE_URL | "" |
@@ -412,9 +385,3 @@ See.
 | TurnURI | WEBRTC_TURN_URI | "" |
 | TurnUsername | WEBRTC_TURN_USERNAME | "" |
 | TurnSharedKey | WEBRTC_TURN_SHARED_KEY | "" |
-
-### DataRetentionSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| Enable | DATARETENTION_ENABLE | false |
