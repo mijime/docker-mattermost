@@ -23,8 +23,8 @@ function fixWord(str) {
   next;
 }
 
-/^ *"([[:alnum:]]+)": +([0-9]+|true|false|[[]]+)?(".*")?(,)?$/ {
-  match($0, /^ *"([[:alnum:]]+)": +([0-9]+|true|false|[[]]+|".*")?,?$/, v);
+/^ *"([[:alnum:]]+)": +(-?[0-9]+|true|false|[[]]+)?(".*")?(,)?$/ {
+  match($0, /^ *"([[:alnum:]]+)": +(-?[0-9]+|true|false|[[]]+|".*")?,?$/, v);
   envkey = toupper(s[1] "_" camel2snake(fixWord(v[1])));
   printf "| %s | %s | %s |\n", v[1], envkey, v[2];
   next;
