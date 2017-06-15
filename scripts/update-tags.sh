@@ -55,7 +55,7 @@ do
 
   ${PREFIX_CMD} git branch "${MINOR_BRANCH}" master || true
   ${PREFIX_CMD} git checkout "${MINOR_BRANCH}"
-  ${PREFIX_CMD} git merge --no-commit master
+  ${PREFIX_CMD} git merge --ff --no-commit master
   ${PREFIX_CMD} make -B MATTERMOST_VER=${MATTERMOST_VER} MATTERMOST_EDITION=${edition}
   ${PREFIX_CMD} git commit . --message ":tada: Update version ${MATTERMOST_VER} for ${edition}" || true
   ${PREFIX_CMD} git tag --force -a "${MATTERMOST_VER}${VER_SUFFIX}" --message ":tada: Update version"
