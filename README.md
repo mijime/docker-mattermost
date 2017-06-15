@@ -60,7 +60,7 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| SiteURL | SERVICE_SITE_URL | "http://localhost:8065" |
+| SiteURL | SERVICE_SITE_URL | "http://localhost:80" |
 | LicenseFileLocation | SERVICE_LICENSE_FILE_LOCATION | "" |
 | ListenAddress | SERVICE_LISTEN_ADDRESS | ":80" |
 | ConnectionSecurity | SERVICE_CONNECTION_SECURITY | "" |

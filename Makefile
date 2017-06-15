@@ -16,7 +16,7 @@ assets/runtime/config.json.tmpl: scripts/convert-json.awk assets/runtime/config.
 
 assets/runtime/config.json.tmpl.tmp:
 	curl -L https://raw.githubusercontent.com/mattermost/platform/v$(MATTERMOST_VER)/config/config.json \
-		| sed -e 's/":8065"/":80"/g' -e 's/"DEBUG"/"INFO"/g' \
+		| sed -e 's/:8065/:80/g' -e 's/"DEBUG"/"INFO"/g' \
 		> $@
 
 build: scripts/build-editions.sh Dockerfile
