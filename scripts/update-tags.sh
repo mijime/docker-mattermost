@@ -50,8 +50,8 @@ do
       VER_SUFFIX="-${edition}"
       ;;
   esac
-  MAJOR_BRANCH="v${MAJOR}.x.x${VER_SUFFIX}"
-  MINOR_BRANCH="v${MAJOR}.${MINOR}.x${VER_SUFFIX}"
+  MAJOR_BRANCH="${MAJOR}${VER_SUFFIX}"
+  MINOR_BRANCH="${MAJOR}.${MINOR}${VER_SUFFIX}"
 
   ${PREFIX_CMD} git branch "${MINOR_BRANCH}" master || true
   ${PREFIX_CMD} git checkout "${MINOR_BRANCH}"
