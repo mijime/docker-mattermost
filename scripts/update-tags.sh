@@ -50,13 +50,13 @@ do
       VER_SUFFIX="-${edition}"
       ;;
   esac
-  MAJOR_BRANCH="v${MAJOR}.x.x${VER_SUFFIX}"
-  MINOR_BRANCH="v${MAJOR}.${MINOR}.x${VER_SUFFIX}"
+  MAJOR_BRANCH="${MAJOR}${VER_SUFFIX}"
+  MINOR_BRANCH="${MAJOR}.${MINOR}${VER_SUFFIX}"
 
   ${PREFIX_CMD} git branch "${MINOR_BRANCH}" master || true
   ${PREFIX_CMD} git checkout "${MINOR_BRANCH}"
   ${PREFIX_CMD} make -B MATTERMOST_VER=${MATTERMOST_VER} MATTERMOST_EDITION=${edition}
-  ${PREFIX_CMD} git commit . --message ":tada: Update version ${MATTERMOST_VER} for ${edition}"
+  ${PREFIX_CMD} git commit . --message ":tada: Update version ${MATTERMOST_VER} for ${edition}" || true
   ${PREFIX_CMD} git tag --force -a "${MATTERMOST_VER}${VER_SUFFIX}" --message ":tada: Update version"
 
   if [[ -n ${LATEST_FLG} ]]
