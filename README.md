@@ -72,7 +72,6 @@ See.
 | ReadTimeout | SERVICE_READ_TIMEOUT | 300 |
 | WriteTimeout | SERVICE_WRITE_TIMEOUT | 300 |
 | MaximumLoginAttempts | SERVICE_MAXIMUM_LOGIN_ATTEMPTS | 10 |
-| GoroutineHealthThreshold | SERVICE_GOROUTINE_HEALTH_THRESHOLD | -1 |
 | GoogleDeveloperKey | SERVICE_GOOGLE_DEVELOPER_KEY | "" |
 | EnableOAuthServiceProvider | SERVICE_ENABLE_OAUTH_SERVICE_PROVIDER | false |
 | EnableIncomingWebhooks | SERVICE_ENABLE_INCOMING_WEBHOOKS | true |
@@ -106,17 +105,6 @@ See.
 | EnableUserTypingMessages | SERVICE_ENABLE_USER_TYPING_MESSAGES | true |
 | EnableUserStatuses | SERVICE_ENABLE_USER_STATUSES | true |
 | ClusterLogTimeoutMilliseconds | SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS | 2000 |
-
-### ElasticSearchSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| ConnectionUrl | ELASTICSEARCH_CONNECTION_URL | "http://dockerhost:9200" |
-| Username | ELASTICSEARCH_USERNAME | "elastic" |
-| Password | ELASTICSEARCH_PASSWORD | "changeme" |
-| EnableIndexing | ELASTICSEARCH_ENABLE_INDEXING | false |
-| EnableSearching | ELASTICSEARCH_ENABLE_SEARCHING | false |
-| Sniff | ELASTICSEARCH_SNIFF | true |
 
 ### TeamSettings
 
@@ -156,7 +144,6 @@ See.
 | MaxOpenConns | SQL_MAX_OPEN_CONNS | 300 |
 | Trace | SQL_TRACE | false |
 | AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "" |
-| QueryTimeout | SQL_QUERY_TIMEOUT | 30 |
 
 ### LogSettings
 
@@ -204,7 +191,6 @@ See.
 | AmazonS3Region | FILE_AMAZON_S3_REGION | "us-east-1" |
 | AmazonS3Endpoint | FILE_AMAZON_S3_ENDPOINT | "s3.amazonaws.com" |
 | AmazonS3SSL | FILE_AMAZON_S3_SSL | true |
-| AmazonS3SignV2 | FILE_AMAZON_S3_SIGN_V2 | false |
 
 ### EmailSettings
 
@@ -260,16 +246,6 @@ See.
 | HelpLink | SUPPORT_HELP_LINK | "https://about.mattermost.com/default-help/" |
 | ReportAProblemLink | SUPPORT_REPORT_APROBLEM_LINK | "https://about.mattermost.com/default-report-a-problem/" |
 | SupportEmail | SUPPORT_SUPPORT_EMAIL | "feedback@mattermost.com" |
-
-### AnnouncementSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| EnableBanner | ANNOUNCEMENT_ENABLE_BANNER | false |
-| BannerText | ANNOUNCEMENT_BANNER_TEXT | "" |
-| BannerColor | ANNOUNCEMENT_BANNER_COLOR | "#f2a93b" |
-| BannerTextColor | ANNOUNCEMENT_BANNER_TEXT_COLOR | "#333333" |
-| AllowBannerDismissal | ANNOUNCEMENT_ALLOW_BANNER_DISMISSAL | true |
 
 ### GitLabSettings
 
@@ -412,9 +388,3 @@ See.
 | TurnURI | WEBRTC_TURN_URI | "" |
 | TurnUsername | WEBRTC_TURN_USERNAME | "" |
 | TurnSharedKey | WEBRTC_TURN_SHARED_KEY | "" |
-
-### DataRetentionSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| Enable | DATARETENTION_ENABLE | false |
