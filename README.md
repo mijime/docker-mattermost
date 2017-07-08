@@ -61,7 +61,6 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | SiteURL | SERVICE_SITE_URL | "http://localhost:80" |
-| LicenseFileLocation | SERVICE_LICENSE_FILE_LOCATION | "" |
 | ListenAddress | SERVICE_LISTEN_ADDRESS | ":80" |
 | ConnectionSecurity | SERVICE_CONNECTION_SECURITY | "" |
 | TLSCertFile | SERVICE_TLSCERT_FILE | "" |
@@ -72,7 +71,6 @@ See.
 | ReadTimeout | SERVICE_READ_TIMEOUT | 300 |
 | WriteTimeout | SERVICE_WRITE_TIMEOUT | 300 |
 | MaximumLoginAttempts | SERVICE_MAXIMUM_LOGIN_ATTEMPTS | 10 |
-| GoroutineHealthThreshold | SERVICE_GOROUTINE_HEALTH_THRESHOLD | -1 |
 | GoogleDeveloperKey | SERVICE_GOOGLE_DEVELOPER_KEY | "" |
 | EnableOAuthServiceProvider | SERVICE_ENABLE_OAUTH_SERVICE_PROVIDER | false |
 | EnableIncomingWebhooks | SERVICE_ENABLE_INCOMING_WEBHOOKS | true |
@@ -102,21 +100,8 @@ See.
 | AllowEditPost | SERVICE_ALLOW_EDIT_POST | "always" |
 | PostEditTimeLimit | SERVICE_POST_EDIT_TIME_LIMIT | 300 |
 | TimeBetweenUserTypingUpdatesMilliseconds | SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS | 5000 |
-| EnablePostSearch | SERVICE_ENABLE_POST_SEARCH | true |
 | EnableUserTypingMessages | SERVICE_ENABLE_USER_TYPING_MESSAGES | true |
-| EnableUserStatuses | SERVICE_ENABLE_USER_STATUSES | true |
 | ClusterLogTimeoutMilliseconds | SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS | 2000 |
-
-### ElasticSearchSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| ConnectionUrl | ELASTICSEARCH_CONNECTION_URL | "http://dockerhost:9200" |
-| Username | ELASTICSEARCH_USERNAME | "elastic" |
-| Password | ELASTICSEARCH_PASSWORD | "changeme" |
-| EnableIndexing | ELASTICSEARCH_ENABLE_INDEXING | false |
-| EnableSearching | ELASTICSEARCH_ENABLE_SEARCHING | false |
-| Sniff | ELASTICSEARCH_SNIFF | true |
 
 ### TeamSettings
 
@@ -133,13 +118,12 @@ See.
 | CustomDescriptionText | TEAM_CUSTOM_DESCRIPTION_TEXT | "" |
 | RestrictDirectMessage | TEAM_RESTRICT_DIRECT_MESSAGE | "any" |
 | RestrictTeamInvite | TEAM_RESTRICT_TEAM_INVITE | "all" |
-| RestrictPublicChannelManagement | TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT | "all" |
-| RestrictPrivateChannelManagement | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT | "all" |
 | RestrictPublicChannelCreation | TEAM_RESTRICT_PUBLIC_CHANNEL_CREATION | "all" |
 | RestrictPrivateChannelCreation | TEAM_RESTRICT_PRIVATE_CHANNEL_CREATION | "all" |
+| RestrictPublicChannelManagement | TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT | "all" |
+| RestrictPrivateChannelManagement | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT | "all" |
 | RestrictPublicChannelDeletion | TEAM_RESTRICT_PUBLIC_CHANNEL_DELETION | "all" |
 | RestrictPrivateChannelDeletion | TEAM_RESTRICT_PRIVATE_CHANNEL_DELETION | "all" |
-| RestrictPrivateChannelManageMembers | TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGE_MEMBERS | "all" |
 | UserStatusAwayTimeout | TEAM_USER_STATUS_AWAY_TIMEOUT | 300 |
 | MaxChannelsPerTeam | TEAM_MAX_CHANNELS_PER_TEAM | 2000 |
 | MaxNotificationsPerChannel | TEAM_MAX_NOTIFICATIONS_PER_CHANNEL | 1000 |
@@ -149,14 +133,12 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | DriverName | SQL_DRIVER_NAME | "mysql" |
-| DataSource | SQL_DATA_SOURCE | "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s" |
+| DataSource | SQL_DATA_SOURCE | "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8" |
 | DataSourceReplicas | SQL_DATA_SOURCE_REPLICAS | [] |
-| DataSourceSearchReplicas | SQL_DATA_SOURCE_SEARCH_REPLICAS | [] |
 | MaxIdleConns | SQL_MAX_IDLE_CONNS | 20 |
 | MaxOpenConns | SQL_MAX_OPEN_CONNS | 300 |
 | Trace | SQL_TRACE | false |
 | AtRestEncryptKey | SQL_AT_REST_ENCRYPT_KEY | "" |
-| QueryTimeout | SQL_QUERY_TIMEOUT | 30 |
 
 ### LogSettings
 
@@ -185,7 +167,6 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| EnableFileAttachments | FILE_ENABLE_FILE_ATTACHMENTS | true |
 | MaxFileSize | FILE_MAX_FILE_SIZE | 52428800 |
 | DriverName | FILE_DRIVER_NAME | "local" |
 | Directory | FILE_DIRECTORY | "./data/" |
@@ -204,7 +185,6 @@ See.
 | AmazonS3Region | FILE_AMAZON_S3_REGION | "us-east-1" |
 | AmazonS3Endpoint | FILE_AMAZON_S3_ENDPOINT | "s3.amazonaws.com" |
 | AmazonS3SSL | FILE_AMAZON_S3_SSL | true |
-| AmazonS3SignV2 | FILE_AMAZON_S3_SIGN_V2 | false |
 
 ### EmailSettings
 
@@ -224,13 +204,13 @@ See.
 | SMTPPort | EMAIL_SMTP_PORT | "2500" |
 | ConnectionSecurity | EMAIL_CONNECTION_SECURITY | "" |
 | InviteSalt | EMAIL_INVITE_SALT | "" |
+| PasswordResetSalt | EMAIL_PASSWORD_RESET_SALT | "" |
 | SendPushNotifications | EMAIL_SEND_PUSH_NOTIFICATIONS | false |
 | PushNotificationServer | EMAIL_PUSH_NOTIFICATION_SERVER | "" |
 | PushNotificationContents | EMAIL_PUSH_NOTIFICATION_CONTENTS | "generic" |
 | EnableEmailBatching | EMAIL_ENABLE_EMAIL_BATCHING | false |
 | EmailBatchingBufferSize | EMAIL_EMAIL_BATCHING_BUFFER_SIZE | 256 |
 | EmailBatchingInterval | EMAIL_EMAIL_BATCHING_INTERVAL | 30 |
-| SkipServerCertificateVerification | EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION | false |
 
 ### RateLimitSettings
 
@@ -260,16 +240,6 @@ See.
 | HelpLink | SUPPORT_HELP_LINK | "https://about.mattermost.com/default-help/" |
 | ReportAProblemLink | SUPPORT_REPORT_APROBLEM_LINK | "https://about.mattermost.com/default-report-a-problem/" |
 | SupportEmail | SUPPORT_SUPPORT_EMAIL | "feedback@mattermost.com" |
-
-### AnnouncementSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| EnableBanner | ANNOUNCEMENT_ENABLE_BANNER | false |
-| BannerText | ANNOUNCEMENT_BANNER_TEXT | "" |
-| BannerColor | ANNOUNCEMENT_BANNER_COLOR | "#f2a93b" |
-| BannerTextColor | ANNOUNCEMENT_BANNER_TEXT_COLOR | "#333333" |
-| AllowBannerDismissal | ANNOUNCEMENT_ALLOW_BANNER_DISMISSAL | true |
 
 ### GitLabSettings
 
@@ -353,8 +323,8 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | SAML_ENABLE | false |
-| Verify | SAML_VERIFY | true |
-| Encrypt | SAML_ENCRYPT | true |
+| Verify | SAML_VERIFY | false |
+| Encrypt | SAML_ENCRYPT | false |
 | IdpUrl | SAML_IDP_URL | "" |
 | IdpDescriptorUrl | SAML_IDP_DESCRIPTOR_URL | "" |
 | AssertionConsumerServiceURL | SAML_ASSERTION_CONSUMER_SERVICE_URL | "" |
@@ -412,9 +382,3 @@ See.
 | TurnURI | WEBRTC_TURN_URI | "" |
 | TurnUsername | WEBRTC_TURN_USERNAME | "" |
 | TurnSharedKey | WEBRTC_TURN_SHARED_KEY | "" |
-
-### DataRetentionSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| Enable | DATARETENTION_ENABLE | false |
