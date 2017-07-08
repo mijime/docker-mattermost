@@ -1,7 +1,6 @@
 {
     "ServiceSettings": {
         "SiteURL": "{{var "SERVICE_SITE_URL" | default "http://localhost:80"}}",
-        "LicenseFileLocation": "{{var "SERVICE_LICENSE_FILE_LOCATION" | default ""}}",
         "ListenAddress": "{{var "SERVICE_LISTEN_ADDRESS" | default ":80"}}",
         "ConnectionSecurity": "{{var "SERVICE_CONNECTION_SECURITY" | default ""}}",
         "TLSCertFile": "{{var "SERVICE_TLSCERT_FILE" | default ""}}",
@@ -12,7 +11,6 @@
         "ReadTimeout": {{var "SERVICE_READ_TIMEOUT" | default "300"}},
         "WriteTimeout": {{var "SERVICE_WRITE_TIMEOUT" | default "300"}},
         "MaximumLoginAttempts": {{var "SERVICE_MAXIMUM_LOGIN_ATTEMPTS" | default "10"}},
-        "GoroutineHealthThreshold": {{var "SERVICE_GOROUTINE_HEALTH_THRESHOLD" | default "-1"}},
         "GoogleDeveloperKey": "{{var "SERVICE_GOOGLE_DEVELOPER_KEY" | default ""}}",
         "EnableOAuthServiceProvider": {{var "SERVICE_ENABLE_OAUTH_SERVICE_PROVIDER" | default "false"}},
         "EnableIncomingWebhooks": {{var "SERVICE_ENABLE_INCOMING_WEBHOOKS" | default "true"}},
@@ -42,18 +40,8 @@
         "AllowEditPost": "{{var "SERVICE_ALLOW_EDIT_POST" | default "always"}}",
         "PostEditTimeLimit": {{var "SERVICE_POST_EDIT_TIME_LIMIT" | default "300"}},
         "TimeBetweenUserTypingUpdatesMilliseconds": {{var "SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS" | default "5000"}},
-        "EnablePostSearch": {{var "SERVICE_ENABLE_POST_SEARCH" | default "true"}},
         "EnableUserTypingMessages": {{var "SERVICE_ENABLE_USER_TYPING_MESSAGES" | default "true"}},
-        "EnableUserStatuses": {{var "SERVICE_ENABLE_USER_STATUSES" | default "true"}},
         "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}}
-    },
-    "ElasticSearchSettings": {
-        "ConnectionUrl": "{{var "ELASTICSEARCH_CONNECTION_URL" | default "http://dockerhost:9200"}}",
-        "Username": "{{var "ELASTICSEARCH_USERNAME" | default "elastic"}}",
-        "Password": "{{var "ELASTICSEARCH_PASSWORD" | default "changeme"}}",
-        "EnableIndexing": {{var "ELASTICSEARCH_ENABLE_INDEXING" | default "false"}},
-        "EnableSearching": {{var "ELASTICSEARCH_ENABLE_SEARCHING" | default "false"}},
-        "Sniff": {{var "ELASTICSEARCH_SNIFF" | default "true"}}
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
@@ -67,27 +55,24 @@
         "CustomDescriptionText": "{{var "TEAM_CUSTOM_DESCRIPTION_TEXT" | default ""}}",
         "RestrictDirectMessage": "{{var "TEAM_RESTRICT_DIRECT_MESSAGE" | default "any"}}",
         "RestrictTeamInvite": "{{var "TEAM_RESTRICT_TEAM_INVITE" | default "all"}}",
-        "RestrictPublicChannelManagement": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT" | default "all"}}",
-        "RestrictPrivateChannelManagement": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT" | default "all"}}",
         "RestrictPublicChannelCreation": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_CREATION" | default "all"}}",
         "RestrictPrivateChannelCreation": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_CREATION" | default "all"}}",
+        "RestrictPublicChannelManagement": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_MANAGEMENT" | default "all"}}",
+        "RestrictPrivateChannelManagement": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGEMENT" | default "all"}}",
         "RestrictPublicChannelDeletion": "{{var "TEAM_RESTRICT_PUBLIC_CHANNEL_DELETION" | default "all"}}",
         "RestrictPrivateChannelDeletion": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_DELETION" | default "all"}}",
-        "RestrictPrivateChannelManageMembers": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGE_MEMBERS" | default "all"}}",
         "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}},
         "MaxChannelsPerTeam": {{var "TEAM_MAX_CHANNELS_PER_TEAM" | default "2000"}},
         "MaxNotificationsPerChannel": {{var "TEAM_MAX_NOTIFICATIONS_PER_CHANNEL" | default "1000"}}
     },
     "SqlSettings": {
         "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
-        "DataSource": "{{var "SQL_DATA_SOURCE" | default "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s"}}",
+        "DataSource": "{{var "SQL_DATA_SOURCE" | default "mmuser:mostest@tcp(dockerhost:3306)/mattermost_test?charset=utf8mb4,utf8"}}",
         "DataSourceReplicas": {{var "SQL_DATA_SOURCE_REPLICAS" | default "[]"}},
-        "DataSourceSearchReplicas": {{var "SQL_DATA_SOURCE_SEARCH_REPLICAS" | default "[]"}},
         "MaxIdleConns": {{var "SQL_MAX_IDLE_CONNS" | default "20"}},
         "MaxOpenConns": {{var "SQL_MAX_OPEN_CONNS" | default "300"}},
         "Trace": {{var "SQL_TRACE" | default "false"}},
-        "AtRestEncryptKey": "{{var "SQL_AT_REST_ENCRYPT_KEY" | default ""}}",
-        "QueryTimeout": {{var "SQL_QUERY_TIMEOUT" | default "30"}}
+        "AtRestEncryptKey": "{{var "SQL_AT_REST_ENCRYPT_KEY" | default ""}}"
     },
     "LogSettings": {
         "EnableConsole": {{var "LOG_ENABLE_CONSOLE" | default "true"}},
@@ -107,7 +92,6 @@
         "Symbol": {{var "PASSWORD_SYMBOL" | default "false"}}
     },
     "FileSettings": {
-        "EnableFileAttachments": {{var "FILE_ENABLE_FILE_ATTACHMENTS" | default "true"}},
         "MaxFileSize": {{var "FILE_MAX_FILE_SIZE" | default "52428800"}},
         "DriverName": "{{var "FILE_DRIVER_NAME" | default "local"}}",
         "Directory": "{{var "FILE_DIRECTORY" | default "./data/"}}",
@@ -125,8 +109,7 @@
         "AmazonS3Bucket": "{{var "FILE_AMAZON_S3_BUCKET" | default ""}}",
         "AmazonS3Region": "{{var "FILE_AMAZON_S3_REGION" | default "us-east-1"}}",
         "AmazonS3Endpoint": "{{var "FILE_AMAZON_S3_ENDPOINT" | default "s3.amazonaws.com"}}",
-        "AmazonS3SSL": {{var "FILE_AMAZON_S3_SSL" | default "true"}},
-        "AmazonS3SignV2": {{var "FILE_AMAZON_S3_SIGN_V2" | default "false"}}
+        "AmazonS3SSL": {{var "FILE_AMAZON_S3_SSL" | default "true"}}
     },
     "EmailSettings": {
         "EnableSignUpWithEmail": {{var "EMAIL_ENABLE_SIGN_UP_WITH_EMAIL" | default "true"}},
@@ -143,13 +126,13 @@
         "SMTPPort": "{{var "EMAIL_SMTP_PORT" | default "2500"}}",
         "ConnectionSecurity": "{{var "EMAIL_CONNECTION_SECURITY" | default ""}}",
         "InviteSalt": "{{var "EMAIL_INVITE_SALT" | default ""}}",
+        "PasswordResetSalt": "{{var "EMAIL_PASSWORD_RESET_SALT" | default ""}}",
         "SendPushNotifications": {{var "EMAIL_SEND_PUSH_NOTIFICATIONS" | default "false"}},
         "PushNotificationServer": "{{var "EMAIL_PUSH_NOTIFICATION_SERVER" | default ""}}",
         "PushNotificationContents": "{{var "EMAIL_PUSH_NOTIFICATION_CONTENTS" | default "generic"}}",
         "EnableEmailBatching": {{var "EMAIL_ENABLE_EMAIL_BATCHING" | default "false"}},
         "EmailBatchingBufferSize": {{var "EMAIL_EMAIL_BATCHING_BUFFER_SIZE" | default "256"}},
-        "EmailBatchingInterval": {{var "EMAIL_EMAIL_BATCHING_INTERVAL" | default "30"}},
-        "SkipServerCertificateVerification": {{var "EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION" | default "false"}}
+        "EmailBatchingInterval": {{var "EMAIL_EMAIL_BATCHING_INTERVAL" | default "30"}}
     },
     "RateLimitSettings": {
         "Enable": {{var "RATELIMIT_ENABLE" | default "false"}},
@@ -170,13 +153,6 @@
         "HelpLink": "{{var "SUPPORT_HELP_LINK" | default "https://about.mattermost.com/default-help/"}}",
         "ReportAProblemLink": "{{var "SUPPORT_REPORT_APROBLEM_LINK" | default "https://about.mattermost.com/default-report-a-problem/"}}",
         "SupportEmail": "{{var "SUPPORT_SUPPORT_EMAIL" | default "feedback@mattermost.com"}}"
-    },
-    "AnnouncementSettings": {
-        "EnableBanner": {{var "ANNOUNCEMENT_ENABLE_BANNER" | default "false"}},
-        "BannerText": "{{var "ANNOUNCEMENT_BANNER_TEXT" | default ""}}",
-        "BannerColor": "{{var "ANNOUNCEMENT_BANNER_COLOR" | default "#f2a93b"}}",
-        "BannerTextColor": "{{var "ANNOUNCEMENT_BANNER_TEXT_COLOR" | default "#333333"}}",
-        "AllowBannerDismissal": {{var "ANNOUNCEMENT_ALLOW_BANNER_DISMISSAL" | default "true"}}
     },
     "GitLabSettings": {
         "Enable": {{var "GITLAB_ENABLE" | default "false"}},
@@ -239,8 +215,8 @@
     },
     "SamlSettings": {
         "Enable": {{var "SAML_ENABLE" | default "false"}},
-        "Verify": {{var "SAML_VERIFY" | default "true"}},
-        "Encrypt": {{var "SAML_ENCRYPT" | default "true"}},
+        "Verify": {{var "SAML_VERIFY" | default "false"}},
+        "Encrypt": {{var "SAML_ENCRYPT" | default "false"}},
         "IdpUrl": "{{var "SAML_IDP_URL" | default ""}}",
         "IdpDescriptorUrl": "{{var "SAML_IDP_DESCRIPTOR_URL" | default ""}}",
         "AssertionConsumerServiceURL": "{{var "SAML_ASSERTION_CONSUMER_SERVICE_URL" | default ""}}",
@@ -283,8 +259,5 @@
         "TurnURI": "{{var "WEBRTC_TURN_URI" | default ""}}",
         "TurnUsername": "{{var "WEBRTC_TURN_USERNAME" | default ""}}",
         "TurnSharedKey": "{{var "WEBRTC_TURN_SHARED_KEY" | default ""}}"
-    },
-    "DataRetentionSettings": {
-        "Enable": {{var "DATARETENTION_ENABLE" | default "false"}}
     }
 }
