@@ -80,6 +80,7 @@ See.
 | EnableOnlyAdminIntegrations | SERVICE_ENABLE_ONLY_ADMIN_INTEGRATIONS | true |
 | EnablePostUsernameOverride | SERVICE_ENABLE_POST_USERNAME_OVERRIDE | false |
 | EnablePostIconOverride | SERVICE_ENABLE_POST_ICON_OVERRIDE | false |
+| EnableAPIv3 | SERVICE_ENABLE_APIV3 | true |
 | EnableLinkPreviews | SERVICE_ENABLE_LINK_PREVIEWS | false |
 | EnableTesting | SERVICE_ENABLE_TESTING | false |
 | EnableDeveloper | SERVICE_ENABLE_DEVELOPER | false |
@@ -96,6 +97,7 @@ See.
 | WebsocketPort | SERVICE_WEBSOCKET_PORT | 80 |
 | WebserverMode | SERVICE_WEBSERVER_MODE | "gzip" |
 | EnableCustomEmoji | SERVICE_ENABLE_CUSTOM_EMOJI | false |
+| EnableEmojiPicker | SERVICE_ENABLE_EMOJI_PICKER | true |
 | RestrictCustomEmojiCreation | SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION | "all" |
 | RestrictPostDelete | SERVICE_RESTRICT_POST_DELETE | "all" |
 | AllowEditPost | SERVICE_ALLOW_EDIT_POST | "always" |
@@ -104,6 +106,7 @@ See.
 | EnablePostSearch | SERVICE_ENABLE_POST_SEARCH | true |
 | EnableUserTypingMessages | SERVICE_ENABLE_USER_TYPING_MESSAGES | true |
 | EnableUserStatuses | SERVICE_ENABLE_USER_STATUSES | true |
+| EnableChannelViewedMessages | SERVICE_ENABLE_CHANNEL_VIEWED_MESSAGES | true |
 | ClusterLogTimeoutMilliseconds | SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS | 2000 |
 
 ### TeamSettings
@@ -131,6 +134,7 @@ See.
 | UserStatusAwayTimeout | TEAM_USER_STATUS_AWAY_TIMEOUT | 300 |
 | MaxChannelsPerTeam | TEAM_MAX_CHANNELS_PER_TEAM | 2000 |
 | MaxNotificationsPerChannel | TEAM_MAX_NOTIFICATIONS_PER_CHANNEL | 1000 |
+| TeammateNameDisplay | TEAM_TEAMMATE_NAME_DISPLAY | "username" |
 
 ### SqlSettings
 
@@ -178,12 +182,6 @@ See.
 | Directory | FILE_DIRECTORY | "./data/" |
 | EnablePublicLink | FILE_ENABLE_PUBLIC_LINK | false |
 | PublicLinkSalt | FILE_PUBLIC_LINK_SALT | "" |
-| ThumbnailWidth | FILE_THUMBNAIL_WIDTH | 120 |
-| ThumbnailHeight | FILE_THUMBNAIL_HEIGHT | 100 |
-| PreviewWidth | FILE_PREVIEW_WIDTH | 1024 |
-| PreviewHeight | FILE_PREVIEW_HEIGHT | 0 |
-| ProfileWidth | FILE_PROFILE_WIDTH | 128 |
-| ProfileHeight | FILE_PROFILE_HEIGHT | 128 |
 | InitialFont | FILE_INITIAL_FONT | "luximbi.ttf" |
 | AmazonS3AccessKeyId | FILE_AMAZON_S3_ACCESS_KEY_ID | "" |
 | AmazonS3SecretAccessKey | FILE_AMAZON_S3_SECRET_ACCESS_KEY | "" |
@@ -359,8 +357,13 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | CLUSTER_ENABLE | false |
-| InterNodeListenAddress | CLUSTER_INTER_NODE_LISTEN_ADDRESS | ":8075" |
-| InterNodeUrls | CLUSTER_INTER_NODE_URLS | [] |
+| ClusterName | CLUSTER_CLUSTER_NAME | "" |
+| OverrideHostname | CLUSTER_OVERRIDE_HOSTNAME | "" |
+| UseIpAddress | CLUSTER_USE_IP_ADDRESS | true |
+| UseExperimentalGossip | CLUSTER_USE_EXPERIMENTAL_GOSSIP | false |
+| ReadOnlyConfig | CLUSTER_READ_ONLY_CONFIG | true |
+| GossipPort | CLUSTER_GOSSIP_PORT | 8074 |
+| StreamingPort | CLUSTER_STREAMING_PORT | 8075 |
 
 ### MetricsSettings
 
