@@ -20,7 +20,6 @@
         "EnableOnlyAdminIntegrations": {{var "SERVICE_ENABLE_ONLY_ADMIN_INTEGRATIONS" | default "true"}},
         "EnablePostUsernameOverride": {{var "SERVICE_ENABLE_POST_USERNAME_OVERRIDE" | default "false"}},
         "EnablePostIconOverride": {{var "SERVICE_ENABLE_POST_ICON_OVERRIDE" | default "false"}},
-        "EnableAPIv3": {{var "SERVICE_ENABLE_APIV3" | default "true"}},
         "EnableLinkPreviews": {{var "SERVICE_ENABLE_LINK_PREVIEWS" | default "false"}},
         "EnableTesting": {{var "SERVICE_ENABLE_TESTING" | default "false"}},
         "EnableDeveloper": {{var "SERVICE_ENABLE_DEVELOPER" | default "false"}},
@@ -37,7 +36,6 @@
         "WebsocketPort": {{var "SERVICE_WEBSOCKET_PORT" | default "80"}},
         "WebserverMode": "{{var "SERVICE_WEBSERVER_MODE" | default "gzip"}}",
         "EnableCustomEmoji": {{var "SERVICE_ENABLE_CUSTOM_EMOJI" | default "false"}},
-        "EnableEmojiPicker": {{var "SERVICE_ENABLE_EMOJI_PICKER" | default "true"}},
         "RestrictCustomEmojiCreation": "{{var "SERVICE_RESTRICT_CUSTOM_EMOJI_CREATION" | default "all"}}",
         "RestrictPostDelete": "{{var "SERVICE_RESTRICT_POST_DELETE" | default "all"}}",
         "AllowEditPost": "{{var "SERVICE_ALLOW_EDIT_POST" | default "always"}}",
@@ -46,7 +44,6 @@
         "EnablePostSearch": {{var "SERVICE_ENABLE_POST_SEARCH" | default "true"}},
         "EnableUserTypingMessages": {{var "SERVICE_ENABLE_USER_TYPING_MESSAGES" | default "true"}},
         "EnableUserStatuses": {{var "SERVICE_ENABLE_USER_STATUSES" | default "true"}},
-        "EnableChannelViewedMessages": {{var "SERVICE_ENABLE_CHANNEL_VIEWED_MESSAGES" | default "true"}},
         "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}}
     },
     "TeamSettings": {
@@ -70,8 +67,7 @@
         "RestrictPrivateChannelManageMembers": "{{var "TEAM_RESTRICT_PRIVATE_CHANNEL_MANAGE_MEMBERS" | default "all"}}",
         "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}},
         "MaxChannelsPerTeam": {{var "TEAM_MAX_CHANNELS_PER_TEAM" | default "2000"}},
-        "MaxNotificationsPerChannel": {{var "TEAM_MAX_NOTIFICATIONS_PER_CHANNEL" | default "1000"}},
-        "TeammateNameDisplay": "{{var "TEAM_TEAMMATE_NAME_DISPLAY" | default "username"}}"
+        "MaxNotificationsPerChannel": {{var "TEAM_MAX_NOTIFICATIONS_PER_CHANNEL" | default "1000"}}
     },
     "SqlSettings": {
         "DriverName": "{{var "SQL_DRIVER_NAME" | default "mysql"}}",
@@ -107,6 +103,12 @@
         "Directory": "{{var "FILE_DIRECTORY" | default "./data/"}}",
         "EnablePublicLink": {{var "FILE_ENABLE_PUBLIC_LINK" | default "false"}},
         "PublicLinkSalt": "{{var "FILE_PUBLIC_LINK_SALT" | default ""}}",
+        "ThumbnailWidth": {{var "FILE_THUMBNAIL_WIDTH" | default "120"}},
+        "ThumbnailHeight": {{var "FILE_THUMBNAIL_HEIGHT" | default "100"}},
+        "PreviewWidth": {{var "FILE_PREVIEW_WIDTH" | default "1024"}},
+        "PreviewHeight": {{var "FILE_PREVIEW_HEIGHT" | default "0"}},
+        "ProfileWidth": {{var "FILE_PROFILE_WIDTH" | default "128"}},
+        "ProfileHeight": {{var "FILE_PROFILE_HEIGHT" | default "128"}},
         "InitialFont": "{{var "FILE_INITIAL_FONT" | default "luximbi.ttf"}}",
         "AmazonS3AccessKeyId": "{{var "FILE_AMAZON_S3_ACCESS_KEY_ID" | default ""}}",
         "AmazonS3SecretAccessKey": "{{var "FILE_AMAZON_S3_SECRET_ACCESS_KEY" | default ""}}",
@@ -243,13 +245,8 @@
     },
     "ClusterSettings": {
         "Enable": {{var "CLUSTER_ENABLE" | default "false"}},
-        "ClusterName": "{{var "CLUSTER_CLUSTER_NAME" | default ""}}",
-        "OverrideHostname": "{{var "CLUSTER_OVERRIDE_HOSTNAME" | default ""}}",
-        "UseIpAddress": {{var "CLUSTER_USE_IP_ADDRESS" | default "true"}},
-        "UseExperimentalGossip": {{var "CLUSTER_USE_EXPERIMENTAL_GOSSIP" | default "false"}},
-        "ReadOnlyConfig": {{var "CLUSTER_READ_ONLY_CONFIG" | default "true"}},
-        "GossipPort": {{var "CLUSTER_GOSSIP_PORT" | default "8074"}},
-        "StreamingPort": {{var "CLUSTER_STREAMING_PORT" | default "8075"}}
+        "InterNodeListenAddress": "{{var "CLUSTER_INTER_NODE_LISTEN_ADDRESS" | default ":8075"}}",
+        "InterNodeUrls": {{var "CLUSTER_INTER_NODE_URLS" | default "[]"}}
     },
     "MetricsSettings": {
         "Enable": {{var "METRICS_ENABLE" | default "false"}},
