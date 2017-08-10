@@ -6,6 +6,7 @@ MATTERMOST_VER="$1"
 MATTERMOST_EDITION=(team enterprise)
 PREFIX_CMD=
 LATEST_FLG=
+IS_MERGE=
 
 while [[ $# -gt 0 ]]
 do
@@ -16,6 +17,10 @@ do
       ;;
     -L|--latest)
       LATEST_FLG=1
+      shift
+      ;;
+    --merge-master)
+      IS_MERGE=1
       shift
       ;;
     --edition)
@@ -55,7 +60,9 @@ do
 
   ${PREFIX_CMD} git branch "${MINOR_BRANCH}" master || true
   ${PREFIX_CMD} git checkout "${MINOR_BRANCH}"
-  ${PREFIX_CMD} git merge --ff --no-commit master
+  if [[ -n ${IS_MERGE} ]]
+  then ${PREFIX_CMD} git merge --ff --no-commit master
+  fi
   ${PREFIX_CMD} make -B MATTERMOST_VER=${MATTERMOST_VER} MATTERMOST_EDITION=${edition}
   ${PREFIX_CMD} git commit . --message ":tada: Update version ${MATTERMOST_VER} for ${edition}" || true
   ${PREFIX_CMD} git tag --force -a "${MATTERMOST_VER}${VER_SUFFIX}" --message ":tada: Update version"
