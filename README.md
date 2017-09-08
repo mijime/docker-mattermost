@@ -89,6 +89,7 @@ See.
 | EnableInsecureOutgoingConnections | SERVICE_ENABLE_INSECURE_OUTGOING_CONNECTIONS | false |
 | EnableMultifactorAuthentication | SERVICE_ENABLE_MULTIFACTOR_AUTHENTICATION | false |
 | EnforceMultifactorAuthentication | SERVICE_ENFORCE_MULTIFACTOR_AUTHENTICATION | false |
+| EnableUserAccessTokens | SERVICE_ENABLE_USER_ACCESS_TOKENS | false |
 | AllowCorsFrom | SERVICE_ALLOW_CORS_FROM | "" |
 | SessionLengthWebInDays | SERVICE_SESSION_LENGTH_WEB_IN_DAYS | 30 |
 | SessionLengthMobileInDays | SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS | 30 |
@@ -106,20 +107,9 @@ See.
 | TimeBetweenUserTypingUpdatesMilliseconds | SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS | 5000 |
 | EnablePostSearch | SERVICE_ENABLE_POST_SEARCH | true |
 | EnableUserTypingMessages | SERVICE_ENABLE_USER_TYPING_MESSAGES | true |
-| EnableUserStatuses | SERVICE_ENABLE_USER_STATUSES | true |
 | EnableChannelViewedMessages | SERVICE_ENABLE_CHANNEL_VIEWED_MESSAGES | true |
+| EnableUserStatuses | SERVICE_ENABLE_USER_STATUSES | true |
 | ClusterLogTimeoutMilliseconds | SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS | 2000 |
-
-### ElasticSearchSettings
-
-| configuration name | env | default |
-| :--- | :--- | :--- |
-| ConnectionUrl | ELASTICSEARCH_CONNECTION_URL | "http://dockerhost:9200" |
-| Username | ELASTICSEARCH_USERNAME | "elastic" |
-| Password | ELASTICSEARCH_PASSWORD | "changeme" |
-| EnableIndexing | ELASTICSEARCH_ENABLE_INDEXING | false |
-| EnableSearching | ELASTICSEARCH_ENABLE_SEARCHING | false |
-| Sniff | ELASTICSEARCH_SNIFF | true |
 
 ### TeamSettings
 
@@ -190,6 +180,8 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | EnableFileAttachments | FILE_ENABLE_FILE_ATTACHMENTS | true |
+| EnableMobileUpload | FILE_ENABLE_MOBILE_UPLOAD | true |
+| EnableMobileDownload | FILE_ENABLE_MOBILE_DOWNLOAD | true |
 | MaxFileSize | FILE_MAX_FILE_SIZE | 52428800 |
 | DriverName | FILE_DRIVER_NAME | "local" |
 | Directory | FILE_DIRECTORY | "./data/" |
@@ -216,6 +208,7 @@ See.
 | FeedbackName | EMAIL_FEEDBACK_NAME | "" |
 | FeedbackEmail | EMAIL_FEEDBACK_EMAIL | "test@example.com" |
 | FeedbackOrganization | EMAIL_FEEDBACK_ORGANIZATION | "" |
+| EnableSMTPAuth | EMAIL_ENABLE_SMTP_AUTH | false |
 | SMTPUsername | EMAIL_SMTP_USERNAME | "" |
 | SMTPPassword | EMAIL_SMTP_PASSWORD | "" |
 | SMTPServer | EMAIL_SMTP_SERVER | "dockerhost" |
@@ -229,6 +222,7 @@ See.
 | EmailBatchingBufferSize | EMAIL_EMAIL_BATCHING_BUFFER_SIZE | 256 |
 | EmailBatchingInterval | EMAIL_EMAIL_BATCHING_INTERVAL | 30 |
 | SkipServerCertificateVerification | EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION | false |
+| EmailNotificationContentsType | EMAIL_EMAIL_NOTIFICATION_CONTENTS_TYPE | "full" |
 
 ### RateLimitSettings
 
@@ -257,6 +251,9 @@ See.
 | AboutLink | SUPPORT_ABOUT_LINK | "https://about.mattermost.com/default-about/" |
 | HelpLink | SUPPORT_HELP_LINK | "https://about.mattermost.com/default-help/" |
 | ReportAProblemLink | SUPPORT_REPORT_APROBLEM_LINK | "https://about.mattermost.com/default-report-a-problem/" |
+| AdministratorsGuideLink | SUPPORT_ADMINISTRATORS_GUIDE_LINK | "https://about.mattermost.com/administrators-guide/" |
+| TroubleshootingForumLink | SUPPORT_TROUBLESHOOTING_FORUM_LINK | "https://about.mattermost.com/troubleshooting-forum/" |
+| CommercialSupportLink | SUPPORT_COMMERCIAL_SUPPORT_LINK | "https://about.mattermost.com/commercial-support/" |
 | SupportEmail | SUPPORT_SUPPORT_EMAIL | "feedback@mattermost.com" |
 
 ### AnnouncementSettings
@@ -416,8 +413,33 @@ See.
 | TurnUsername | WEBRTC_TURN_USERNAME | "" |
 | TurnSharedKey | WEBRTC_TURN_SHARED_KEY | "" |
 
+### ElasticsearchSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| ConnectionUrl | ELASTICSEARCH_CONNECTION_URL | "http://dockerhost:9200" |
+| Username | ELASTICSEARCH_USERNAME | "elastic" |
+| Password | ELASTICSEARCH_PASSWORD | "changeme" |
+| EnableIndexing | ELASTICSEARCH_ENABLE_INDEXING | false |
+| EnableSearching | ELASTICSEARCH_ENABLE_SEARCHING | false |
+| Sniff | ELASTICSEARCH_SNIFF | true |
+| PostIndexReplicas | ELASTICSEARCH_POST_INDEX_REPLICAS | 1 |
+| PostIndexShards | ELASTICSEARCH_POST_INDEX_SHARDS | 1 |
+
 ### DataRetentionSettings
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | DATARETENTION_ENABLE | false |
+
+### JobSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |
+| RunJobs | JOB_RUN_JOBS | true |
+| RunScheduler | JOB_RUN_SCHEDULER | true |
+
+### PluginSettings
+
+| configuration name | env | default |
+| :--- | :--- | :--- |

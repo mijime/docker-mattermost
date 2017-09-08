@@ -29,6 +29,7 @@
         "EnableInsecureOutgoingConnections": {{var "SERVICE_ENABLE_INSECURE_OUTGOING_CONNECTIONS" | default "false"}},
         "EnableMultifactorAuthentication": {{var "SERVICE_ENABLE_MULTIFACTOR_AUTHENTICATION" | default "false"}},
         "EnforceMultifactorAuthentication": {{var "SERVICE_ENFORCE_MULTIFACTOR_AUTHENTICATION" | default "false"}},
+        "EnableUserAccessTokens": {{var "SERVICE_ENABLE_USER_ACCESS_TOKENS" | default "false"}},
         "AllowCorsFrom": "{{var "SERVICE_ALLOW_CORS_FROM" | default ""}}",
         "SessionLengthWebInDays": {{var "SERVICE_SESSION_LENGTH_WEB_IN_DAYS" | default "30"}},
         "SessionLengthMobileInDays": {{var "SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS" | default "30"}},
@@ -46,17 +47,9 @@
         "TimeBetweenUserTypingUpdatesMilliseconds": {{var "SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS" | default "5000"}},
         "EnablePostSearch": {{var "SERVICE_ENABLE_POST_SEARCH" | default "true"}},
         "EnableUserTypingMessages": {{var "SERVICE_ENABLE_USER_TYPING_MESSAGES" | default "true"}},
-        "EnableUserStatuses": {{var "SERVICE_ENABLE_USER_STATUSES" | default "true"}},
         "EnableChannelViewedMessages": {{var "SERVICE_ENABLE_CHANNEL_VIEWED_MESSAGES" | default "true"}},
+        "EnableUserStatuses": {{var "SERVICE_ENABLE_USER_STATUSES" | default "true"}},
         "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}}
-    },
-    "ElasticSearchSettings": {
-        "ConnectionUrl": "{{var "ELASTICSEARCH_CONNECTION_URL" | default "http://dockerhost:9200"}}",
-        "Username": "{{var "ELASTICSEARCH_USERNAME" | default "elastic"}}",
-        "Password": "{{var "ELASTICSEARCH_PASSWORD" | default "changeme"}}",
-        "EnableIndexing": {{var "ELASTICSEARCH_ENABLE_INDEXING" | default "false"}},
-        "EnableSearching": {{var "ELASTICSEARCH_ENABLE_SEARCHING" | default "false"}},
-        "Sniff": {{var "ELASTICSEARCH_SNIFF" | default "true"}}
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
@@ -112,6 +105,8 @@
     },
     "FileSettings": {
         "EnableFileAttachments": {{var "FILE_ENABLE_FILE_ATTACHMENTS" | default "true"}},
+        "EnableMobileUpload": {{var "FILE_ENABLE_MOBILE_UPLOAD" | default "true"}},
+        "EnableMobileDownload": {{var "FILE_ENABLE_MOBILE_DOWNLOAD" | default "true"}},
         "MaxFileSize": {{var "FILE_MAX_FILE_SIZE" | default "52428800"}},
         "DriverName": "{{var "FILE_DRIVER_NAME" | default "local"}}",
         "Directory": "{{var "FILE_DIRECTORY" | default "./data/"}}",
@@ -135,6 +130,7 @@
         "FeedbackName": "{{var "EMAIL_FEEDBACK_NAME" | default ""}}",
         "FeedbackEmail": "{{var "EMAIL_FEEDBACK_EMAIL" | default "test@example.com"}}",
         "FeedbackOrganization": "{{var "EMAIL_FEEDBACK_ORGANIZATION" | default ""}}",
+        "EnableSMTPAuth": {{var "EMAIL_ENABLE_SMTP_AUTH" | default "false"}},
         "SMTPUsername": "{{var "EMAIL_SMTP_USERNAME" | default ""}}",
         "SMTPPassword": "{{var "EMAIL_SMTP_PASSWORD" | default ""}}",
         "SMTPServer": "{{var "EMAIL_SMTP_SERVER" | default "dockerhost"}}",
@@ -147,7 +143,8 @@
         "EnableEmailBatching": {{var "EMAIL_ENABLE_EMAIL_BATCHING" | default "false"}},
         "EmailBatchingBufferSize": {{var "EMAIL_EMAIL_BATCHING_BUFFER_SIZE" | default "256"}},
         "EmailBatchingInterval": {{var "EMAIL_EMAIL_BATCHING_INTERVAL" | default "30"}},
-        "SkipServerCertificateVerification": {{var "EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION" | default "false"}}
+        "SkipServerCertificateVerification": {{var "EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION" | default "false"}},
+        "EmailNotificationContentsType": "{{var "EMAIL_EMAIL_NOTIFICATION_CONTENTS_TYPE" | default "full"}}"
     },
     "RateLimitSettings": {
         "Enable": {{var "RATELIMIT_ENABLE" | default "false"}},
@@ -167,6 +164,9 @@
         "AboutLink": "{{var "SUPPORT_ABOUT_LINK" | default "https://about.mattermost.com/default-about/"}}",
         "HelpLink": "{{var "SUPPORT_HELP_LINK" | default "https://about.mattermost.com/default-help/"}}",
         "ReportAProblemLink": "{{var "SUPPORT_REPORT_APROBLEM_LINK" | default "https://about.mattermost.com/default-report-a-problem/"}}",
+        "AdministratorsGuideLink": "{{var "SUPPORT_ADMINISTRATORS_GUIDE_LINK" | default "https://about.mattermost.com/administrators-guide/"}}",
+        "TroubleshootingForumLink": "{{var "SUPPORT_TROUBLESHOOTING_FORUM_LINK" | default "https://about.mattermost.com/troubleshooting-forum/"}}",
+        "CommercialSupportLink": "{{var "SUPPORT_COMMERCIAL_SUPPORT_LINK" | default "https://about.mattermost.com/commercial-support/"}}",
         "SupportEmail": "{{var "SUPPORT_SUPPORT_EMAIL" | default "feedback@mattermost.com"}}"
     },
     "AnnouncementSettings": {
@@ -287,7 +287,24 @@
         "TurnUsername": "{{var "WEBRTC_TURN_USERNAME" | default ""}}",
         "TurnSharedKey": "{{var "WEBRTC_TURN_SHARED_KEY" | default ""}}"
     },
+    "ElasticsearchSettings": {
+        "ConnectionUrl": "{{var "ELASTICSEARCH_CONNECTION_URL" | default "http://dockerhost:9200"}}",
+        "Username": "{{var "ELASTICSEARCH_USERNAME" | default "elastic"}}",
+        "Password": "{{var "ELASTICSEARCH_PASSWORD" | default "changeme"}}",
+        "EnableIndexing": {{var "ELASTICSEARCH_ENABLE_INDEXING" | default "false"}},
+        "EnableSearching": {{var "ELASTICSEARCH_ENABLE_SEARCHING" | default "false"}},
+        "Sniff": {{var "ELASTICSEARCH_SNIFF" | default "true"}},
+        "PostIndexReplicas": {{var "ELASTICSEARCH_POST_INDEX_REPLICAS" | default "1"}},
+        "PostIndexShards": {{var "ELASTICSEARCH_POST_INDEX_SHARDS" | default "1"}}
+    },
     "DataRetentionSettings": {
         "Enable": {{var "DATARETENTION_ENABLE" | default "false"}}
+    },
+    "JobSettings": {
+        "RunJobs": {{var "JOB_RUN_JOBS" | default "true"}},
+        "RunScheduler": {{var "JOB_RUN_SCHEDULER" | default "true"}}
+    },
+    "PluginSettings": {
+        "Plugins": {}
     }
 }
