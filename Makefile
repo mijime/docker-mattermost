@@ -15,7 +15,7 @@ assets/runtime/config.json.tmpl: scripts/convert-json.awk assets/runtime/config.
 	awk -f $^ > $@
 
 assets/runtime/config.json.tmpl.tmp:
-	curl -L https://raw.githubusercontent.com/mattermost/platform/v$(MATTERMOST_VER)/config/defaults.json \
+	curl -L https://raw.githubusercontent.com/mattermost/platform/v$(MATTERMOST_VER)/config/default.json \
 		| sed -e 's/:8065/:80/g' -e 's/"DEBUG"/"INFO"/g' \
 		> $@
 
