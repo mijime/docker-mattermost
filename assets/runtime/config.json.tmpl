@@ -36,6 +36,7 @@
         "SessionLengthMobileInDays": {{var "SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS" | default "30"}},
         "SessionLengthSSOInDays": {{var "SERVICE_SESSION_LENGTH_SSOIN_DAYS" | default "30"}},
         "SessionCacheInMinutes": {{var "SERVICE_SESSION_CACHE_IN_MINUTES" | default "10"}},
+        "SessionIdleTimeout": {{var "SERVICE_SESSION_IDLE_TIMEOUT" | default "0"}},
         "WebsocketSecurePort": {{var "SERVICE_WEBSOCKET_SECURE_PORT" | default "443"}},
         "WebsocketPort": {{var "SERVICE_WEBSOCKET_PORT" | default "80"}},
         "WebserverMode": "{{var "SERVICE_WEBSERVER_MODE" | default "gzip"}}",
@@ -75,6 +76,7 @@
         "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}},
         "MaxChannelsPerTeam": {{var "TEAM_MAX_CHANNELS_PER_TEAM" | default "2000"}},
         "MaxNotificationsPerChannel": {{var "TEAM_MAX_NOTIFICATIONS_PER_CHANNEL" | default "1000"}},
+        "EnableConfirmNotificationsToChannel": {{var "TEAM_ENABLE_CONFIRM_NOTIFICATIONS_TO_CHANNEL" | default "true"}},
         "TeammateNameDisplay": "{{var "TEAM_TEAMMATE_NAME_DISPLAY" | default "username"}}",
         "ExperimentalTownSquareIsReadOnly": {{var "TEAM_EXPERIMENTAL_TOWN_SQUARE_IS_READ_ONLY" | default "false"}}
     },
@@ -313,10 +315,15 @@
         "PostIndexReplicas": {{var "ELASTICSEARCH_POST_INDEX_REPLICAS" | default "1"}},
         "PostIndexShards": {{var "ELASTICSEARCH_POST_INDEX_SHARDS" | default "1"}},
         "AggregatePostsAfterDays": {{var "ELASTICSEARCH_AGGREGATE_POSTS_AFTER_DAYS" | default "365"}},
-        "PostsAggregatorJobStartTime": "{{var "ELASTICSEARCH_POSTS_AGGREGATOR_JOB_START_TIME" | default "03:00"}}"
+        "PostsAggregatorJobStartTime": "{{var "ELASTICSEARCH_POSTS_AGGREGATOR_JOB_START_TIME" | default "03:00"}}",
+        "IndexPrefix": "{{var "ELASTICSEARCH_INDEX_PREFIX" | default ""}}"
     },
     "DataRetentionSettings": {
-        "Enable": {{var "DATARETENTION_ENABLE" | default "false"}}
+        "EnableMessageDeletion": {{var "DATARETENTION_ENABLE_MESSAGE_DELETION" | default "false"}},
+        "EnableFileDeletion": {{var "DATARETENTION_ENABLE_FILE_DELETION" | default "false"}},
+        "MessageRetentionDays": {{var "DATARETENTION_MESSAGE_RETENTION_DAYS" | default "365"}},
+        "FileRetentionDays": {{var "DATARETENTION_FILE_RETENTION_DAYS" | default "365"}},
+        "DeletionJobStartTime": "{{var "DATARETENTION_DELETION_JOB_START_TIME" | default "02:00"}}"
     },
     "JobSettings": {
         "RunJobs": {{var "JOB_RUN_JOBS" | default "true"}},
