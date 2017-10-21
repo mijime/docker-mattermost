@@ -96,7 +96,7 @@ See.
 | SessionLengthMobileInDays | SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS | 30 |
 | SessionLengthSSOInDays | SERVICE_SESSION_LENGTH_SSOIN_DAYS | 30 |
 | SessionCacheInMinutes | SERVICE_SESSION_CACHE_IN_MINUTES | 10 |
-| SessionIdleTimeout | SERVICE_SESSION_IDLE_TIMEOUT | 0 |
+| SessionIdleTimeoutInMinutes | SERVICE_SESSION_IDLE_TIMEOUT_IN_MINUTES | 0 |
 | WebsocketSecurePort | SERVICE_WEBSOCKET_SECURE_PORT | 443 |
 | WebsocketPort | SERVICE_WEBSOCKET_PORT | 80 |
 | WebserverMode | SERVICE_WEBSERVER_MODE | "gzip" |
