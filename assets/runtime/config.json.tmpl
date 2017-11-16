@@ -223,6 +223,7 @@
     },
     "LdapSettings": {
         "Enable": {{var "LDAP_ENABLE" | default "false"}},
+        "EnableSync": {{var "LDAP_ENABLE_SYNC" | default "false"}},
         "LdapServer": "{{var "LDAP_LDAP_SERVER" | default ""}}",
         "LdapPort": {{var "LDAP_LDAP_PORT" | default "389"}},
         "ConnectionSecurity": "{{var "LDAP_CONNECTION_SECURITY" | default ""}}",
@@ -255,6 +256,7 @@
     },
     "SamlSettings": {
         "Enable": {{var "SAML_ENABLE" | default "false"}},
+        "EnableSyncWithLdap": {{var "SAML_ENABLE_SYNC_WITH_LDAP" | default "false"}},
         "Verify": {{var "SAML_VERIFY" | default "true"}},
         "Encrypt": {{var "SAML_ENCRYPT" | default "true"}},
         "IdpUrl": "{{var "SAML_IDP_URL" | default ""}}",
@@ -316,7 +318,10 @@
         "PostIndexShards": {{var "ELASTICSEARCH_POST_INDEX_SHARDS" | default "1"}},
         "AggregatePostsAfterDays": {{var "ELASTICSEARCH_AGGREGATE_POSTS_AFTER_DAYS" | default "365"}},
         "PostsAggregatorJobStartTime": "{{var "ELASTICSEARCH_POSTS_AGGREGATOR_JOB_START_TIME" | default "03:00"}}",
-        "IndexPrefix": "{{var "ELASTICSEARCH_INDEX_PREFIX" | default ""}}"
+        "IndexPrefix": "{{var "ELASTICSEARCH_INDEX_PREFIX" | default ""}}",
+        "LiveIndexingBatchSize": {{var "ELASTICSEARCH_LIVE_INDEXING_BATCH_SIZE" | default "1"}},
+        "BulkIndexingTimeWindowSeconds": {{var "ELASTICSEARCH_BULK_INDEXING_TIME_WINDOW_SECONDS" | default "3600"}},
+        "RequestTimeoutSeconds": {{var "ELASTICSEARCH_REQUEST_TIMEOUT_SECONDS" | default "30"}}
     },
     "DataRetentionSettings": {
         "EnableMessageDeletion": {{var "DATARETENTION_ENABLE_MESSAGE_DELETION" | default "false"}},
@@ -330,7 +335,10 @@
         "RunScheduler": {{var "JOB_RUN_SCHEDULER" | default "true"}}
     },
     "PluginSettings": {
-        "Enable": {{var "PLUGIN_ENABLE" | default "false"}},
-        "Plugins": {}
+        "Enable": {{var "PLUGIN_ENABLE" | default "true"}},
+        "EnableUploads": {{var "PLUGIN_ENABLE_UPLOADS" | default "false"}},
+        "Directory": "{{var "PLUGIN_DIRECTORY" | default "./plugins"}}",
+        "Plugins": {},
+        "PluginStates": {}
     }
 }
