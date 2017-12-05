@@ -326,7 +326,6 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | LDAP_ENABLE | false |
-| EnableSync | LDAP_ENABLE_SYNC | false |
 | LdapServer | LDAP_LDAP_SERVER | "" |
 | LdapPort | LDAP_LDAP_PORT | 389 |
 | ConnectionSecurity | LDAP_CONNECTION_SECURITY | "" |
@@ -368,7 +367,6 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | SAML_ENABLE | false |
-| EnableSyncWithLdap | SAML_ENABLE_SYNC_WITH_LDAP | false |
 | Verify | SAML_VERIFY | true |
 | Encrypt | SAML_ENCRYPT | true |
 | IdpUrl | SAML_IDP_URL | "" |
@@ -449,9 +447,6 @@ See.
 | AggregatePostsAfterDays | ELASTICSEARCH_AGGREGATE_POSTS_AFTER_DAYS | 365 |
 | PostsAggregatorJobStartTime | ELASTICSEARCH_POSTS_AGGREGATOR_JOB_START_TIME | "03:00" |
 | IndexPrefix | ELASTICSEARCH_INDEX_PREFIX | "" |
-| LiveIndexingBatchSize | ELASTICSEARCH_LIVE_INDEXING_BATCH_SIZE | 1 |
-| BulkIndexingTimeWindowSeconds | ELASTICSEARCH_BULK_INDEXING_TIME_WINDOW_SECONDS | 3600 |
-| RequestTimeoutSeconds | ELASTICSEARCH_REQUEST_TIMEOUT_SECONDS | 30 |
 
 ### DataRetentionSettings
 
@@ -474,6 +469,4 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| Enable | PLUGIN_ENABLE | true |
-| EnableUploads | PLUGIN_ENABLE_UPLOADS | false |
-| Directory | PLUGIN_DIRECTORY | "./plugins" |
+| Enable | PLUGIN_ENABLE | false |
