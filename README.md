@@ -477,3 +477,4 @@ See.
 | Enable | PLUGIN_ENABLE | true |
 | EnableUploads | PLUGIN_ENABLE_UPLOADS | false |
 | Directory | PLUGIN_DIRECTORY | "./plugins" |
+| ClientDirectory | PLUGIN_CLIENT_DIRECTORY | "./client/plugins" |
