@@ -36,7 +36,6 @@
         "SessionLengthMobileInDays": {{var "SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS" | default "30"}},
         "SessionLengthSSOInDays": {{var "SERVICE_SESSION_LENGTH_SSOIN_DAYS" | default "30"}},
         "SessionCacheInMinutes": {{var "SERVICE_SESSION_CACHE_IN_MINUTES" | default "10"}},
-        "SessionIdleTimeoutInMinutes": {{var "SERVICE_SESSION_IDLE_TIMEOUT_IN_MINUTES" | default "0"}},
         "WebsocketSecurePort": {{var "SERVICE_WEBSOCKET_SECURE_PORT" | default "443"}},
         "WebsocketPort": {{var "SERVICE_WEBSOCKET_PORT" | default "80"}},
         "WebserverMode": "{{var "SERVICE_WEBSERVER_MODE" | default "gzip"}}",
@@ -76,7 +75,6 @@
         "UserStatusAwayTimeout": {{var "TEAM_USER_STATUS_AWAY_TIMEOUT" | default "300"}},
         "MaxChannelsPerTeam": {{var "TEAM_MAX_CHANNELS_PER_TEAM" | default "2000"}},
         "MaxNotificationsPerChannel": {{var "TEAM_MAX_NOTIFICATIONS_PER_CHANNEL" | default "1000"}},
-        "EnableConfirmNotificationsToChannel": {{var "TEAM_ENABLE_CONFIRM_NOTIFICATIONS_TO_CHANNEL" | default "true"}},
         "TeammateNameDisplay": "{{var "TEAM_TEAMMATE_NAME_DISPLAY" | default "username"}}",
         "ExperimentalTownSquareIsReadOnly": {{var "TEAM_EXPERIMENTAL_TOWN_SQUARE_IS_READ_ONLY" | default "false"}}
     },
@@ -223,7 +221,6 @@
     },
     "LdapSettings": {
         "Enable": {{var "LDAP_ENABLE" | default "false"}},
-        "EnableSync": {{var "LDAP_ENABLE_SYNC" | default "false"}},
         "LdapServer": "{{var "LDAP_LDAP_SERVER" | default ""}}",
         "LdapPort": {{var "LDAP_LDAP_PORT" | default "389"}},
         "ConnectionSecurity": "{{var "LDAP_CONNECTION_SECURITY" | default ""}}",
@@ -256,7 +253,6 @@
     },
     "SamlSettings": {
         "Enable": {{var "SAML_ENABLE" | default "false"}},
-        "EnableSyncWithLdap": {{var "SAML_ENABLE_SYNC_WITH_LDAP" | default "false"}},
         "Verify": {{var "SAML_VERIFY" | default "true"}},
         "Encrypt": {{var "SAML_ENCRYPT" | default "true"}},
         "IdpUrl": "{{var "SAML_IDP_URL" | default ""}}",
@@ -317,29 +313,17 @@
         "PostIndexReplicas": {{var "ELASTICSEARCH_POST_INDEX_REPLICAS" | default "1"}},
         "PostIndexShards": {{var "ELASTICSEARCH_POST_INDEX_SHARDS" | default "1"}},
         "AggregatePostsAfterDays": {{var "ELASTICSEARCH_AGGREGATE_POSTS_AFTER_DAYS" | default "365"}},
-        "PostsAggregatorJobStartTime": "{{var "ELASTICSEARCH_POSTS_AGGREGATOR_JOB_START_TIME" | default "03:00"}}",
-        "IndexPrefix": "{{var "ELASTICSEARCH_INDEX_PREFIX" | default ""}}",
-        "LiveIndexingBatchSize": {{var "ELASTICSEARCH_LIVE_INDEXING_BATCH_SIZE" | default "1"}},
-        "BulkIndexingTimeWindowSeconds": {{var "ELASTICSEARCH_BULK_INDEXING_TIME_WINDOW_SECONDS" | default "3600"}},
-        "RequestTimeoutSeconds": {{var "ELASTICSEARCH_REQUEST_TIMEOUT_SECONDS" | default "30"}}
+        "PostsAggregatorJobStartTime": "{{var "ELASTICSEARCH_POSTS_AGGREGATOR_JOB_START_TIME" | default "03:00"}}"
     },
     "DataRetentionSettings": {
-        "EnableMessageDeletion": {{var "DATARETENTION_ENABLE_MESSAGE_DELETION" | default "false"}},
-        "EnableFileDeletion": {{var "DATARETENTION_ENABLE_FILE_DELETION" | default "false"}},
-        "MessageRetentionDays": {{var "DATARETENTION_MESSAGE_RETENTION_DAYS" | default "365"}},
-        "FileRetentionDays": {{var "DATARETENTION_FILE_RETENTION_DAYS" | default "365"}},
-        "DeletionJobStartTime": "{{var "DATARETENTION_DELETION_JOB_START_TIME" | default "02:00"}}"
+        "Enable": {{var "DATARETENTION_ENABLE" | default "false"}}
     },
     "JobSettings": {
         "RunJobs": {{var "JOB_RUN_JOBS" | default "true"}},
         "RunScheduler": {{var "JOB_RUN_SCHEDULER" | default "true"}}
     },
     "PluginSettings": {
-        "Enable": {{var "PLUGIN_ENABLE" | default "true"}},
-        "EnableUploads": {{var "PLUGIN_ENABLE_UPLOADS" | default "false"}},
-        "Directory": "{{var "PLUGIN_DIRECTORY" | default "./plugins"}}",
-        "ClientDirectory": "{{var "PLUGIN_CLIENT_DIRECTORY" | default "./client/plugins"}}",
-        "Plugins": {},
-        "PluginStates": {}
+        "Enable": {{var "PLUGIN_ENABLE" | default "false"}},
+        "Plugins": {}
     }
 }

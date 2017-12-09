@@ -96,7 +96,6 @@ See.
 | SessionLengthMobileInDays | SERVICE_SESSION_LENGTH_MOBILE_IN_DAYS | 30 |
 | SessionLengthSSOInDays | SERVICE_SESSION_LENGTH_SSOIN_DAYS | 30 |
 | SessionCacheInMinutes | SERVICE_SESSION_CACHE_IN_MINUTES | 10 |
-| SessionIdleTimeoutInMinutes | SERVICE_SESSION_IDLE_TIMEOUT_IN_MINUTES | 0 |
 | WebsocketSecurePort | SERVICE_WEBSOCKET_SECURE_PORT | 443 |
 | WebsocketPort | SERVICE_WEBSOCKET_PORT | 80 |
 | WebserverMode | SERVICE_WEBSERVER_MODE | "gzip" |
@@ -139,7 +138,6 @@ See.
 | UserStatusAwayTimeout | TEAM_USER_STATUS_AWAY_TIMEOUT | 300 |
 | MaxChannelsPerTeam | TEAM_MAX_CHANNELS_PER_TEAM | 2000 |
 | MaxNotificationsPerChannel | TEAM_MAX_NOTIFICATIONS_PER_CHANNEL | 1000 |
-| EnableConfirmNotificationsToChannel | TEAM_ENABLE_CONFIRM_NOTIFICATIONS_TO_CHANNEL | true |
 | TeammateNameDisplay | TEAM_TEAMMATE_NAME_DISPLAY | "username" |
 | ExperimentalTownSquareIsReadOnly | TEAM_EXPERIMENTAL_TOWN_SQUARE_IS_READ_ONLY | false |
 | AndroidLatestVersion | TEAM_ANDROID_LATEST_VERSION | "" |
@@ -326,7 +324,6 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | LDAP_ENABLE | false |
-| EnableSync | LDAP_ENABLE_SYNC | false |
 | LdapServer | LDAP_LDAP_SERVER | "" |
 | LdapPort | LDAP_LDAP_PORT | 389 |
 | ConnectionSecurity | LDAP_CONNECTION_SECURITY | "" |
@@ -368,7 +365,6 @@ See.
 | configuration name | env | default |
 | :--- | :--- | :--- |
 | Enable | SAML_ENABLE | false |
-| EnableSyncWithLdap | SAML_ENABLE_SYNC_WITH_LDAP | false |
 | Verify | SAML_VERIFY | true |
 | Encrypt | SAML_ENCRYPT | true |
 | IdpUrl | SAML_IDP_URL | "" |
@@ -448,20 +444,12 @@ See.
 | PostIndexShards | ELASTICSEARCH_POST_INDEX_SHARDS | 1 |
 | AggregatePostsAfterDays | ELASTICSEARCH_AGGREGATE_POSTS_AFTER_DAYS | 365 |
 | PostsAggregatorJobStartTime | ELASTICSEARCH_POSTS_AGGREGATOR_JOB_START_TIME | "03:00" |
-| IndexPrefix | ELASTICSEARCH_INDEX_PREFIX | "" |
-| LiveIndexingBatchSize | ELASTICSEARCH_LIVE_INDEXING_BATCH_SIZE | 1 |
-| BulkIndexingTimeWindowSeconds | ELASTICSEARCH_BULK_INDEXING_TIME_WINDOW_SECONDS | 3600 |
-| RequestTimeoutSeconds | ELASTICSEARCH_REQUEST_TIMEOUT_SECONDS | 30 |
 
 ### DataRetentionSettings
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| EnableMessageDeletion | DATARETENTION_ENABLE_MESSAGE_DELETION | false |
-| EnableFileDeletion | DATARETENTION_ENABLE_FILE_DELETION | false |
-| MessageRetentionDays | DATARETENTION_MESSAGE_RETENTION_DAYS | 365 |
-| FileRetentionDays | DATARETENTION_FILE_RETENTION_DAYS | 365 |
-| DeletionJobStartTime | DATARETENTION_DELETION_JOB_START_TIME | "02:00" |
+| Enable | DATARETENTION_ENABLE | false |
 
 ### JobSettings
 
@@ -474,7 +462,4 @@ See.
 
 | configuration name | env | default |
 | :--- | :--- | :--- |
-| Enable | PLUGIN_ENABLE | true |
-| EnableUploads | PLUGIN_ENABLE_UPLOADS | false |
-| Directory | PLUGIN_DIRECTORY | "./plugins" |
-| ClientDirectory | PLUGIN_CLIENT_DIRECTORY | "./client/plugins" |
+| Enable | PLUGIN_ENABLE | false |
