@@ -46,12 +46,15 @@
         "RestrictPostDelete": "{{var "SERVICE_RESTRICT_POST_DELETE" | default "all"}}",
         "AllowEditPost": "{{var "SERVICE_ALLOW_EDIT_POST" | default "always"}}",
         "PostEditTimeLimit": {{var "SERVICE_POST_EDIT_TIME_LIMIT" | default "300"}},
+        "ExperimentalEnableAuthenticationTransfer": {{var "SERVICE_EXPERIMENTAL_ENABLE_AUTHENTICATION_TRANSFER" | default "true"}},
         "TimeBetweenUserTypingUpdatesMilliseconds": {{var "SERVICE_TIME_BETWEEN_USER_TYPING_UPDATES_MILLISECONDS" | default "5000"}},
         "EnablePostSearch": {{var "SERVICE_ENABLE_POST_SEARCH" | default "true"}},
         "EnableUserTypingMessages": {{var "SERVICE_ENABLE_USER_TYPING_MESSAGES" | default "true"}},
         "EnableChannelViewedMessages": {{var "SERVICE_ENABLE_CHANNEL_VIEWED_MESSAGES" | default "true"}},
         "EnableUserStatuses": {{var "SERVICE_ENABLE_USER_STATUSES" | default "true"}},
-        "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}}
+        "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}},
+        "EnablePreviewFeatures": {{var "SERVICE_ENABLE_PREVIEW_FEATURES" | default "true"}},
+        "CloseUnusedDirectMessages": {{var "SERVICE_CLOSE_UNUSED_DIRECT_MESSAGES" | default "false"}}
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
@@ -129,7 +132,7 @@
         "AmazonS3AccessKeyId": "{{var "FILE_AMAZON_S3_ACCESS_KEY_ID" | default ""}}",
         "AmazonS3SecretAccessKey": "{{var "FILE_AMAZON_S3_SECRET_ACCESS_KEY" | default ""}}",
         "AmazonS3Bucket": "{{var "FILE_AMAZON_S3_BUCKET" | default ""}}",
-        "AmazonS3Region": "{{var "FILE_AMAZON_S3_REGION" | default "us-east-1"}}",
+        "AmazonS3Region": "{{var "FILE_AMAZON_S3_REGION" | default ""}}",
         "AmazonS3Endpoint": "{{var "FILE_AMAZON_S3_ENDPOINT" | default "s3.amazonaws.com"}}",
         "AmazonS3SSL": {{var "FILE_AMAZON_S3_SSL" | default "true"}},
         "AmazonS3SignV2": {{var "FILE_AMAZON_S3_SIGN_V2" | default "false"}},
@@ -141,6 +144,7 @@
         "EnableSignInWithEmail": {{var "EMAIL_ENABLE_SIGN_IN_WITH_EMAIL" | default "true"}},
         "EnableSignInWithUsername": {{var "EMAIL_ENABLE_SIGN_IN_WITH_USERNAME" | default "true"}},
         "SendEmailNotifications": {{var "EMAIL_SEND_EMAIL_NOTIFICATIONS" | default "true"}},
+        "UseChannelInEmailNotifications": {{var "EMAIL_USE_CHANNEL_IN_EMAIL_NOTIFICATIONS" | default "false"}},
         "RequireEmailVerification": {{var "EMAIL_REQUIRE_EMAIL_VERIFICATION" | default "false"}},
         "FeedbackName": "{{var "EMAIL_FEEDBACK_NAME" | default ""}}",
         "FeedbackEmail": "{{var "EMAIL_FEEDBACK_EMAIL" | default "test@example.com"}}",
@@ -329,6 +333,13 @@
         "MessageRetentionDays": {{var "DATARETENTION_MESSAGE_RETENTION_DAYS" | default "365"}},
         "FileRetentionDays": {{var "DATARETENTION_FILE_RETENTION_DAYS" | default "365"}},
         "DeletionJobStartTime": "{{var "DATARETENTION_DELETION_JOB_START_TIME" | default "02:00"}}"
+    },
+    "MessageExportSettings": {
+        "EnableExport": {{var "MESSAGEEXPORT_ENABLE_EXPORT" | default "false"}},
+        "DailyRunTime": "{{var "MESSAGEEXPORT_DAILY_RUN_TIME" | default "01:00"}}",
+        "ExportFromTimestamp": {{var "MESSAGEEXPORT_EXPORT_FROM_TIMESTAMP" | default "0"}},
+        "FileLocation": "{{var "MESSAGEEXPORT_FILE_LOCATION" | default "export"}}",
+        "BatchSize": {{var "MESSAGEEXPORT_BATCH_SIZE" | default "10000"}}
     },
     "JobSettings": {
         "RunJobs": {{var "JOB_RUN_JOBS" | default "true"}},
