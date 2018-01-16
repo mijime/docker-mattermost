@@ -1,8 +1,8 @@
 FROM alpine:3.5
 
 ARG ENTRYKIT_VER=${ENTRYKIT_VER:-0.4.0}
-ARG MATTERMOST_VER=${MATTERMOST_VER:-4.5.0}
-ARG MATTERMOST_EDITION=${MATTERMOST_EDITION:-team}
+ARG MATTERMOST_VER=${MATTERMOST_VER:-4.6.0}
+ARG MATTERMOST_EDITION=${MATTERMOST_EDITION:-enterprise}
 
 RUN mkdir -p /lib64 && ln -sfb /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 RUN apk add --no-cache ca-certificates \

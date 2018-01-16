@@ -54,7 +54,8 @@
         "EnableUserStatuses": {{var "SERVICE_ENABLE_USER_STATUSES" | default "true"}},
         "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}},
         "EnablePreviewFeatures": {{var "SERVICE_ENABLE_PREVIEW_FEATURES" | default "true"}},
-        "CloseUnusedDirectMessages": {{var "SERVICE_CLOSE_UNUSED_DIRECT_MESSAGES" | default "false"}}
+        "CloseUnusedDirectMessages": {{var "SERVICE_CLOSE_UNUSED_DIRECT_MESSAGES" | default "false"}},
+        "EnableTutorial": {{var "SERVICE_ENABLE_TUTORIAL" | default "true"}}
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
@@ -81,7 +82,8 @@
         "MaxNotificationsPerChannel": {{var "TEAM_MAX_NOTIFICATIONS_PER_CHANNEL" | default "1000"}},
         "EnableConfirmNotificationsToChannel": {{var "TEAM_ENABLE_CONFIRM_NOTIFICATIONS_TO_CHANNEL" | default "true"}},
         "TeammateNameDisplay": "{{var "TEAM_TEAMMATE_NAME_DISPLAY" | default "username"}}",
-        "ExperimentalTownSquareIsReadOnly": {{var "TEAM_EXPERIMENTAL_TOWN_SQUARE_IS_READ_ONLY" | default "false"}}
+        "ExperimentalTownSquareIsReadOnly": {{var "TEAM_EXPERIMENTAL_TOWN_SQUARE_IS_READ_ONLY" | default "false"}},
+        "ExperimentalPrimaryTeam": "{{var "TEAM_EXPERIMENTAL_PRIMARY_TEAM" | default ""}}"
     },
     "ClientRequirements": {
         "AndroidLatestVersion": "{{var "TEAM_ANDROID_LATEST_VERSION" | default ""}}",
@@ -163,7 +165,10 @@
         "EmailBatchingBufferSize": {{var "EMAIL_EMAIL_BATCHING_BUFFER_SIZE" | default "256"}},
         "EmailBatchingInterval": {{var "EMAIL_EMAIL_BATCHING_INTERVAL" | default "30"}},
         "SkipServerCertificateVerification": {{var "EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION" | default "false"}},
-        "EmailNotificationContentsType": "{{var "EMAIL_EMAIL_NOTIFICATION_CONTENTS_TYPE" | default "full"}}"
+        "EmailNotificationContentsType": "{{var "EMAIL_EMAIL_NOTIFICATION_CONTENTS_TYPE" | default "full"}}",
+        "LoginButtonColor": "{{var "EMAIL_LOGIN_BUTTON_COLOR" | default ""}}",
+        "LoginButtonBorderColor": "{{var "EMAIL_LOGIN_BUTTON_BORDER_COLOR" | default ""}}",
+        "LoginButtonTextColor": "{{var "EMAIL_LOGIN_BUTTON_TEXT_COLOR" | default ""}}"
     },
     "RateLimitSettings": {
         "Enable": {{var "RATELIMIT_ENABLE" | default "false"}},
@@ -246,7 +251,10 @@
         "SkipCertificateVerification": {{var "LDAP_SKIP_CERTIFICATE_VERIFICATION" | default "false"}},
         "QueryTimeout": {{var "LDAP_QUERY_TIMEOUT" | default "60"}},
         "MaxPageSize": {{var "LDAP_MAX_PAGE_SIZE" | default "0"}},
-        "LoginFieldName": "{{var "LDAP_LOGIN_FIELD_NAME" | default ""}}"
+        "LoginFieldName": "{{var "LDAP_LOGIN_FIELD_NAME" | default ""}}",
+        "LoginButtonColor": "{{var "LDAP_LOGIN_BUTTON_COLOR" | default ""}}",
+        "LoginButtonBorderColor": "{{var "LDAP_LOGIN_BUTTON_BORDER_COLOR" | default ""}}",
+        "LoginButtonTextColor": "{{var "LDAP_LOGIN_BUTTON_TEXT_COLOR" | default ""}}"
     },
     "ComplianceSettings": {
         "Enable": {{var "COMPLIANCE_ENABLE" | default "false"}},
@@ -276,7 +284,10 @@
         "NicknameAttribute": "{{var "SAML_NICKNAME_ATTRIBUTE" | default ""}}",
         "LocaleAttribute": "{{var "SAML_LOCALE_ATTRIBUTE" | default ""}}",
         "PositionAttribute": "{{var "SAML_POSITION_ATTRIBUTE" | default ""}}",
-        "LoginButtonText": "{{var "SAML_LOGIN_BUTTON_TEXT" | default "With SAML"}}"
+        "LoginButtonText": "{{var "SAML_LOGIN_BUTTON_TEXT" | default "With SAML"}}",
+        "LoginButtonColor": "{{var "SAML_LOGIN_BUTTON_COLOR" | default ""}}",
+        "LoginButtonBorderColor": "{{var "SAML_LOGIN_BUTTON_BORDER_COLOR" | default ""}}",
+        "LoginButtonTextColor": "{{var "SAML_LOGIN_BUTTON_TEXT_COLOR" | default ""}}"
     },
     "NativeAppSettings": {
         "AppDownloadLink": "{{var "NATIVEAPP_APP_DOWNLOAD_LINK" | default "https://about.mattermost.com/downloads/"}}",
