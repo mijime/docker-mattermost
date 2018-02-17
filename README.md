@@ -116,6 +116,11 @@ See.
 | EnablePreviewFeatures | SERVICE_ENABLE_PREVIEW_FEATURES | true |
 | CloseUnusedDirectMessages | SERVICE_CLOSE_UNUSED_DIRECT_MESSAGES | false |
 | EnableTutorial | SERVICE_ENABLE_TUTORIAL | true |
+| ExperimentalEnableDefaultChannelLeaveJoinMessages | SERVICE_EXPERIMENTAL_ENABLE_DEFAULT_CHANNEL_LEAVE_JOIN_MESSAGES | true |
+| ExperimentalGroupUnreadChannels | SERVICE_EXPERIMENTAL_GROUP_UNREAD_CHANNELS | "disabled" |
+| ImageProxyType | SERVICE_IMAGE_PROXY_TYPE | "" |
+| ImageProxyOptions | SERVICE_IMAGE_PROXY_OPTIONS | "" |
+| ImageProxyURL | SERVICE_IMAGE_PROXY_URL | "" |
 
 ### TeamSettings
 
@@ -255,6 +260,7 @@ See.
 | MaxBurst | RATELIMIT_MAX_BURST | 100 |
 | MemoryStoreSize | RATELIMIT_MEMORY_STORE_SIZE | 10000 |
 | VaryByRemoteAddr | RATELIMIT_VARY_BY_REMOTE_ADDR | true |
+| VaryByUser | RATELIMIT_VARY_BY_USER | false |
 | VaryByHeader | RATELIMIT_VARY_BY_HEADER | "" |
 
 ### PrivacySettings

@@ -55,7 +55,12 @@
         "ClusterLogTimeoutMilliseconds": {{var "SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS" | default "2000"}},
         "EnablePreviewFeatures": {{var "SERVICE_ENABLE_PREVIEW_FEATURES" | default "true"}},
         "CloseUnusedDirectMessages": {{var "SERVICE_CLOSE_UNUSED_DIRECT_MESSAGES" | default "false"}},
-        "EnableTutorial": {{var "SERVICE_ENABLE_TUTORIAL" | default "true"}}
+        "EnableTutorial": {{var "SERVICE_ENABLE_TUTORIAL" | default "true"}},
+        "ExperimentalEnableDefaultChannelLeaveJoinMessages": {{var "SERVICE_EXPERIMENTAL_ENABLE_DEFAULT_CHANNEL_LEAVE_JOIN_MESSAGES" | default "true"}},
+        "ExperimentalGroupUnreadChannels": "{{var "SERVICE_EXPERIMENTAL_GROUP_UNREAD_CHANNELS" | default "disabled"}}",
+        "ImageProxyType": "{{var "SERVICE_IMAGE_PROXY_TYPE" | default ""}}",
+        "ImageProxyOptions": "{{var "SERVICE_IMAGE_PROXY_OPTIONS" | default ""}}",
+        "ImageProxyURL": "{{var "SERVICE_IMAGE_PROXY_URL" | default ""}}"
     },
     "TeamSettings": {
         "SiteName": "{{var "TEAM_SITE_NAME" | default "Mattermost"}}",
@@ -176,6 +181,7 @@
         "MaxBurst": {{var "RATELIMIT_MAX_BURST" | default "100"}},
         "MemoryStoreSize": {{var "RATELIMIT_MEMORY_STORE_SIZE" | default "10000"}},
         "VaryByRemoteAddr": {{var "RATELIMIT_VARY_BY_REMOTE_ADDR" | default "true"}},
+        "VaryByUser": {{var "RATELIMIT_VARY_BY_USER" | default "false"}},
         "VaryByHeader": "{{var "RATELIMIT_VARY_BY_HEADER" | default ""}}"
     },
     "PrivacySettings": {
