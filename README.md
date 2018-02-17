@@ -115,6 +115,12 @@ See.
 | ClusterLogTimeoutMilliseconds | SERVICE_CLUSTER_LOG_TIMEOUT_MILLISECONDS | 2000 |
 | EnablePreviewFeatures | SERVICE_ENABLE_PREVIEW_FEATURES | true |
 | CloseUnusedDirectMessages | SERVICE_CLOSE_UNUSED_DIRECT_MESSAGES | false |
+| EnableTutorial | SERVICE_ENABLE_TUTORIAL | true |
+| ExperimentalEnableDefaultChannelLeaveJoinMessages | SERVICE_EXPERIMENTAL_ENABLE_DEFAULT_CHANNEL_LEAVE_JOIN_MESSAGES | true |
+| ExperimentalGroupUnreadChannels | SERVICE_EXPERIMENTAL_GROUP_UNREAD_CHANNELS | "disabled" |
+| ImageProxyType | SERVICE_IMAGE_PROXY_TYPE | "" |
+| ImageProxyOptions | SERVICE_IMAGE_PROXY_OPTIONS | "" |
+| ImageProxyURL | SERVICE_IMAGE_PROXY_URL | "" |
 
 ### TeamSettings
 
@@ -145,6 +151,7 @@ See.
 | EnableConfirmNotificationsToChannel | TEAM_ENABLE_CONFIRM_NOTIFICATIONS_TO_CHANNEL | true |
 | TeammateNameDisplay | TEAM_TEAMMATE_NAME_DISPLAY | "username" |
 | ExperimentalTownSquareIsReadOnly | TEAM_EXPERIMENTAL_TOWN_SQUARE_IS_READ_ONLY | false |
+| ExperimentalPrimaryTeam | TEAM_EXPERIMENTAL_PRIMARY_TEAM | "" |
 | AndroidLatestVersion | TEAM_ANDROID_LATEST_VERSION | "" |
 | AndroidMinVersion | TEAM_ANDROID_MIN_VERSION | "" |
 | DesktopLatestVersion | TEAM_DESKTOP_LATEST_VERSION | "" |
@@ -240,6 +247,9 @@ See.
 | EmailBatchingInterval | EMAIL_EMAIL_BATCHING_INTERVAL | 30 |
 | SkipServerCertificateVerification | EMAIL_SKIP_SERVER_CERTIFICATE_VERIFICATION | false |
 | EmailNotificationContentsType | EMAIL_EMAIL_NOTIFICATION_CONTENTS_TYPE | "full" |
+| LoginButtonColor | EMAIL_LOGIN_BUTTON_COLOR | "" |
+| LoginButtonBorderColor | EMAIL_LOGIN_BUTTON_BORDER_COLOR | "" |
+| LoginButtonTextColor | EMAIL_LOGIN_BUTTON_TEXT_COLOR | "" |
 
 ### RateLimitSettings
 
@@ -250,6 +260,7 @@ See.
 | MaxBurst | RATELIMIT_MAX_BURST | 100 |
 | MemoryStoreSize | RATELIMIT_MEMORY_STORE_SIZE | 10000 |
 | VaryByRemoteAddr | RATELIMIT_VARY_BY_REMOTE_ADDR | true |
+| VaryByUser | RATELIMIT_VARY_BY_USER | false |
 | VaryByHeader | RATELIMIT_VARY_BY_HEADER | "" |
 
 ### PrivacySettings
@@ -350,6 +361,9 @@ See.
 | QueryTimeout | LDAP_QUERY_TIMEOUT | 60 |
 | MaxPageSize | LDAP_MAX_PAGE_SIZE | 0 |
 | LoginFieldName | LDAP_LOGIN_FIELD_NAME | "" |
+| LoginButtonColor | LDAP_LOGIN_BUTTON_COLOR | "" |
+| LoginButtonBorderColor | LDAP_LOGIN_BUTTON_BORDER_COLOR | "" |
+| LoginButtonTextColor | LDAP_LOGIN_BUTTON_TEXT_COLOR | "" |
 
 ### ComplianceSettings
 
@@ -389,6 +403,9 @@ See.
 | LocaleAttribute | SAML_LOCALE_ATTRIBUTE | "" |
 | PositionAttribute | SAML_POSITION_ATTRIBUTE | "" |
 | LoginButtonText | SAML_LOGIN_BUTTON_TEXT | "With SAML" |
+| LoginButtonColor | SAML_LOGIN_BUTTON_COLOR | "" |
+| LoginButtonBorderColor | SAML_LOGIN_BUTTON_BORDER_COLOR | "" |
+| LoginButtonTextColor | SAML_LOGIN_BUTTON_TEXT_COLOR | "" |
 
 ### NativeAppSettings
 
